@@ -1,0 +1,43 @@
+{
+  "name": "ytake/valueobjects",
+  "description": "A PHP library/collection of classes aimed to help developers using and undestanding immutable objects.(temporary package)",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolò Pignatelli",
+      "email": "pignatelli.nicolo@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "ramsey/uuid": "~3.0",
+    "mathiasverraes/money": "~1.2",
+    "marc-mabe/php-enum": "~1.0",
+    "zendframework/zend-validator": "~2.2",
+    "league/geotools": "~0.7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "ValueObjects\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ValueObjects\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "4.2.x-dev"
+    }
+  },
+  "replace": {
+    "nicolopignatelli/valueobjects": "^4.0"
+  }
+}
