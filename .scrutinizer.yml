@@ -1,6 +1,4 @@
 tools:
-    external_code_coverage:
-        timeout: 600
     php_code_sniffer: true
     php_cpd: true
     php_loc: true
@@ -10,3 +8,7 @@ tools:
     sensiolabs_security_checker: true
 filter:
     paths: [src/*]
+checks:
+    php:
+        code_rating: true
+        duplication: true
