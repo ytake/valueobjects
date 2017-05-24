@@ -15,14 +15,25 @@
  * Copyright (c) 2017 Yuuki Takezawa
  */
 
-namespace ValueObjects;
+namespace ValueObjects\StringLiteral;
 
-interface ValueObjectInterface
+use ValueObjects\Exception\InvalidNativeArgumentException;
+use ValueObjects\Util\Util;
+use ValueObjects\ValueObjectInterface;
+
+class StringLiteral implements ValueObjectInterface
 {
+    protected string $value;
 
-    public static function fromNative(): ValueObjectInterface;
+    public static function fromNative(): StringLiteral;
 
-    public function sameValueAs(ValueObjectInterface $object): bool;
+    public function __construct($value);
+
+    public function toNative(): string;
+
+    public function sameValueAs(ValueObjectInterface $stringLiteral): bool;
+
+    public function isEmpty(): bool;
 
     public function __toString(): string;
 }

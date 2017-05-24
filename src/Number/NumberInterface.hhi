@@ -1,4 +1,4 @@
-<?hh // decl
+<?hh // strict
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -15,14 +15,9 @@
  * Copyright (c) 2017 Yuuki Takezawa
  */
 
-namespace ValueObjects;
+namespace ValueObjects\Number;
 
-interface ValueObjectInterface
+interface NumberInterface
 {
-
-    public static function fromNative(): ValueObjectInterface;
-
-    public function sameValueAs(ValueObjectInterface $object): bool;
-
-    public function __toString(): string;
+    public function toNative(): mixed;
 }
