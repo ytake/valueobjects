@@ -24,7 +24,10 @@ class FahrenheitTest extends TestCase
      */
     public function testToKelvin(Fahrenheit $temperature)
     {
-        $this->assertEquals($temperature->toCelsius()->toNative() + 273.15, $temperature->toKelvin()->toNative());
+        $this->assertEquals(
+            round($temperature->toCelsius()->toNative() + 273.15, 8),
+            round($temperature->toKelvin()->toNative(), 8)
+        );
     }
 
     /**

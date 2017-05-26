@@ -1,0 +1,1434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1495645732">
+  <project timestamp="1495645732">
+    <package name="ValueObjects\Climate">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Climate/Celsius.php">
+        <class name="Celsius" namespace="ValueObjects\Climate">
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+        </class>
+        <line num="10" type="method" name="toCelsius" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="12" type="stmt" count="1"/>
+        <line num="18" type="method" name="toKelvin" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="26" type="method" name="toFahrenheit" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="30" ncloc="21" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Climate/Fahrenheit.php">
+        <class name="Fahrenheit" namespace="ValueObjects\Climate">
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+        </class>
+        <line num="10" type="method" name="toCelsius" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="18" type="method" name="toKelvin" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="26" type="method" name="toFahrenheit" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="30" ncloc="21" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Climate/Kelvin.php">
+        <class name="Kelvin" namespace="ValueObjects\Climate">
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+        </class>
+        <line num="10" type="method" name="toCelsius" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="12" type="stmt" count="2"/>
+        <line num="18" type="method" name="toKelvin" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="26" type="method" name="toFahrenheit" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="30" ncloc="21" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Climate/RelativeHumidity.php">
+        <class name="RelativeHumidity" namespace="ValueObjects\Climate">
+          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+        </class>
+        <line num="20" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="32" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="2"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <metrics loc="46" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Climate/Temperature.php">
+        <class name="Temperature" namespace="ValueObjects\Climate">
+          <metrics complexity="3" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="23" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="ValueObjects\DateTime">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Date.php">
+        <class name="Date" namespace="ValueObjects\DateTime">
+          <metrics complexity="15" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="45" coveredelements="45"/>
+        </class>
+        <line num="28" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="30" type="stmt" count="3"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="33" type="stmt" count="3"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="36" type="stmt" count="3"/>
+        <line num="45" type="method" name="fromNativeDateTime" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="47" type="stmt" count="3"/>
+        <line num="48" type="stmt" count="3"/>
+        <line num="49" type="stmt" count="3"/>
+        <line num="51" type="stmt" count="3"/>
+        <line num="59" type="method" name="now" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="61" type="stmt" count="3"/>
+        <line num="63" type="stmt" count="3"/>
+        <line num="74" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="28"/>
+        <line num="76" type="stmt" count="28"/>
+        <line num="77" type="stmt" count="28"/>
+        <line num="79" type="stmt" count="28"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="83" type="stmt" count="27"/>
+        <line num="84" type="stmt" count="27"/>
+        <line num="85" type="stmt" count="27"/>
+        <line num="86" type="stmt" count="27"/>
+        <line num="94" type="method" name="sameValueAs" visibility="public" complexity="4" crap="4" count="12"/>
+        <line num="96" type="stmt" count="12"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="12"/>
+        <line num="101" type="stmt" count="12"/>
+        <line num="102" type="stmt" count="12"/>
+        <line num="110" type="method" name="getYear" visibility="public" complexity="1" crap="1" count="22"/>
+        <line num="112" type="stmt" count="22"/>
+        <line num="120" type="method" name="getMonth" visibility="public" complexity="1" crap="1" count="22"/>
+        <line num="122" type="stmt" count="22"/>
+        <line num="130" type="method" name="getDay" visibility="public" complexity="1" crap="1" count="22"/>
+        <line num="132" type="stmt" count="22"/>
+        <line num="140" type="method" name="toNativeDateTime" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="142" type="stmt" count="7"/>
+        <line num="143" type="stmt" count="7"/>
+        <line num="144" type="stmt" count="7"/>
+        <line num="146" type="stmt" count="7"/>
+        <line num="147" type="stmt" count="7"/>
+        <line num="148" type="stmt" count="7"/>
+        <line num="150" type="stmt" count="7"/>
+        <line num="158" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="160" type="stmt" count="6"/>
+        <metrics loc="162" ncloc="101" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="45" coveredelements="45"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/DateTime.php">
+        <class name="DateTime" namespace="ValueObjects\DateTime">
+          <metrics complexity="12" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="39" coveredelements="39"/>
+        </class>
+        <line num="27" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="34" type="stmt" count="2"/>
+        <line num="43" type="method" name="fromNativeDateTime" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="46" type="stmt" count="2"/>
+        <line num="48" type="stmt" count="2"/>
+        <line num="56" type="method" name="now" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="58" type="stmt" count="2"/>
+        <line num="60" type="stmt" count="2"/>
+        <line num="69" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="18"/>
+        <line num="71" type="stmt" count="18"/>
+        <line num="73" type="stmt" count="18"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="18"/>
+        <line num="78" type="stmt" count="18"/>
+        <line num="86" type="method" name="sameValueAs" visibility="public" complexity="3" crap="3" count="8"/>
+        <line num="88" type="stmt" count="8"/>
+        <line num="89" type="stmt" count="1"/>
+        <line num="92" type="stmt" count="8"/>
+        <line num="100" type="method" name="getDate" visibility="public" complexity="1" crap="1" count="15"/>
+        <line num="102" type="stmt" count="15"/>
+        <line num="110" type="method" name="getTime" visibility="public" complexity="1" crap="1" count="16"/>
+        <line num="112" type="stmt" count="16"/>
+        <line num="120" type="method" name="toNativeDateTime" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="122" type="stmt" count="1"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="124" type="stmt" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <line num="126" type="stmt" count="1"/>
+        <line num="127" type="stmt" count="1"/>
+        <line num="129" type="stmt" count="1"/>
+        <line num="130" type="stmt" count="1"/>
+        <line num="131" type="stmt" count="1"/>
+        <line num="133" type="stmt" count="1"/>
+        <line num="141" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="143" type="stmt" count="4"/>
+        <metrics loc="145" ncloc="89" classes="1" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="39" coveredelements="39"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/DateTimeWithTimeZone.php">
+        <class name="DateTimeWithTimeZone" namespace="ValueObjects\DateTime">
+          <metrics complexity="13" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="45" coveredelements="45"/>
+        </class>
+        <line num="29" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="46" type="method" name="fromNativeDateTime" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="59" type="method" name="now" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="70" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="72" type="stmt" count="9"/>
+        <line num="73" type="stmt" count="9"/>
+        <line num="74" type="stmt" count="9"/>
+        <line num="83" type="method" name="sameValueAs" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="85" type="stmt" count="4"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="89" type="stmt" count="4"/>
+        <line num="90" type="stmt" count="4"/>
+        <line num="100" type="method" name="sameTimestampAs" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="103" type="stmt" count="1"/>
+        <line num="106" type="stmt" count="1"/>
+        <line num="114" type="method" name="getDateTime" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="116" type="stmt" count="8"/>
+        <line num="124" type="method" name="getTimeZone" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="126" type="stmt" count="8"/>
+        <line num="134" type="method" name="toNativeDateTime" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="136" type="stmt" count="2"/>
+        <line num="137" type="stmt" count="2"/>
+        <line num="138" type="stmt" count="2"/>
+        <line num="139" type="stmt" count="2"/>
+        <line num="140" type="stmt" count="2"/>
+        <line num="141" type="stmt" count="2"/>
+        <line num="142" type="stmt" count="2"/>
+        <line num="143" type="stmt" count="2"/>
+        <line num="144" type="stmt" count="2"/>
+        <line num="146" type="stmt" count="2"/>
+        <line num="147" type="stmt" count="2"/>
+        <line num="148" type="stmt" count="2"/>
+        <line num="149" type="stmt" count="2"/>
+        <line num="151" type="stmt" count="2"/>
+        <line num="159" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="161" type="stmt" count="2"/>
+        <metrics loc="163" ncloc="96" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="35" elements="45" coveredelements="45"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Hour.php">
+        <class name="Hour" namespace="ValueObjects\DateTime">
+          <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
+        </class>
+        <line num="19" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="31"/>
+        <line num="34" type="stmt" count="31"/>
+        <line num="37" type="stmt" count="31"/>
+        <line num="39" type="stmt" count="31"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="30"/>
+        <line num="44" type="stmt" count="30"/>
+        <line num="51" type="method" name="now" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="53" type="stmt" count="4"/>
+        <line num="54" type="stmt" count="4"/>
+        <line num="56" type="stmt" count="4"/>
+        <metrics loc="58" ncloc="42" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Minute.php">
+        <class name="Minute" namespace="ValueObjects\DateTime">
+          <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
+        </class>
+        <line num="20" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="32" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="31"/>
+        <line num="35" type="stmt" count="31"/>
+        <line num="38" type="stmt" count="31"/>
+        <line num="40" type="stmt" count="31"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="30"/>
+        <line num="45" type="stmt" count="30"/>
+        <line num="52" type="method" name="now" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="54" type="stmt" count="4"/>
+        <line num="55" type="stmt" count="4"/>
+        <line num="57" type="stmt" count="4"/>
+        <metrics loc="59" ncloc="43" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Month.php">
+        <class name="Month" namespace="ValueObjects\DateTime">
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+        </class>
+        <line num="27" type="method" name="now" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="29" type="stmt" count="4"/>
+        <line num="31" type="stmt" count="4"/>
+        <line num="40" type="method" name="fromNativeDateTime" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="42" type="stmt" count="8"/>
+        <line num="44" type="stmt" count="8"/>
+        <line num="53" type="method" name="getNumericValue" visibility="public" complexity="1" crap="1" count="11"/>
+        <line num="55" type="stmt" count="11"/>
+        <metrics loc="57" ncloc="40" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/MonthDay.php">
+        <class name="MonthDay" namespace="ValueObjects\DateTime">
+          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="30"/>
+        <line num="21" type="stmt" count="30"/>
+        <line num="24" type="stmt" count="30"/>
+        <line num="26" type="stmt" count="30"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="29"/>
+        <line num="31" type="stmt" count="29"/>
+        <line num="38" type="method" name="now" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="40" type="stmt" count="4"/>
+        <line num="41" type="stmt" count="4"/>
+        <line num="43" type="stmt" count="4"/>
+        <metrics loc="45" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Second.php">
+        <class name="Second" namespace="ValueObjects\DateTime">
+          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="31"/>
+        <line num="21" type="stmt" count="31"/>
+        <line num="24" type="stmt" count="31"/>
+        <line num="26" type="stmt" count="31"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="30"/>
+        <line num="31" type="stmt" count="30"/>
+        <line num="38" type="method" name="now" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="40" type="stmt" count="4"/>
+        <line num="41" type="stmt" count="4"/>
+        <line num="43" type="stmt" count="4"/>
+        <metrics loc="45" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Time.php">
+        <class name="Time" namespace="ValueObjects\DateTime">
+          <metrics complexity="14" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="41" coveredelements="41"/>
+        </class>
+        <line num="27" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="29" type="stmt" count="6"/>
+        <line num="31" type="stmt" count="6"/>
+        <line num="32" type="stmt" count="6"/>
+        <line num="33" type="stmt" count="6"/>
+        <line num="35" type="stmt" count="6"/>
+        <line num="44" type="method" name="fromNativeDateTime" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="46" type="stmt" count="3"/>
+        <line num="47" type="stmt" count="3"/>
+        <line num="48" type="stmt" count="3"/>
+        <line num="50" type="stmt" count="3"/>
+        <line num="58" type="method" name="now" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="60" type="stmt" count="3"/>
+        <line num="62" type="stmt" count="3"/>
+        <line num="70" type="method" name="zero" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="72" type="stmt" count="2"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="84" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="28"/>
+        <line num="86" type="stmt" count="28"/>
+        <line num="87" type="stmt" count="28"/>
+        <line num="88" type="stmt" count="28"/>
+        <line num="89" type="stmt" count="28"/>
+        <line num="97" type="method" name="sameValueAs" visibility="public" complexity="4" crap="4" count="13"/>
+        <line num="99" type="stmt" count="13"/>
+        <line num="100" type="stmt" count="1"/>
+        <line num="103" type="stmt" count="13"/>
+        <line num="111" type="method" name="getHour" visibility="public" complexity="1" crap="1" count="24"/>
+        <line num="113" type="stmt" count="24"/>
+        <line num="121" type="method" name="getMinute" visibility="public" complexity="1" crap="1" count="24"/>
+        <line num="123" type="stmt" count="24"/>
+        <line num="131" type="method" name="getSecond" visibility="public" complexity="1" crap="1" count="24"/>
+        <line num="133" type="stmt" count="24"/>
+        <line num="142" type="method" name="toNativeDateTime" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="144" type="stmt" count="8"/>
+        <line num="145" type="stmt" count="8"/>
+        <line num="146" type="stmt" count="8"/>
+        <line num="148" type="stmt" count="8"/>
+        <line num="149" type="stmt" count="8"/>
+        <line num="151" type="stmt" count="8"/>
+        <line num="159" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="161" type="stmt" count="7"/>
+        <metrics loc="163" ncloc="97" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="41" coveredelements="41"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/TimeZone.php">
+        <class name="TimeZone" namespace="ValueObjects\DateTime">
+          <metrics complexity="10" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="23" coveredelements="23"/>
+        </class>
+        <line num="21" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="23" type="stmt" count="4"/>
+        <line num="25" type="stmt" count="4"/>
+        <line num="27" type="stmt" count="4"/>
+        <line num="36" type="method" name="fromNativeDateTimeZone" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="46" type="method" name="fromDefault" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="48" type="stmt" count="2"/>
+        <line num="57" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="17"/>
+        <line num="59" type="stmt" count="17"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="16"/>
+        <line num="64" type="stmt" count="16"/>
+        <line num="71" type="method" name="toNativeDateTimeZone" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="73" type="stmt" count="3"/>
+        <line num="82" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="7"/>
+        <line num="84" type="stmt" count="7"/>
+        <line num="85" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="7"/>
+        <line num="96" type="method" name="getName" visibility="public" complexity="1" crap="1" count="15"/>
+        <line num="98" type="stmt" count="15"/>
+        <line num="106" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="108" type="stmt" count="4"/>
+        <metrics loc="110" ncloc="65" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="23" coveredelements="23"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/WeekDay.php">
+        <class name="WeekDay" namespace="ValueObjects\DateTime">
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+        </class>
+        <line num="22" type="method" name="now" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="35" type="method" name="fromNativeDateTime" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <line num="48" type="method" name="getNumericValue" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <metrics loc="52" ncloc="35" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="8" coveredelements="8"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Year.php">
+        <class name="Year" namespace="ValueObjects\DateTime">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="14" type="method" name="now" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="16" type="stmt" count="4"/>
+        <line num="17" type="stmt" count="4"/>
+        <line num="19" type="stmt" count="4"/>
+        <metrics loc="21" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+    </package>
+    <package name="ValueObjects\DateTime\Exception">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Exception/InvalidDateException.php">
+        <class name="InvalidDateException" namespace="ValueObjects\DateTime\Exception">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="7" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="9" type="stmt" count="1"/>
+        <line num="10" type="stmt" count="1"/>
+        <line num="11" type="stmt" count="1"/>
+        <line num="12" type="stmt" count="1"/>
+        <metrics loc="13" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/DateTime/Exception/InvalidTimeZoneException.php">
+        <class name="InvalidTimeZoneException" namespace="ValueObjects\DateTime\Exception">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="7" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="9" type="stmt" count="1"/>
+        <line num="10" type="stmt" count="1"/>
+        <line num="11" type="stmt" count="1"/>
+        <metrics loc="12" ncloc="12" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Enum">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Enum/Enum.php">
+        <class name="Enum" namespace="ValueObjects\Enum">
+          <metrics complexity="5" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
+        </class>
+        <line num="17" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="19" type="stmt" count="4"/>
+        <line num="27" type="method" name="toNative" visibility="public" complexity="1" crap="1" count="67"/>
+        <line num="29" type="stmt" count="67"/>
+        <line num="38" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="23"/>
+        <line num="40" type="stmt" count="23"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="23"/>
+        <line num="52" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="30"/>
+        <line num="54" type="stmt" count="30"/>
+        <metrics loc="56" ncloc="34" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="10" coveredelements="10"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Exception">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Exception/InvalidNativeArgumentException.php">
+        <class name="InvalidNativeArgumentException" namespace="ValueObjects\Exception">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="7" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="22"/>
+        <line num="9" type="stmt" count="22"/>
+        <line num="10" type="stmt" count="22"/>
+        <metrics loc="11" ncloc="11" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Geography">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Address.php">
+        <class name="Address" namespace="ValueObjects\Geography">
+          <metrics complexity="19" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="38" elements="49" coveredelements="49"/>
+        </class>
+        <line num="61" type="method" name="fromNative" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="63" type="stmt" count="2"/>
+        <line num="65" type="stmt" count="2"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="91" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
+        <line num="93" type="stmt" count="11"/>
+        <line num="94" type="stmt" count="11"/>
+        <line num="95" type="stmt" count="11"/>
+        <line num="96" type="stmt" count="11"/>
+        <line num="97" type="stmt" count="11"/>
+        <line num="98" type="stmt" count="11"/>
+        <line num="99" type="stmt" count="11"/>
+        <line num="100" type="stmt" count="11"/>
+        <line num="108" type="method" name="sameValueAs" visibility="public" complexity="8" crap="8" count="2"/>
+        <line num="110" type="stmt" count="2"/>
+        <line num="111" type="stmt" count="1"/>
+        <line num="114" type="stmt" count="2"/>
+        <line num="115" type="stmt" count="2"/>
+        <line num="116" type="stmt" count="2"/>
+        <line num="117" type="stmt" count="2"/>
+        <line num="118" type="stmt" count="2"/>
+        <line num="119" type="stmt" count="2"/>
+        <line num="120" type="stmt" count="2"/>
+        <line num="129" type="method" name="getName" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="131" type="stmt" count="4"/>
+        <line num="139" type="method" name="getStreet" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="141" type="stmt" count="4"/>
+        <line num="149" type="method" name="getDistrict" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="151" type="stmt" count="3"/>
+        <line num="159" type="method" name="getCity" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="161" type="stmt" count="4"/>
+        <line num="169" type="method" name="getRegion" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="171" type="stmt" count="4"/>
+        <line num="179" type="method" name="getPostalCode" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="181" type="stmt" count="4"/>
+        <line num="189" type="method" name="getCountry" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="191" type="stmt" count="4"/>
+        <line num="199" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="205" type="stmt" count="1"/>
+        <line num="208" type="stmt" count="1"/>
+        <line num="210" type="stmt" count="1"/>
+        <metrics loc="212" ncloc="119" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="38" elements="49" coveredelements="49"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Continent.php">
+        <class name="Continent" namespace="ValueObjects\Geography">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="16" ncloc="16" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Coordinate.php">
+        <class name="Coordinate" namespace="ValueObjects\Geography">
+          <metrics complexity="21" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="65" coveredelements="65"/>
+        </class>
+        <line num="31" type="method" name="fromNative" visibility="public" complexity="4" crap="4" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="56" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="9"/>
+        <line num="58" type="stmt" count="9"/>
+        <line num="59" type="stmt" count="9"/>
+        <line num="62" type="stmt" count="9"/>
+        <line num="63" type="stmt" count="9"/>
+        <line num="64" type="stmt" count="9"/>
+        <line num="65" type="stmt" count="9"/>
+        <line num="73" type="method" name="sameValueAs" visibility="public" complexity="4" crap="4" count="2"/>
+        <line num="75" type="stmt" count="2"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="80" type="stmt" count="2"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="90" type="method" name="getLatitude" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="92" type="stmt" count="7"/>
+        <line num="100" type="method" name="getLongitude" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="102" type="stmt" count="7"/>
+        <line num="110" type="method" name="getEllipsoid" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="112" type="stmt" count="7"/>
+        <line num="120" type="method" name="toDegreesMinutesSeconds" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="122" type="stmt" count="1"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="124" type="stmt" count="1"/>
+        <line num="126" type="stmt" count="1"/>
+        <line num="134" type="method" name="toDecimalMinutes" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="136" type="stmt" count="1"/>
+        <line num="137" type="stmt" count="1"/>
+        <line num="138" type="stmt" count="1"/>
+        <line num="140" type="stmt" count="1"/>
+        <line num="148" type="method" name="toUniversalTransverseMercator" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="150" type="stmt" count="1"/>
+        <line num="151" type="stmt" count="1"/>
+        <line num="152" type="stmt" count="1"/>
+        <line num="154" type="stmt" count="1"/>
+        <line num="165" type="method" name="distanceFrom" visibility="public" complexity="3" crap="3" count="1"/>
+        <line num="167" type="stmt" count="1"/>
+        <line num="168" type="stmt" count="1"/>
+        <line num="171" type="stmt" count="1"/>
+        <line num="172" type="stmt" count="1"/>
+        <line num="175" type="stmt" count="1"/>
+        <line num="176" type="stmt" count="1"/>
+        <line num="178" type="stmt" count="1"/>
+        <line num="180" type="stmt" count="1"/>
+        <line num="181" type="stmt" count="1"/>
+        <line num="182" type="stmt" count="1"/>
+        <line num="185" type="stmt" count="1"/>
+        <line num="187" type="stmt" count="1"/>
+        <line num="195" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="197" type="stmt" count="1"/>
+        <line num="206" type="method" name="getBaseCoordinate" visibility="protected" complexity="1" crap="1" count="4"/>
+        <line num="208" type="stmt" count="4"/>
+        <line num="209" type="stmt" count="4"/>
+        <line num="210" type="stmt" count="4"/>
+        <line num="211" type="stmt" count="4"/>
+        <line num="213" type="stmt" count="4"/>
+        <metrics loc="215" ncloc="144" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="65" coveredelements="65"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Country.php">
+        <class name="Country" namespace="ValueObjects\Geography">
+          <metrics complexity="7" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="20" coveredelements="20"/>
+        </class>
+        <line num="19" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="21" type="stmt" count="2"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="25" type="stmt" count="2"/>
+        <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
+        <line num="35" type="stmt" count="16"/>
+        <line num="36" type="stmt" count="16"/>
+        <line num="44" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="5"/>
+        <line num="46" type="stmt" count="5"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="5"/>
+        <line num="58" type="method" name="getCode" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="60" type="stmt" count="9"/>
+        <line num="68" type="method" name="getName" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="70" type="stmt" count="3"/>
+        <line num="71" type="stmt" count="3"/>
+        <line num="73" type="stmt" count="3"/>
+        <line num="81" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="83" type="stmt" count="2"/>
+        <metrics loc="85" ncloc="52" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="20" coveredelements="20"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/CountryCode.php">
+        <class name="CountryCode" namespace="ValueObjects\Geography">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="253" ncloc="251" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/CountryCodeName.php">
+        <class name="CountryCodeName" namespace="ValueObjects\Geography">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="262" type="method" name="getName" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="264" type="stmt" count="4"/>
+        <line num="265" type="stmt" count="4"/>
+        <line num="267" type="stmt" count="4"/>
+        <metrics loc="269" ncloc="263" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/DistanceFormula.php">
+        <class name="DistanceFormula" namespace="ValueObjects\Geography">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/DistanceUnit.php">
+        <class name="DistanceUnit" namespace="ValueObjects\Geography">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="13" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Ellipsoid.php">
+        <class name="Ellipsoid" namespace="ValueObjects\Geography">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="32" ncloc="32" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Latitude.php">
+        <class name="Latitude" namespace="ValueObjects\Geography">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        </class>
+        <line num="18" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="12"/>
+        <line num="20" type="stmt" count="12"/>
+        <line num="22" type="stmt" count="12"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="11"/>
+        <line num="28" type="stmt" count="11"/>
+        <line num="30" type="stmt" count="11"/>
+        <line num="31" type="stmt" count="11"/>
+        <metrics loc="32" ncloc="24" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Longitude.php">
+        <class name="Longitude" namespace="ValueObjects\Geography">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        </class>
+        <line num="17" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="12"/>
+        <line num="19" type="stmt" count="12"/>
+        <line num="21" type="stmt" count="12"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="11"/>
+        <line num="27" type="stmt" count="11"/>
+        <line num="29" type="stmt" count="11"/>
+        <line num="30" type="stmt" count="11"/>
+        <metrics loc="31" ncloc="23" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Geography/Street.php">
+        <class name="Street" namespace="ValueObjects\Geography">
+          <metrics complexity="17" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="41" coveredelements="41"/>
+        </class>
+        <line num="35" type="method" name="fromNative" visibility="public" complexity="6" crap="6" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="62" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="18"/>
+        <line num="64" type="stmt" count="18"/>
+        <line num="65" type="stmt" count="18"/>
+        <line num="67" type="stmt" count="18"/>
+        <line num="68" type="stmt" count="12"/>
+        <line num="70" type="stmt" count="18"/>
+        <line num="72" type="stmt" count="18"/>
+        <line num="73" type="stmt" count="13"/>
+        <line num="75" type="stmt" count="18"/>
+        <line num="76" type="stmt" count="18"/>
+        <line num="83" type="method" name="sameValueAs" visibility="public" complexity="4" crap="4" count="5"/>
+        <line num="85" type="stmt" count="5"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="89" type="stmt" count="5"/>
+        <line num="90" type="stmt" count="5"/>
+        <line num="91" type="stmt" count="5"/>
+        <line num="100" type="method" name="getName" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="102" type="stmt" count="8"/>
+        <line num="110" type="method" name="getNumber" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="112" type="stmt" count="8"/>
+        <line num="119" type="method" name="getElements" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="121" type="stmt" count="8"/>
+        <line num="129" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="132" type="stmt" count="2"/>
+        <line num="133" type="stmt" count="2"/>
+        <line num="134" type="stmt" count="2"/>
+        <line num="137" type="stmt" count="2"/>
+        <line num="139" type="stmt" count="2"/>
+        <metrics loc="141" ncloc="95" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="41" coveredelements="41"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Identity">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Identity/UUID.php">
+        <class name="UUID" namespace="ValueObjects\Identity">
+          <metrics complexity="7" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="21" coveredelements="21"/>
+        </class>
+        <line num="21" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="34" type="method" name="generateAsString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="42" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="44" type="stmt" count="4"/>
+        <line num="46" type="stmt" count="4"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="3"/>
+        <line num="57" type="stmt" count="3"/>
+        <line num="65" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="67" type="stmt" count="2"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="2"/>
+        <metrics loc="73" ncloc="56" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="21" coveredelements="21"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Money">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Money/Currency.php">
+        <class name="Currency" namespace="ValueObjects\Money">
+          <metrics complexity="6" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="15" coveredelements="15"/>
+        </class>
+        <line num="23" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="25" type="stmt" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="30" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="32" type="stmt" count="13"/>
+        <line num="33" type="stmt" count="13"/>
+        <line num="34" type="stmt" count="13"/>
+        <line num="42" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="4"/>
+        <line num="44" type="stmt" count="4"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="4"/>
+        <line num="56" type="method" name="getCode" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="58" type="stmt" count="13"/>
+        <line num="66" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <metrics loc="70" ncloc="46" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="15" coveredelements="15"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Money/CurrencyCode.php">
+        <class name="CurrencyCode" namespace="ValueObjects\Money">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="169" ncloc="167" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Money/Money.php">
+        <class name="Money" namespace="ValueObjects\Money">
+          <metrics complexity="11" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
+        </class>
+        <line num="28" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="44" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="46" type="stmt" count="9"/>
+        <line num="47" type="stmt" count="9"/>
+        <line num="48" type="stmt" count="9"/>
+        <line num="49" type="stmt" count="9"/>
+        <line num="57" type="method" name="sameValueAs" visibility="public" complexity="3" crap="3" count="2"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="2"/>
+        <line num="71" type="method" name="getAmount" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="73" type="stmt" count="8"/>
+        <line num="75" type="stmt" count="8"/>
+        <line num="83" type="method" name="getCurrency" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="85" type="stmt" count="8"/>
+        <line num="95" type="method" name="add" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="97" type="stmt" count="2"/>
+        <line num="98" type="stmt" count="2"/>
+        <line num="100" type="stmt" count="2"/>
+        <line num="111" type="method" name="multiply" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="113" type="stmt" count="2"/>
+        <line num="114" type="stmt" count="2"/>
+        <line num="117" type="stmt" count="2"/>
+        <line num="118" type="stmt" count="2"/>
+        <line num="119" type="stmt" count="2"/>
+        <line num="121" type="stmt" count="2"/>
+        <line num="129" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="131" type="stmt" count="1"/>
+        <metrics loc="133" ncloc="82" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="32" coveredelements="32"/>
+      </file>
+    </package>
+    <package name="ValueObjects\NullValue">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/NullValue/NullValue.php">
+        <class name="NullValue" namespace="ValueObjects\NullValue">
+          <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="8" coveredelements="8"/>
+        </class>
+        <line num="13" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="23" type="method" name="create" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="25" type="stmt" count="5"/>
+        <line num="33" type="method" name="sameValueAs" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="35" type="stmt" count="5"/>
+        <line num="43" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <metrics loc="47" ncloc="29" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="8" coveredelements="8"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Number">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Number/Complex.php">
+        <class name="Complex" namespace="ValueObjects\Number">
+          <metrics complexity="13" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="47" coveredelements="47"/>
+        </class>
+        <line num="24" type="method" name="fromNative" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="46" type="method" name="fromPolar" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="63" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="65" type="stmt" count="10"/>
+        <line num="66" type="stmt" count="10"/>
+        <line num="67" type="stmt" count="10"/>
+        <line num="69" type="method" name="sameValueAs" visibility="public" complexity="3" crap="3" count="2"/>
+        <line num="71" type="stmt" count="2"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="84" type="method" name="toNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="87" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="1"/>
+        <line num="97" type="method" name="getReal" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="99" type="stmt" count="7"/>
+        <line num="107" type="method" name="getIm" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="109" type="stmt" count="7"/>
+        <line num="117" type="method" name="getModulus" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="119" type="stmt" count="2"/>
+        <line num="120" type="stmt" count="2"/>
+        <line num="121" type="stmt" count="2"/>
+        <line num="123" type="stmt" count="2"/>
+        <line num="131" type="method" name="getArgument" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="133" type="stmt" count="2"/>
+        <line num="134" type="stmt" count="2"/>
+        <line num="135" type="stmt" count="2"/>
+        <line num="137" type="stmt" count="2"/>
+        <line num="145" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="147" type="stmt" count="1"/>
+        <line num="148" type="stmt" count="1"/>
+        <line num="149" type="stmt" count="1"/>
+        <line num="150" type="stmt" count="1"/>
+        <line num="152" type="stmt" count="1"/>
+        <metrics loc="154" ncloc="101" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="47" coveredelements="47"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Number/Integer.php">
+        <class name="Integer" namespace="ValueObjects\Number">
+          <metrics complexity="6" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="17" coveredelements="17"/>
+        </class>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="95"/>
+        <line num="18" type="stmt" count="95"/>
+        <line num="20" type="stmt" count="95"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="94"/>
+        <line num="25" type="stmt" count="94"/>
+        <line num="33" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="44"/>
+        <line num="35" type="stmt" count="44"/>
+        <line num="36" type="stmt" count="4"/>
+        <line num="39" type="stmt" count="43"/>
+        <line num="47" type="method" name="toNative" visibility="public" complexity="1" crap="1" count="81"/>
+        <line num="49" type="stmt" count="81"/>
+        <line num="51" type="stmt" count="81"/>
+        <line num="59" type="method" name="toReal" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="62" type="stmt" count="1"/>
+        <line num="64" type="stmt" count="1"/>
+        <metrics loc="66" ncloc="45" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="17" coveredelements="17"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Number/Natural.php">
+        <class name="Natural" namespace="ValueObjects\Number">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="75"/>
+        <line num="20" type="stmt" count="75"/>
+        <line num="22" type="stmt" count="75"/>
+        <line num="24" type="stmt" count="75"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="28" type="stmt" count="74"/>
+        <line num="29" type="stmt" count="74"/>
+        <metrics loc="30" ncloc="25" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Number/Real.php">
+        <class name="Real" namespace="ValueObjects\Number">
+          <metrics complexity="10" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="29" coveredelements="29"/>
+        </class>
+        <line num="19" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="21" type="stmt" count="4"/>
+        <line num="23" type="stmt" count="4"/>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="119"/>
+        <line num="33" type="stmt" count="119"/>
+        <line num="35" type="stmt" count="119"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="118"/>
+        <line num="40" type="stmt" count="118"/>
+        <line num="47" type="method" name="toNative" visibility="public" complexity="1" crap="1" count="111"/>
+        <line num="49" type="stmt" count="111"/>
+        <line num="58" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="11"/>
+        <line num="60" type="stmt" count="11"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="64" type="stmt" count="11"/>
+        <line num="73" type="method" name="toInteger" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="75" type="stmt" count="2"/>
+        <line num="76" type="stmt" count="2"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="80" type="stmt" count="2"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="83" type="stmt" count="2"/>
+        <line num="92" type="method" name="toNatural" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="106" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="108" type="stmt" count="4"/>
+        <metrics loc="110" ncloc="71" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="29" coveredelements="29"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Number/RoundingMode.php">
+        <class name="RoundingMode" namespace="ValueObjects\Number">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="13" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="/Applications/MAMP/htdocs/valueobjects/src/Number/NumberInterface.php">
+      <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="ValueObjects\Person">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Person/Age.php">
+        <class name="Age" namespace="ValueObjects\Person">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Person/Gender.php">
+        <class name="Gender" namespace="ValueObjects\Person">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Person/Name.php">
+        <class name="Name" namespace="ValueObjects\Person">
+          <metrics complexity="11" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="29" coveredelements="29"/>
+        </class>
+        <line num="40" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="42" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="58" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="60" type="stmt" count="8"/>
+        <line num="61" type="stmt" count="8"/>
+        <line num="62" type="stmt" count="8"/>
+        <line num="63" type="stmt" count="8"/>
+        <line num="70" type="method" name="getFirstName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="80" type="method" name="getMiddleName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="90" type="method" name="getLastName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="92" type="stmt" count="1"/>
+        <line num="100" type="method" name="getFullName" visibility="public" complexity="3" crap="3" count="5"/>
+        <line num="102" type="stmt" count="5"/>
+        <line num="103" type="stmt" count="5"/>
+        <line num="104" type="stmt" count="5"/>
+        <line num="106" type="stmt" count="5"/>
+        <line num="108" type="stmt" count="5"/>
+        <line num="117" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="119" type="stmt" count="2"/>
+        <line num="120" type="stmt" count="1"/>
+        <line num="123" type="stmt" count="2"/>
+        <line num="131" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="133" type="stmt" count="1"/>
+        <metrics loc="135" ncloc="74" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="29" coveredelements="29"/>
+      </file>
+    </package>
+    <package name="ValueObjects\StringLiteral">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/StringLiteral/StringLiteral.php">
+        <class name="StringLiteral" namespace="ValueObjects\StringLiteral">
+          <metrics complexity="8" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="18" coveredelements="18"/>
+        </class>
+        <line num="19" type="method" name="fromNative" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="31" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="89"/>
+        <line num="33" type="stmt" count="89"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="88"/>
+        <line num="38" type="stmt" count="88"/>
+        <line num="45" type="method" name="toNative" visibility="public" complexity="1" crap="1" count="83"/>
+        <line num="47" type="stmt" count="83"/>
+        <line num="56" type="method" name="sameValueAs" visibility="public" complexity="2" crap="2" count="46"/>
+        <line num="58" type="stmt" count="46"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="62" type="stmt" count="46"/>
+        <line num="70" type="method" name="isEmpty" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="72" type="stmt" count="10"/>
+        <line num="80" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="23"/>
+        <line num="82" type="stmt" count="23"/>
+        <metrics loc="84" ncloc="52" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="18" coveredelements="18"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Structure">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Structure/Collection.php">
+        <class name="Collection" namespace="ValueObjects\Structure">
+          <metrics complexity="20" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="29" elements="36" coveredelements="36"/>
+        </class>
+        <line num="21" type="method" name="fromNative" visibility="public" complexity="4" crap="4" count="3"/>
+        <line num="23" type="stmt" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="26" type="stmt" count="3"/>
+        <line num="27" type="stmt" count="3"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="3"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="36" type="stmt" count="3"/>
+        <line num="44" type="method" name="__construct" visibility="public" complexity="4" crap="4" count="12"/>
+        <line num="46" type="stmt" count="12"/>
+        <line num="47" type="stmt" count="12"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="12"/>
+        <line num="54" type="stmt" count="12"/>
+        <line num="62" type="method" name="sameValueAs" visibility="public" complexity="6" crap="6" count="6"/>
+        <line num="64" type="stmt" count="6"/>
+        <line num="65" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="6"/>
+        <line num="70" type="stmt" count="6"/>
+        <line num="71" type="stmt" count="6"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="6"/>
+        <line num="84" type="method" name="count" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="86" type="stmt" count="10"/>
+        <line num="95" type="method" name="contains" visibility="public" complexity="3" crap="3" count="3"/>
+        <line num="97" type="stmt" count="3"/>
+        <line num="98" type="stmt" count="3"/>
+        <line num="99" type="stmt" count="3"/>
+        <line num="103" type="stmt" count="3"/>
+        <line num="111" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="113" type="stmt" count="7"/>
+        <line num="121" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <metrics loc="127" ncloc="88" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="29" elements="36" coveredelements="36"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Structure/Dictionary.php">
+        <class name="Dictionary" namespace="ValueObjects\Structure">
+          <metrics complexity="14" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="36" coveredelements="36"/>
+        </class>
+        <line num="16" type="method" name="fromNative" visibility="public" complexity="4" crap="4" count="3"/>
+        <line num="18" type="stmt" count="3"/>
+        <line num="19" type="stmt" count="3"/>
+        <line num="21" type="stmt" count="3"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="3"/>
+        <line num="35" type="stmt" count="3"/>
+        <line num="43" type="method" name="__construct" visibility="public" complexity="4" crap="4" count="8"/>
+        <line num="45" type="stmt" count="8"/>
+        <line num="46" type="stmt" count="7"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="8"/>
+        <line num="53" type="stmt" count="8"/>
+        <line num="60" type="method" name="keys" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="62" type="stmt" count="2"/>
+        <line num="63" type="stmt" count="2"/>
+        <line num="65" type="stmt" count="2"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="77" type="method" name="values" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="80" type="stmt" count="2"/>
+        <line num="82" type="stmt" count="2"/>
+        <line num="83" type="stmt" count="2"/>
+        <line num="86" type="stmt" count="2"/>
+        <line num="95" type="method" name="containsKey" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="99" type="stmt" count="1"/>
+        <line num="108" type="method" name="containsValue" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="110" type="stmt" count="1"/>
+        <line num="112" type="stmt" count="1"/>
+        <metrics loc="114" ncloc="81" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="36" coveredelements="36"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Structure/KeyValuePair.php">
+        <class name="KeyValuePair" namespace="ValueObjects\Structure">
+          <metrics complexity="9" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="24" coveredelements="24"/>
+        </class>
+        <line num="25" type="method" name="fromNative" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="49" type="stmt" count="13"/>
+        <line num="50" type="stmt" count="13"/>
+        <line num="51" type="stmt" count="13"/>
+        <line num="59" type="method" name="sameValueAs" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="61" type="stmt" count="4"/>
+        <line num="62" type="stmt" count="1"/>
+        <line num="65" type="stmt" count="4"/>
+        <line num="73" type="method" name="getKey" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="75" type="stmt" count="8"/>
+        <line num="83" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="8"/>
+        <line num="85" type="stmt" count="8"/>
+        <line num="93" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="1"/>
+        <metrics loc="99" ncloc="62" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="24" coveredelements="24"/>
+      </file>
+    </package>
+    <package name="ValueObjects\Util">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Util/Util.php">
+        <class name="Util" namespace="ValueObjects\Util" fullPackage="ValueObjects" package="ValueObjects">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        </class>
+        <line num="18" type="method" name="classEquals" visibility="public" complexity="1" crap="1" count="109"/>
+        <line num="20" type="stmt" count="109"/>
+        <line num="29" type="method" name="getClassAsString" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <metrics loc="33" ncloc="16" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      </file>
+    </package>
+    <file name="/Applications/MAMP/htdocs/valueobjects/src/ValueObjectInterface.php">
+      <metrics loc="28" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="ValueObjects\Web">
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/Domain.php">
+        <class name="Domain" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="15" type="method" name="specifyType" visibility="public" complexity="2" crap="2" count="4"/>
+        <line num="17" type="stmt" count="4"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="4"/>
+        <metrics loc="23" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/EmailAddress.php">
+        <class name="EmailAddress" namespace="ValueObjects\Web">
+          <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
+        </class>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="4"/>
+        <line num="17" type="stmt" count="4"/>
+        <line num="19" type="stmt" count="4"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="31" type="method" name="getLocalPart" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <line num="44" type="method" name="getDomainPart" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <metrics loc="51" ncloc="36" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/FragmentIdentifier.php">
+        <class name="FragmentIdentifier" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="15"/>
+        <line num="17" type="stmt" count="15"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="14"/>
+        <line num="22" type="stmt" count="14"/>
+        <metrics loc="23" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/Hostname.php">
+        <class name="Hostname" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="16"/>
+        <line num="17" type="stmt" count="16"/>
+        <line num="19" type="stmt" count="16"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="15"/>
+        <line num="24" type="stmt" count="15"/>
+        <metrics loc="25" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/IPAddress.php">
+        <class name="IPAddress" namespace="ValueObjects\Web">
+          <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="16" type="stmt" count="3"/>
+        <line num="18" type="stmt" count="3"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="30" type="method" name="getVersion" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <metrics loc="40" ncloc="30" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="11" coveredelements="11"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/IPAddressVersion.php">
+        <class name="IPAddressVersion" namespace="ValueObjects\Web">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="11" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/IPv4Address.php">
+        <class name="IPv4Address" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="16" type="stmt" count="2"/>
+        <line num="18" type="stmt" count="2"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <metrics loc="24" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/IPv6Address.php">
+        <class name="IPv6Address" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="16" type="stmt" count="2"/>
+        <line num="18" type="stmt" count="2"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <metrics loc="24" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/NullFragmentIdentifier.php">
+        <class name="NullFragmentIdentifier" namespace="ValueObjects\Web">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="13" type="stmt" count="2"/>
+        <line num="14" type="stmt" count="2"/>
+        <metrics loc="15" ncloc="11" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/NullPortNumber.php">
+        <class name="NullPortNumber" namespace="ValueObjects\Web">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/NullQueryString.php">
+        <class name="NullQueryString" namespace="ValueObjects\Web">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="13" type="stmt" count="2"/>
+        <line num="14" type="stmt" count="2"/>
+        <metrics loc="15" ncloc="11" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/Path.php">
+        <class name="Path" namespace="ValueObjects\Web">
+          <metrics complexity="3" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="10" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="15"/>
+        <line num="12" type="stmt" count="15"/>
+        <line num="14" type="stmt" count="15"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="18" type="stmt" count="14"/>
+        <line num="19" type="stmt" count="14"/>
+        <metrics loc="20" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/PortNumber.php">
+        <class name="PortNumber" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+        </class>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="15"/>
+        <line num="22" type="stmt" count="15"/>
+        <line num="24" type="stmt" count="15"/>
+        <line num="26" type="stmt" count="15"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="14"/>
+        <line num="31" type="stmt" count="14"/>
+        <metrics loc="32" ncloc="27" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/QueryString.php">
+        <class name="QueryString" namespace="ValueObjects\Web">
+          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+        </class>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="16"/>
+        <line num="18" type="stmt" count="16"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="15"/>
+        <line num="23" type="stmt" count="15"/>
+        <line num="30" type="method" name="toDictionary" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <metrics loc="37" ncloc="27" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/SchemeName.php">
+        <class name="SchemeName" namespace="ValueObjects\Web">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="15" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="15"/>
+        <line num="17" type="stmt" count="15"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="14"/>
+        <line num="22" type="stmt" count="14"/>
+        <metrics loc="23" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/Url.php">
+        <class name="Url" namespace="ValueObjects\Web">
+          <metrics complexity="28" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="65" coveredelements="65"/>
+        </class>
+        <line num="41" type="method" name="fromNative" visibility="public" complexity="6" crap="6" count="2"/>
+        <line num="43" type="stmt" count="2"/>
+        <line num="45" type="stmt" count="2"/>
+        <line num="46" type="stmt" count="2"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="48" type="stmt" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <line num="50" type="stmt" count="2"/>
+        <line num="52" type="stmt" count="2"/>
+        <line num="53" type="stmt" count="2"/>
+        <line num="54" type="stmt" count="2"/>
+        <line num="55" type="stmt" count="2"/>
+        <line num="56" type="stmt" count="2"/>
+        <line num="57" type="stmt" count="2"/>
+        <line num="58" type="stmt" count="2"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="61" type="stmt" count="2"/>
+        <line num="76" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="78" type="stmt" count="13"/>
+        <line num="79" type="stmt" count="13"/>
+        <line num="80" type="stmt" count="13"/>
+        <line num="81" type="stmt" count="13"/>
+        <line num="82" type="stmt" count="13"/>
+        <line num="83" type="stmt" count="13"/>
+        <line num="84" type="stmt" count="13"/>
+        <line num="85" type="stmt" count="13"/>
+        <line num="86" type="stmt" count="13"/>
+        <line num="94" type="method" name="sameValueAs" visibility="public" complexity="9" crap="9" count="2"/>
+        <line num="96" type="stmt" count="2"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="2"/>
+        <line num="101" type="stmt" count="2"/>
+        <line num="102" type="stmt" count="2"/>
+        <line num="103" type="stmt" count="2"/>
+        <line num="104" type="stmt" count="2"/>
+        <line num="105" type="stmt" count="2"/>
+        <line num="106" type="stmt" count="2"/>
+        <line num="107" type="stmt" count="2"/>
+        <line num="116" type="method" name="getDomain" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="118" type="stmt" count="6"/>
+        <line num="126" type="method" name="getFragmentIdentifier" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="128" type="stmt" count="6"/>
+        <line num="136" type="method" name="getPassword" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="138" type="stmt" count="5"/>
+        <line num="146" type="method" name="getPath" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="148" type="stmt" count="6"/>
+        <line num="156" type="method" name="getPort" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="158" type="stmt" count="6"/>
+        <line num="166" type="method" name="getQueryString" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="168" type="stmt" count="6"/>
+        <line num="176" type="method" name="getScheme" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="178" type="stmt" count="6"/>
+        <line num="186" type="method" name="getUser" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="188" type="stmt" count="6"/>
+        <line num="196" type="method" name="__toString" visibility="public" complexity="4" crap="4" count="4"/>
+        <line num="198" type="stmt" count="4"/>
+        <line num="199" type="stmt" count="4"/>
+        <line num="200" type="stmt" count="2"/>
+        <line num="202" type="stmt" count="2"/>
+        <line num="203" type="stmt" count="1"/>
+        <line num="207" type="stmt" count="4"/>
+        <line num="208" type="stmt" count="4"/>
+        <line num="209" type="stmt" count="2"/>
+        <line num="212" type="stmt" count="4"/>
+        <line num="214" type="stmt" count="4"/>
+        <metrics loc="216" ncloc="139" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="53" elements="65" coveredelements="65"/>
+      </file>
+    </package>
+    <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/FragmentIdentifierInterface.php">
+      <metrics loc="7" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/PortNumberInterface.php">
+      <metrics loc="7" ncloc="7" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/Applications/MAMP/htdocs/valueobjects/src/Web/QueryStringInterface.php">
+      <metrics loc="8" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <metrics files="72" loc="4771" ncloc="3423" classes="55" methods="229" coveredmethods="229" conditionals="0" coveredconditionals="0" statements="752" coveredstatements="752" elements="981" coveredelements="981"/>
+  </project>
+</coverage>
