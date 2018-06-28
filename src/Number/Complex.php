@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Number;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class Complex
+ */
 class Complex implements ValueObjectInterface, NumberInterface
 {
     /** @var Real */
@@ -12,47 +16,6 @@ class Complex implements ValueObjectInterface, NumberInterface
 
     /** @var Real */
     protected $im;
-
-    /**
-     * Returns a new Complex object from native PHP arguments
-     *
-     * @param  float                        $real Real part of the complex number
-     * @param  float                        $im   Imaginary part of the complex number
-     * @return Complex|ValueObjectInterface
-     * @throws \BadMethodCallException
-     */
-    public static function fromNative()
-    {
-        $args = \func_get_args();
-
-        if (\count($args) != 2) {
-            throw new \BadMethodCallException('You must provide 2 arguments: 1) real part, 2) imaginary part');
-        }
-
-        $real    = Real::fromNative($args[0]);
-        $im      = Real::fromNative($args[1]);
-        $complex = new static($real, $im);
-
-        return $complex;
-    }
-
-    /**
-     * Returns a Complex given polar coordinates
-     *
-     * @param  Real    $modulus
-     * @param  Real    $argument
-     * @return Complex
-     */
-    public static function fromPolar(Real $modulus, Real $argument)
-    {
-        $realValue = $modulus->toNative() * \cos($argument->toNative());
-        $imValue   = $modulus->toNative() * \sin($argument->toNative());
-        $real      = new Real($realValue);
-        $im        = new Real($imValue);
-        $complex   = new static($real, $im);
-
-        return $complex;
-    }
 
     /**
      * Returns a Complex object give its real and imaginary parts as parameters
@@ -63,17 +26,63 @@ class Complex implements ValueObjectInterface, NumberInterface
     public function __construct(Real $real, Real $im)
     {
         $this->real = $real;
-        $this->im   = $im;
+        $this->im = $im;
     }
 
-    public function sameValueAs(ValueObjectInterface $complex)
+    /**
+     * Returns a new Complex object from native PHP arguments
+     *
+     * @param  ...float $real Real part of the complex number
+     * @param  ...float $im   Imaginary part of the complex number
+     *
+     * @return Complex|ValueObjectInterface
+     * @throws \BadMethodCallException
+     */
+    public static function fromNative(): ValueObjectInterface
+    {
+        $args = \func_get_args();
+
+        if (\count($args) != 2) {
+            throw new \BadMethodCallException('You must provide 2 arguments: 1) real part, 2) imaginary part');
+        }
+        $complex = new static(
+            Real::fromNative($args[0]),
+            Real::fromNative($args[1])
+        );
+
+        return $complex;
+    }
+
+    /**
+     * Returns a Complex given polar coordinates
+     *
+     * @param  Real $modulus
+     * @param  Real $argument
+     *
+     * @return Complex
+     */
+    public static function fromPolar(Real $modulus, Real $argument)
+    {
+        $realValue = $modulus->toNative() * \cos($argument->toNative());
+        $imValue = $modulus->toNative() * \sin($argument->toNative());
+        $complex = new static(new Real($realValue), new Real($imValue));
+
+        return $complex;
+    }
+
+    /**
+     * @param ValueObjectInterface $complex
+     *
+     * @return bool
+     */
+    public function sameValueAs(ValueObjectInterface $complex): bool
     {
         if (false === Util::classEquals($this, $complex)) {
             return false;
         }
 
         return $this->getReal()->sameValueAs($complex->getReal()) &&
-               $this->getIm()->sameValueAs($complex->getIm());
+            $this->getIm()->sameValueAs($complex->getIm());
     }
 
     /**
@@ -81,12 +90,12 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return array
      */
-    public function toNative()
+    public function toNative(): array
     {
-        return array(
+        return [
             $this->getReal()->toNative(),
             $this->getIm()->toNative()
-        );
+        ];
     }
 
     /**
@@ -94,7 +103,7 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return Real
      */
-    public function getReal()
+    public function getReal(): Real
     {
         return clone $this->real;
     }
@@ -104,7 +113,7 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return Real
      */
-    public function getIm()
+    public function getIm(): Real
     {
         return clone $this->im;
     }
@@ -114,11 +123,11 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return Real
      */
-    public function getModulus()
+    public function getModulus(): Real
     {
         $real = $this->getReal()->toNative();
-        $im   = $this->getIm()->toNative();
-        $mod  = \sqrt(\pow($real, 2) + \pow($im, 2));
+        $im = $this->getIm()->toNative();
+        $mod = \sqrt(\pow($real, 2) + \pow($im, 2));
 
         return new Real($mod);
     }
@@ -128,11 +137,11 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return Real
      */
-    public function getArgument()
+    public function getArgument(): Real
     {
         $real = $this->getReal()->toNative();
-        $im   = $this->getIm()->toNative();
-        $arg  = \atan2($im, $real);
+        $im = $this->getIm()->toNative();
+        $arg = \atan2($im, $real);
 
         return new Real($arg);
     }
@@ -142,11 +151,11 @@ class Complex implements ValueObjectInterface, NumberInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $format = '%g %+gi';
-        $real   = $this->getReal()->toNative();
-        $im     = $this->getIm()->toNative();
+        $real = $this->getReal()->toNative();
+        $im = $this->getIm()->toNative();
         $string = \sprintf($format, $real, $im);
 
         return \preg_replace('/(\+|-)/', '$1 ', $string);

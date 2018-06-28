@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Structure;
 
@@ -6,6 +7,9 @@ use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class KeyValuePair
+ */
 class KeyValuePair implements ValueObjectInterface
 {
     /** @var ValueObjectInterface */
@@ -19,10 +23,12 @@ class KeyValuePair implements ValueObjectInterface
      *
      * @param string $key
      * @param string $value
-     * @return self
+     *
+     * @return KeyValuePair|ValueObjectInterface
      * @throws \InvalidArgumentException
+     * @return KeyValuePair|ValueObjectInterface
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $args = func_get_args();
 
@@ -30,9 +36,9 @@ class KeyValuePair implements ValueObjectInterface
             throw new \BadMethodCallException('This methods expects two arguments. One for the key and one for the value.');
         }
 
-        $keyString   = \strval($args[0]);
+        $keyString = \strval($args[0]);
         $valueString = \strval($args[1]);
-        $key   = new StringLiteral($keyString);
+        $key = new StringLiteral($keyString);
         $value = new StringLiteral($valueString);
 
         return new static($key, $value);
@@ -44,25 +50,29 @@ class KeyValuePair implements ValueObjectInterface
      * @param ValueObjectInterface $key
      * @param ValueObjectInterface $value
      */
-    public function __construct(ValueObjectInterface $key, ValueObjectInterface $value)
-    {
-        $this->key   = $key;
+    public function __construct(
+        ValueObjectInterface $key,
+        ValueObjectInterface $value
+    ) {
+        $this->key = $key;
         $this->value = $value;
     }
 
     /**
      * Tells whether two KeyValuePair are equal
      *
-     * @param  ValueObjectInterface $keyValuePair
+     * @param  KeyValuePair|ValueObjectInterface $keyValuePair
+     *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $keyValuePair)
+    public function sameValueAs(ValueObjectInterface $keyValuePair): bool
     {
         if (false === Util::classEquals($this, $keyValuePair)) {
             return false;
         }
 
-        return $this->getKey()->sameValueAs($keyValuePair->getKey()) && $this->getValue()->sameValueAs($keyValuePair->getValue());
+        return $this->getKey()->sameValueAs($keyValuePair->getKey())
+            && $this->getValue()->sameValueAs($keyValuePair->getValue());
     }
 
     /**
@@ -70,7 +80,7 @@ class KeyValuePair implements ValueObjectInterface
      *
      * @return ValueObjectInterface
      */
-    public function getKey()
+    public function getKey(): ValueObjectInterface
     {
         return clone $this->key;
     }
@@ -80,7 +90,7 @@ class KeyValuePair implements ValueObjectInterface
      *
      * @return ValueObjectInterface
      */
-    public function getValue()
+    public function getValue(): ValueObjectInterface
     {
         return clone $this->value;
     }
@@ -90,10 +100,8 @@ class KeyValuePair implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        $string = sprintf('%s => %s', $this->getKey(), $this->getValue());
-
-        return $string;
+        return sprintf('%s => %s', $this->getKey(), $this->getValue());
     }
 }

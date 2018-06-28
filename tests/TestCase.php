@@ -1,7 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Tests;
 
-class TestCase extends \PHPUnit_Framework_TestCase
+/**
+ * Class TestCase
+ */
+class TestCase extends \PHPUnit\Framework\TestCase
 {
 }

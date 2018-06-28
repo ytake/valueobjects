@@ -1,7 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects;
 
+/**
+ * Interface ValueObjectInterface
+ */
 interface ValueObjectInterface
 {
     /**
@@ -9,7 +13,7 @@ interface ValueObjectInterface
      *
      * @return ValueObjectInterface
      */
-    public static function fromNative();
+    public static function fromNative(): ValueObjectInterface;
 
     /**
      * Compare two ValueObjectInterface and tells whether they can be considered equal
@@ -17,12 +21,12 @@ interface ValueObjectInterface
      * @param  ValueObjectInterface $object
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $object);
+    public function sameValueAs(ValueObjectInterface $object): bool;
 
     /**
      * Returns a string representation of the object
      *
      * @return string
      */
-    public function __toString();
+    public function __toString(): string;
 }

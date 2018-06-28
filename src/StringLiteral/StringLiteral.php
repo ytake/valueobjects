@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\StringLiteral;
 
-use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class StringLiteral
+ */
 class StringLiteral implements ValueObjectInterface
 {
     protected $value;
@@ -13,10 +16,11 @@ class StringLiteral implements ValueObjectInterface
     /**
      * Returns a StringLiteral object given a PHP native string as parameter.
      *
-     * @param  string $value
-     * @return StringLiteral
+     * @param  ...string $value
+     *
+     * @return StringLiteral|ValueObjectInterface
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $value = func_get_arg(0);
 
@@ -28,12 +32,8 @@ class StringLiteral implements ValueObjectInterface
      *
      * @param string $value
      */
-    public function __construct($value)
+    public function __construct(string $value)
     {
-        if (false === \is_string($value)) {
-            throw new InvalidNativeArgumentException($value, array('string'));
-        }
-
         $this->value = $value;
     }
 
@@ -42,7 +42,7 @@ class StringLiteral implements ValueObjectInterface
      *
      * @return string
      */
-    public function toNative()
+    public function toNative(): string
     {
         return $this->value;
     }
@@ -51,9 +51,10 @@ class StringLiteral implements ValueObjectInterface
      * Tells whether two string literals are equal by comparing their values
      *
      * @param  ValueObjectInterface $stringLiteral
+     *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $stringLiteral)
+    public function sameValueAs(ValueObjectInterface $stringLiteral): bool
     {
         if (false === Util::classEquals($this, $stringLiteral)) {
             return false;
@@ -67,7 +68,7 @@ class StringLiteral implements ValueObjectInterface
      *
      * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return \strlen($this->toNative()) == 0;
     }
@@ -77,7 +78,7 @@ class StringLiteral implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->toNative();
     }

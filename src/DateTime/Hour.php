@@ -1,10 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\DateTime;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Number\Natural;
+use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class Hour
+ */
 class Hour extends Natural
 {
     const MIN_HOUR = 0;
@@ -13,13 +18,13 @@ class Hour extends Natural
     /**
      * Returns a new Hour from native int value
      *
-     * @param  int  $value
-     * @return Hour
+     * @param  ...int  $value
+     *
+     * @return Hour|ValueObjectInterface
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $value = func_get_arg(0);
-
         return new static($value);
     }
 
@@ -28,16 +33,16 @@ class Hour extends Natural
      *
      * @param int $value
      */
-    public function __construct($value)
+    public function __construct(int $value)
     {
-        $options = array(
-            'options' => array('min_range' => self::MIN_HOUR, 'max_range' => self::MAX_HOUR)
-        );
+        $options = [
+            'options' => ['min_range' => self::MIN_HOUR, 'max_range' => self::MAX_HOUR]
+        ];
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
 
         if (false === $value) {
-            throw new InvalidNativeArgumentException($value, array('int (>=0, <=23)'));
+            throw new InvalidNativeArgumentException($value, ['int (>=0, <=23)']);
         }
 
         parent::__construct($value);
@@ -48,9 +53,9 @@ class Hour extends Natural
      *
      * @return Hour
      */
-    public static function now()
+    public static function now(): Hour
     {
-        $now  = new \DateTime('now');
+        $now = new \DateTime('now');
         $hour = \intval($now->format('G'));
 
         return new static($hour);

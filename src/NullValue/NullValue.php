@@ -1,16 +1,20 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\NullValue;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class NullValue
+ */
 class NullValue implements ValueObjectInterface
 {
     /**
      * @throws \BadMethodCallException
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         throw new \BadMethodCallException('Cannot create a NullValue object via this method.');
     }
@@ -18,19 +22,19 @@ class NullValue implements ValueObjectInterface
     /**
      * Returns a new NullValue object
      *
-     * @return static
+     * @return NullValue|ValueObjectInterface
      */
-    public static function create()
+    public static function create(): ValueObjectInterface
     {
         return new static();
     }
 
     /**
      * Tells whether two objects are both NullValue
-     * @param  ValueObjectInterface $null
+     * @param  NullValue|ValueObjectInterface $null
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $null)
+    public function sameValueAs(ValueObjectInterface $null): bool
     {
         return Util::classEquals($this, $null);
     }
@@ -40,7 +44,7 @@ class NullValue implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return \strval(null);
     }

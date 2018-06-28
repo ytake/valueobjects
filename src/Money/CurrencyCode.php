@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Money;
 
 use ValueObjects\Enum\Enum;
 
+/**
+ * Class CurrencyCode
+ */
 class CurrencyCode extends Enum
 {
     const AED = 'AED';

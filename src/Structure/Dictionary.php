@@ -1,22 +1,28 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Structure;
 
+use SplFixedArray;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class Dictionary
+ */
 class Dictionary extends Collection
 {
     /**
      * Returns a new Dictionary object
      *
-     * @param  array $array
-     * @return self
+     * @param  ...array $array
+     *
+     * @return Dictionary|ValueObjectInterface
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $array = \func_get_arg(0);
-        $keyValuePairs = array();
+        $keyValuePairs = [];
 
         foreach ($array as $arrayKey => $arrayValue) {
             $key = new StringLiteral(\strval($arrayKey));
@@ -26,30 +32,28 @@ class Dictionary extends Collection
             } else {
                 $value = new StringLiteral(\strval($arrayValue));
             }
-
             $keyValuePairs[] = new KeyValuePair($key, $value);
         }
-
-        $fixedArray = \SplFixedArray::fromArray($keyValuePairs);
-
-        return new static($fixedArray);
+        return new static(SplFixedArray::fromArray($keyValuePairs));
     }
 
     /**
      * Returns a new Dictionary object
      *
-     * @param \SplFixedArray $key_value_pairs
+     * @param SplFixedArray $key_value_pairs
      */
-    public function __construct(\SplFixedArray $key_value_pairs)
+    public function __construct(SplFixedArray $pairs)
     {
-        foreach ($key_value_pairs as $keyValuePair) {
+        foreach ($pairs as $keyValuePair) {
             if (false === $keyValuePair instanceof KeyValuePair) {
                 $type = \is_object($keyValuePair) ? \get_class($keyValuePair) : \gettype($keyValuePair);
-                throw new \InvalidArgumentException(\sprintf('Passed SplFixedArray object must contains "KeyValuePair" objects only. "%s" given.', $type));
+                throw new \InvalidArgumentException(\sprintf(
+                    'Passed SplFixedArray object must contains "KeyValuePair" objects only. "%s" given.', $type)
+                );
             }
         }
 
-        $this->items = $key_value_pairs;
+        $this->items = $pairs;
     }
 
     /**
@@ -57,10 +61,10 @@ class Dictionary extends Collection
      *
      * @return Collection
      */
-    public function keys()
+    public function keys(): Collection
     {
-        $count     = $this->count()->toNative();
-        $keysArray = new \SplFixedArray($count);
+        $count = $this->count()->toNative();
+        $keysArray = new SplFixedArray($count);
 
         foreach ($this->items as $key => $item) {
             $keysArray->offsetSet($key, $item->getKey());
@@ -74,10 +78,10 @@ class Dictionary extends Collection
      *
      * @return Collection
      */
-    public function values()
+    public function values(): Collection
     {
-        $count       = $this->count()->toNative();
-        $valuesArray = new \SplFixedArray($count);
+        $count = $this->count()->toNative();
+        $valuesArray = new SplFixedArray($count);
 
         foreach ($this->items as $key => $item) {
             $valuesArray->offsetSet($key, $item->getValue());
@@ -90,9 +94,10 @@ class Dictionary extends Collection
      * Tells whether $object is one of the keys
      *
      * @param  ValueObjectInterface $object
+     *
      * @return bool
      */
-    public function containsKey(ValueObjectInterface $object)
+    public function containsKey(ValueObjectInterface $object): bool
     {
         $keys = $this->keys();
 
@@ -103,9 +108,10 @@ class Dictionary extends Collection
      * Tells whether $object is one of the values
      *
      * @param  ValueObjectInterface $object
+     *
      * @return bool
      */
-    public function containsValue(ValueObjectInterface $object)
+    public function containsValue(ValueObjectInterface $object): bool
     {
         $values = $this->values();
 

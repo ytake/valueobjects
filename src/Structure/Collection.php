@@ -1,27 +1,33 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Structure;
 
+use SplFixedArray;
 use ValueObjects\Util\Util;
 use ValueObjects\Number\Natural;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class Collection
+ */
 class Collection implements ValueObjectInterface
 {
-    /** @var \SplFixedArray */
+    /** @var SplFixedArray */
     protected $items;
 
     /**
      * Returns a new Collection object
      *
-     * @param  \SplFixedArray $array
-     * @return self
+     * @param  ...SplFixedArray $array
+     *
+     * @return Collection|ValueObjectInterface
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $array = \func_get_arg(0);
-        $items = array();
+        $items = [];
 
         foreach ($array as $item) {
             if ($item instanceof \Traversable || \is_array($item)) {
@@ -30,23 +36,22 @@ class Collection implements ValueObjectInterface
                 $items[] = new StringLiteral(\strval($item));
             }
         }
-
-        $fixedArray = \SplFixedArray::fromArray($items);
-
-        return new static($fixedArray);
+        return new static(SplFixedArray::fromArray($items));
     }
 
     /**
      * Returns a new Collection object
      *
-     * @return self
+     * @param SplFixedArray $items
      */
-    public function __construct(\SplFixedArray $items)
+    public function __construct(SplFixedArray $items)
     {
         foreach ($items as $item) {
             if (false === $item instanceof ValueObjectInterface) {
                 $type = \is_object($item) ? \get_class($item) : \gettype($item);
-                throw new \InvalidArgumentException(\sprintf('Passed SplFixedArray object must contains "ValueObjectInterface" objects only. "%s" given.', $type));
+                throw new \InvalidArgumentException(\sprintf(
+                    'Passed SplFixedArray object must contains "ValueObjectInterface" objects only. "%s" given.', $type)
+                );
             }
         }
 
@@ -56,12 +61,14 @@ class Collection implements ValueObjectInterface
     /**
      * Tells whether two Collection are equal by comparing their size and items (item order matters)
      *
-     * @param  ValueObjectInterface $collection
+     * @param  Collection|ValueObjectInterface $collection
+     *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $collection)
+    public function sameValueAs(ValueObjectInterface $collection): bool
     {
-        if (false === Util::classEquals($this, $collection) || false === $this->count()->sameValueAs($collection->count())) {
+        if (false === Util::classEquals($this,
+                $collection) || false === $this->count()->sameValueAs($collection->count())) {
             return false;
         }
 
@@ -81,7 +88,7 @@ class Collection implements ValueObjectInterface
      *
      * @return Natural
      */
-    public function count()
+    public function count(): Natural
     {
         return new Natural($this->items->count());
     }
@@ -90,9 +97,10 @@ class Collection implements ValueObjectInterface
      * Tells whether the Collection contains an object
      *
      * @param  ValueObjectInterface $object
+     *
      * @return bool
      */
-    public function contains(ValueObjectInterface $object)
+    public function contains(ValueObjectInterface $object): bool
     {
         foreach ($this->items as $item) {
             if ($item->sameValueAs($object)) {
@@ -108,7 +116,7 @@ class Collection implements ValueObjectInterface
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->items->toArray();
     }
@@ -118,7 +126,7 @@ class Collection implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $string = \sprintf('%s(%d)', \get_class($this), $this->count()->toNative());
 

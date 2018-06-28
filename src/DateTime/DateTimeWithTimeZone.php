@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\DateTime;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class DateTimeWithTimeZone
+ */
 class DateTimeWithTimeZone implements ValueObjectInterface
 {
     /** @var DateTime */
@@ -24,16 +28,17 @@ class DateTimeWithTimeZone implements ValueObjectInterface
      * @param int    $second
      * @param string $timezone
      *
-     * @return DateTimeWithTimeZone
+     * @return DateTimeWithTimeZone|ValueObjectInterface
+     * @throws Exception\InvalidDateException
+     * @throws Exception\InvalidTimeZoneException
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $args = func_get_args();
-
-        $datetime = DateTime::fromNative($args[0], $args[1], $args[2], $args[3], $args[4], $args[5]);
-        $timezone = TimeZone::fromNative($args[6]);
-
-        return new static($datetime, $timezone);
+        return new static(
+            DateTime::fromNative($args[0], $args[1], $args[2], $args[3], $args[4], $args[5]),
+            TimeZone::fromNative($args[6])
+        );
     }
 
     /**
@@ -41,20 +46,24 @@ class DateTimeWithTimeZone implements ValueObjectInterface
      *
      * @param \DateTime $nativeDatetime
      *
-     * @return DateTimeWithTimeZone
+     * @return DateTimeWithTimeZone|ValueObjectInterface
+     * @throws Exception\InvalidDateException
+     * @throws Exception\InvalidTimeZoneException
      */
-    public static function fromNativeDateTime(\DateTime $nativeDatetime)
+    public static function fromNativeDateTime(\DateTime $nativeDatetime): ValueObjectInterface
     {
-        $datetime = DateTime::fromNativeDateTime($nativeDatetime);
-        $timezone = TimeZone::fromNativeDateTimeZone($nativeDatetime->getTimezone());
-
-        return new static($datetime, $timezone);
+        return new static(
+            DateTime::fromNativeDateTime($nativeDatetime),
+            TimeZone::fromNativeDateTimeZone($nativeDatetime->getTimezone())
+        );
     }
 
     /**
      * Returns a DateTimeWithTimeZone object using current DateTime and default TimeZone
      *
-     * @return DateTimeWithTimeZone
+     * @return DateTimeWithTimeZone|ValueObjectInterface
+     * @throws Exception\InvalidDateException
+     * @throws Exception\InvalidTimeZoneException
      */
     public static function now()
     {
@@ -64,8 +73,8 @@ class DateTimeWithTimeZone implements ValueObjectInterface
     /**
      * Returns a new DateTimeWithTimeZone object
      *
-     * @param DateTime $datetime
-     * @param TimeZone $timezone
+     * @param DateTime      $datetime
+     * @param TimeZone|null $timezone
      */
     public function __construct(DateTime $datetime, TimeZone $timezone = null)
     {
@@ -76,28 +85,28 @@ class DateTimeWithTimeZone implements ValueObjectInterface
     /**
      * Tells whether two DateTimeWithTimeZone are equal by comparing their values
      *
-     * @param ValueObjectInterface $dateTimeWithTimeZone
+     * @param DateTimeWithTimeZone|ValueObjectInterface $dateTimeWithTimeZone
      *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $dateTimeWithTimeZone)
+    public function sameValueAs(ValueObjectInterface $dateTimeWithTimeZone): bool
     {
         if (false === Util::classEquals($this, $dateTimeWithTimeZone)) {
             return false;
         }
 
-        return $this->getDateTime()->sameValueAs($dateTimeWithTimeZone->getDateTime()) &&
-            $this->getTimeZone()->sameValueAs($dateTimeWithTimeZone->getTimeZone());
+        return $this->getDateTime()->sameValueAs($dateTimeWithTimeZone->getDateTime())
+            && $this->getTimeZone()->sameValueAs($dateTimeWithTimeZone->getTimeZone());
     }
 
     /**
      * Tells whether two DateTimeWithTimeZone represents the same timestamp
      *
-     * @param ValueObjectInterface $dateTimeWithTimeZone
+     * @param DateTimeWithTimeZone|ValueObjectInterface $dateTimeWithTimeZone
      *
      * @return bool
      */
-    public function sameTimestampAs(ValueObjectInterface $dateTimeWithTimeZone)
+    public function sameTimestampAs(ValueObjectInterface $dateTimeWithTimeZone): bool
     {
         if (false === Util::classEquals($this, $dateTimeWithTimeZone)) {
             return false;
@@ -111,7 +120,7 @@ class DateTimeWithTimeZone implements ValueObjectInterface
      *
      * @return DateTime
      */
-    public function getDateTime()
+    public function getDateTime(): DateTime
     {
         return clone $this->dateTime;
     }
@@ -121,7 +130,7 @@ class DateTimeWithTimeZone implements ValueObjectInterface
      *
      * @return TimeZone
      */
-    public function getTimeZone()
+    public function getTimeZone(): TimeZone
     {
         return clone $this->timeZone;
     }
@@ -131,16 +140,16 @@ class DateTimeWithTimeZone implements ValueObjectInterface
      *
      * @return \DateTime
      */
-    public function toNativeDateTime()
+    public function toNativeDateTime(): \DateTime
     {
-        $date     = $this->getDateTime()->getDate();
-        $time     = $this->getDateTime()->getTime();
-        $year     = $date->getYear()->toNative();
-        $month    = $date->getMonth()->getNumericValue();
-        $day      = $date->getDay()->toNative();
-        $hour     = $time->getHour()->toNative();
-        $minute   = $time->getMinute()->toNative();
-        $second   = $time->getSecond()->toNative();
+        $date = $this->getDateTime()->getDate();
+        $time = $this->getDateTime()->getTime();
+        $year = $date->getYear()->toNative();
+        $month = $date->getMonth()->getNumericValue();
+        $day = $date->getDay()->toNative();
+        $hour = $time->getHour()->toNative();
+        $minute = $time->getMinute()->toNative();
+        $second = $time->getSecond()->toNative();
         $timezone = $this->getTimeZone()->toNativeDateTimeZone();
 
         $dateTime = new \DateTime();
@@ -156,7 +165,7 @@ class DateTimeWithTimeZone implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return \sprintf('%s %s', $this->getDateTime(), $this->getTimeZone());
     }

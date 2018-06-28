@@ -1,8 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\DateTime\Exception;
 
-class InvalidTimeZoneException extends \Exception
+/**
+ * Class InvalidTimeZoneException
+ */
+final class InvalidTimeZoneException extends \Exception
 {
     public function __construct($name)
     {

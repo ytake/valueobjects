@@ -1,36 +1,40 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Number;
 
-use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
+use ValueObjects\Exception\InvalidNativeArgumentException;
 
+/**
+ * Class Integer
+ */
 class Integer extends Real
 {
     /**
      * Returns a Integer object given a PHP native int as parameter.
      *
-     * @param int $value
+     * @param string|\int $value
      */
     public function __construct($value)
     {
         $value = filter_var($value, FILTER_VALIDATE_INT);
 
         if (false === $value) {
-            throw new InvalidNativeArgumentException($value, array('int'));
+            throw new InvalidNativeArgumentException($value, ['int']);
         }
-
         parent::__construct($value);
     }
 
     /**
      * Tells whether two Integer are equal by comparing their values
      *
-     * @param  ValueObjectInterface $integer
+     * @param  Integer|ValueObjectInterface $integer
+     *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $integer)
+    public function sameValueAs(ValueObjectInterface $integer): bool
     {
         if (false === Util::classEquals($this, $integer)) {
             return false;
@@ -44,11 +48,9 @@ class Integer extends Real
      *
      * @return int
      */
-    public function toNative()
+    public function toNative(): int
     {
-        $value = parent::toNative();
-
-        return \intval($value);
+        return \intval(parent::toNative());
     }
 
     /**
@@ -56,10 +58,9 @@ class Integer extends Real
      *
      * @return Real
      */
-    public function toReal()
+    public function toReal(): Real
     {
-        $value = $this->toNative();
-        $real  = new Real($value);
+        $real = new Real($this->toNative());
 
         return $real;
     }

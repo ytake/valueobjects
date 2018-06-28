@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\DateTime;
 
 use ValueObjects\Enum\Enum;
 
+/**
+ * Class WeekDay
+ */
 class WeekDay extends Enum
 {
     const MONDAY    = 'Monday';
@@ -19,11 +23,9 @@ class WeekDay extends Enum
      *
      * @return WeekDay
      */
-    public static function now()
+    public static function now(): WeekDay
     {
-        $now = new \DateTime('now');
-
-        return static::fromNativeDateTime($now);
+        return static::fromNativeDateTime(new \DateTime('now'));
     }
 
     /**
@@ -32,7 +34,7 @@ class WeekDay extends Enum
      * @param  \DateTime $date
      * @return WeekDay
      */
-    public static function fromNativeDateTime(\DateTime $date)
+    public static function fromNativeDateTime(\DateTime $date): WeekDay
     {
         $weekDay = \strtoupper($date->format('l'));
 
@@ -45,7 +47,7 @@ class WeekDay extends Enum
      *
      * @return int
      */
-    public function getNumericValue()
+    public function getNumericValue(): int
     {
         return $this->getOrdinal() + 1;
     }
