@@ -71,8 +71,8 @@ class Collection implements ValueObjectInterface
      */
     public function sameValueAs(ValueObjectInterface $collection): bool
     {
-        if (false === Util::classEquals($this,
-                $collection) || false === $this->count()->sameValueAs($collection->count())) {
+        if (false === Util::classEquals($this, $collection)
+            || false === $this->count()->sameValueAs($collection->count())) {
             return false;
         }
 

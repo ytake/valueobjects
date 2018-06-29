@@ -34,6 +34,7 @@ class Dictionary extends Collection
             }
             $keyValuePairs[] = new KeyValuePair($key, $value);
         }
+
         return new static(SplFixedArray::fromArray($keyValuePairs));
     }
 
@@ -47,8 +48,11 @@ class Dictionary extends Collection
         foreach ($pairs as $keyValuePair) {
             if (false === $keyValuePair instanceof KeyValuePair) {
                 $type = \is_object($keyValuePair) ? \get_class($keyValuePair) : \gettype($keyValuePair);
-                throw new \InvalidArgumentException(\sprintf(
-                    'Passed SplFixedArray object must contains "KeyValuePair" objects only. "%s" given.', $type)
+                throw new \InvalidArgumentException(
+                    \sprintf(
+                        'Passed SplFixedArray object must contains "KeyValuePair" objects only. "%s" given.',
+                        $type
+                    )
                 );
             }
         }

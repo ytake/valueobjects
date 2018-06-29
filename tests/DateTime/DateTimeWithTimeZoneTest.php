@@ -22,7 +22,13 @@ class DateTimeWithTimeZoneTest extends TestCase
     public function testFromNative()
     {
         $fromNativeDateTimeWithTz = DateTimeWithTimeZone::fromNative(
-            2013, 'December', 21, 10, 20, 34, 'Europe/Madrid'
+            2013,
+            'December',
+            21,
+            10,
+            20,
+            34,
+            'Europe/Madrid'
         );
         $constructedDateTimeWithTz = new DateTimeWithTimeZone(
             new DateTime(
