@@ -1,7 +1,7 @@
 {
   "name": "ytake/valueobjects",
   "description": "A PHP library/collection of classes aimed to help developers using and undestanding immutable objects.(temporary package)",
-  "keywords": ["vo", "value object", "architecture", "domain driven design", "hhi"],
+  "keywords": ["vo", "value object", "architecture", "domain driven design"],
   "license": "MIT",
   "authors": [
     {
