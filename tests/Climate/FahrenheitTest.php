@@ -2,7 +2,7 @@
 namespace ValueObjects\Tests\Climate;
 
 use ValueObjects\Climate\Fahrenheit;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class FahrenheitTest extends TestCase
 {

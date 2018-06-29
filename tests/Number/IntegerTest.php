@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Number;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Number\Integer;
 use ValueObjects\Number\Real;
 use ValueObjects\ValueObjectInterface;

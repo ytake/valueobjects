@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace ValueObjects\Tests\Climate;
 
 use ValueObjects\Climate\Celsius;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class CelsiusTest extends TestCase
 {

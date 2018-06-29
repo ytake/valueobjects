@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Enum;
 
 use PHPUnit\Framework\MockObject\MockObject;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Enum\Enum;
 
 class EnumTest extends TestCase

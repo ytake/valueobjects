@@ -7,7 +7,7 @@ use ValueObjects\Geography\Country;
 use ValueObjects\Geography\CountryCode;
 use ValueObjects\Geography\Street;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
 class AddressTest extends TestCase

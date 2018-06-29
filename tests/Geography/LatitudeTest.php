@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Geography;
 
 use ValueObjects\Geography\Latitude;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class LatitudeTest extends TestCase
 {

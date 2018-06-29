@@ -5,7 +5,7 @@ namespace ValueObjects\Tests\DateTime;
 use ValueObjects\DateTime\Minute;
 use ValueObjects\DateTime\Second;
 use ValueObjects\DateTime\Hour;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\DateTime\Time;
 use ValueObjects\ValueObjectInterface;
 

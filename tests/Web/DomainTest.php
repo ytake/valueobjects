@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Tests\Web;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Web\Domain;
 
-class DomainTest extends TestCase
+final class DomainTest extends TestCase
 {
     public function testSpecifyType()
     {

@@ -1,19 +1,33 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Geography;
 
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
-use ValueObjects\StringLiteral\StringLiteral;
 
 /**
- * Class Address
+ * Class Address.
  */
 class Address implements ValueObjectInterface
 {
     /**
-     * Name of the addressee (natural person or company)
+     * Name of the addressee (natural person or company).
+     *
      * @var StringLiteral
      */
     protected $name;
@@ -22,25 +36,29 @@ class Address implements ValueObjectInterface
     protected $street;
 
     /**
-     * District/City area
+     * District/City area.
+     *
      * @var StringLiteral
      */
     protected $district;
 
     /**
-     * City/Town/Village
+     * City/Town/Village.
+     *
      * @var StringLiteral
      */
     protected $city;
 
     /**
-     * Region/County/State
+     * Region/County/State.
+     *
      * @var StringLiteral
      */
     protected $region;
 
     /**
-     * Postal code/P.O. Box/ZIP code
+     * Postal code/P.O. Box/ZIP code.
+     *
      * @var StringLiteral
      */
     protected $postalCode;
@@ -49,43 +67,7 @@ class Address implements ValueObjectInterface
     protected $country;
 
     /**
-     * Returns a new Address from native PHP arguments
-     *
-     * @param string $name
-     * @param string $street_name
-     * @param string $street_number
-     * @param string $district
-     * @param string $city
-     * @param string $region
-     * @param string $postal_code
-     * @param string $country_code
-     *
-     * @return Address|ValueObjectInterface
-     * @throws \BadMethodCallException
-     */
-    public static function fromNative(): ValueObjectInterface
-    {
-        $args = \func_get_args();
-
-        if (\count($args) != 8) {
-            throw new \BadMethodCallException(
-                'You must provide exactly 8 arguments: 1) addressee name, 2) street name, 3) street number, 4) district, 5) city, 6) region, 7) postal code, 8) country code.'
-            );
-        }
-
-        $name = new StringLiteral($args[0]);
-        $street = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
-        $district = new StringLiteral($args[3]);
-        $city = new StringLiteral($args[4]);
-        $region = new StringLiteral($args[5]);
-        $postalCode = new StringLiteral($args[6]);
-        $country = Country::fromNative($args[7]);
-
-        return new static($name, $street, $district, $city, $region, $postalCode, $country);
-    }
-
-    /**
-     * Returns a new Address object
+     * Returns a new Address object.
      *
      * @param StringLiteral $name
      * @param Street        $street
@@ -114,9 +96,71 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two Address are equal
+     * Returns a string representation of the Address in US standard format.
      *
-     * @param  Address|ValueObjectInterface $address
+     * @return string
+     */
+    public function __toString(): string
+    {
+        $format = <<<'ADDR'
+%s
+%s
+%s %s %s
+%s
+ADDR;
+
+        return \sprintf(
+            $format,
+            $this->getName(),
+            $this->getStreet(),
+            $this->getCity(),
+            $this->getRegion(),
+            $this->getPostalCode(),
+            $this->getCountry()
+        );
+    }
+
+    /**
+     * Returns a new Address from native PHP arguments.
+     *
+     * @param string $name
+     * @param string $street_name
+     * @param string $street_number
+     * @param string $district
+     * @param string $city
+     * @param string $region
+     * @param string $postal_code
+     * @param string $country_code
+     *
+     * @throws \BadMethodCallException
+     *
+     * @return Address|ValueObjectInterface
+     */
+    public static function fromNative(): ValueObjectInterface
+    {
+        $args = \func_get_args();
+
+        if (8 != \count($args)) {
+            throw new \BadMethodCallException(
+                'You must provide exactly 8 arguments: 1) addressee name, 2) street name, 3) street number, 4) district, 5) city, 6) region, 7) postal code, 8) country code.'
+            );
+        }
+
+        $name = new StringLiteral($args[0]);
+        $street = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
+        $district = new StringLiteral($args[3]);
+        $city = new StringLiteral($args[4]);
+        $region = new StringLiteral($args[5]);
+        $postalCode = new StringLiteral($args[6]);
+        $country = Country::fromNative($args[7]);
+
+        return new static($name, $street, $district, $city, $region, $postalCode, $country);
+    }
+
+    /**
+     * Tells whether two Address are equal.
+     *
+     * @param Address|ValueObjectInterface $address
      *
      * @return bool
      */
@@ -136,7 +180,7 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns addressee name
+     * Returns addressee name.
      *
      * @return StringLiteral
      */
@@ -146,7 +190,7 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns street
+     * Returns street.
      *
      * @return Street
      */
@@ -156,7 +200,7 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns district
+     * Returns district.
      *
      * @return StringLiteral
      */
@@ -166,7 +210,7 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns city
+     * Returns city.
      *
      * @return StringLiteral
      */
@@ -176,7 +220,7 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns region
+     * Returns region.
      *
      * @return StringLiteral
      */
@@ -186,7 +230,7 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns postal code
+     * Returns postal code.
      *
      * @return StringLiteral
      */
@@ -196,36 +240,12 @@ class Address implements ValueObjectInterface
     }
 
     /**
-     * Returns country
+     * Returns country.
      *
      * @return Country
      */
     public function getCountry(): Country
     {
         return clone $this->country;
-    }
-
-    /**
-     * Returns a string representation of the Address in US standard format.
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        $format = <<<ADDR
-%s
-%s
-%s %s %s
-%s
-ADDR;
-        return \sprintf(
-            $format,
-            $this->getName(),
-            $this->getStreet(),
-            $this->getCity(),
-            $this->getRegion(),
-            $this->getPostalCode(),
-            $this->getCountry()
-        );
     }
 }

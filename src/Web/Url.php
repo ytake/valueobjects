@@ -1,6 +1,19 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Web;
 
 use ValueObjects\StringLiteral\StringLiteral;
@@ -8,7 +21,7 @@ use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
- * Class Url
+ * Class Url.
  */
 class Url implements ValueObjectInterface
 {
@@ -37,7 +50,70 @@ class Url implements ValueObjectInterface
     protected $fragmentIdentifier;
 
     /**
-     * Returns a new Url object from a native url string
+     * Returns a new Url object.
+     *
+     * @param SchemeName          $scheme
+     * @param StringLiteral       $user
+     * @param StringLiteral       $password
+     * @param Domain              $domain
+     * @param Path                $path
+     * @param PortNumberInterface $port
+     * @param QueryString         $query
+     * @param FragmentIdentifier  $fragment
+     */
+    public function __construct(
+        SchemeName $scheme,
+        StringLiteral $user,
+        StringLiteral $password,
+        Domain $domain,
+        PortNumberInterface $port,
+        Path $path,
+        QueryString $query,
+        FragmentIdentifier $fragment
+    ) {
+        $this->scheme = $scheme;
+        $this->user = $user;
+        $this->password = $password;
+        $this->domain = $domain;
+        $this->path = $path;
+        $this->port = $port;
+        $this->queryString = $query;
+        $this->fragmentIdentifier = $fragment;
+    }
+
+    /**
+     * Returns a string representation of the url.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        $userPass = '';
+        if (false === $this->getUser()->isEmpty()) {
+            $userPass = \sprintf('%s@', $this->getUser());
+            if (false === $this->getPassword()->isEmpty()) {
+                $userPass = \sprintf('%s:%s@', $this->getUser(), $this->getPassword());
+            }
+        }
+        $port = '';
+        if (false === NullPortNumber::create()->sameValueAs($this->getPort())) {
+            $port = \sprintf(':%d', $this->getPort()->toNative());
+        }
+
+        return \sprintf(
+            '%s://%s%s%s%s%s%s',
+            $this->getScheme(),
+            $userPass,
+            $this->getDomain(),
+            $port,
+            $this->getPath(),
+            $this->getQueryString(),
+            $this->getFragmentIdentifier()
+        );
+    }
+
+    /**
+     * Returns a new Url object from a native url string.
      *
      * @param ...string $url
      *
@@ -71,41 +147,9 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns a new Url object
+     * Tells whether two Url are sameValueAs by comparing their components.
      *
-     * @param SchemeName          $scheme
-     * @param StringLiteral       $user
-     * @param StringLiteral       $password
-     * @param Domain              $domain
-     * @param Path                $path
-     * @param PortNumberInterface $port
-     * @param QueryString         $query
-     * @param FragmentIdentifier  $fragment
-     */
-    public function __construct(
-        SchemeName $scheme,
-        StringLiteral $user,
-        StringLiteral $password,
-        Domain $domain,
-        PortNumberInterface $port,
-        Path $path,
-        QueryString $query,
-        FragmentIdentifier $fragment
-    ) {
-        $this->scheme = $scheme;
-        $this->user = $user;
-        $this->password = $password;
-        $this->domain = $domain;
-        $this->path = $path;
-        $this->port = $port;
-        $this->queryString = $query;
-        $this->fragmentIdentifier = $fragment;
-    }
-
-    /**
-     * Tells whether two Url are sameValueAs by comparing their components
-     *
-     * @param  Url|ValueObjectInterface $url
+     * @param Url|ValueObjectInterface $url
      *
      * @return bool
      */
@@ -126,7 +170,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the domain of the Url
+     * Returns the domain of the Url.
      *
      * @return Hostname|IPAddress
      */
@@ -136,7 +180,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the fragment identifier of the Url
+     * Returns the fragment identifier of the Url.
      *
      * @return FragmentIdentifier
      */
@@ -146,7 +190,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the password part of the Url
+     * Returns the password part of the Url.
      *
      * @return StringLiteral
      */
@@ -156,7 +200,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the path of the Url
+     * Returns the path of the Url.
      *
      * @return Path
      */
@@ -166,7 +210,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the port of the Url
+     * Returns the port of the Url.
      *
      * @return PortNumberInterface
      */
@@ -176,7 +220,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the query string of the Url
+     * Returns the query string of the Url.
      *
      * @return QueryString
      */
@@ -186,7 +230,7 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the scheme of the Url
+     * Returns the scheme of the Url.
      *
      * @return SchemeName
      */
@@ -196,43 +240,12 @@ class Url implements ValueObjectInterface
     }
 
     /**
-     * Returns the user part of the Url
+     * Returns the user part of the Url.
      *
      * @return StringLiteral
      */
     public function getUser(): StringLiteral
     {
         return clone $this->user;
-    }
-
-    /**
-     * Returns a string representation of the url
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        $userPass = '';
-        if (false === $this->getUser()->isEmpty()) {
-            $userPass = \sprintf('%s@', $this->getUser());
-            if (false === $this->getPassword()->isEmpty()) {
-                $userPass = \sprintf('%s:%s@', $this->getUser(), $this->getPassword());
-            }
-        }
-        $port = '';
-        if (false === NullPortNumber::create()->sameValueAs($this->getPort())) {
-            $port = \sprintf(':%d', $this->getPort()->toNative());
-        }
-
-        return \sprintf(
-            '%s://%s%s%s%s%s%s',
-            $this->getScheme(),
-            $userPass,
-            $this->getDomain(),
-            $port,
-            $this->getPath(),
-            $this->getQueryString(),
-            $this->getFragmentIdentifier()
-        );
     }
 }

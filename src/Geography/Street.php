@@ -1,6 +1,19 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Geography;
 
 use ValueObjects\StringLiteral\StringLiteral;
@@ -20,9 +33,55 @@ class Street implements ValueObjectInterface
 
     /**
      * @var StringLiteral __toString() format
-     * Use properties corresponding placeholders: %name%, %number%, %elements%
+     *                    Use properties corresponding placeholders: %name%, %number%, %elements%
      */
     protected $format;
+
+    /**
+     * Returns a new Street object.
+     *
+     * @param StringLiteral      $name
+     * @param StringLiteral      $number
+     * @param StringLiteral|null $elements
+     * @param StringLiteral|null $format
+     */
+    public function __construct(
+        StringLiteral $name,
+        StringLiteral $number,
+        StringLiteral $elements = null,
+        StringLiteral $format = null
+    ) {
+        $this->name = $name;
+        $this->number = $number;
+
+        if (null === $elements) {
+            $elements = new StringLiteral('');
+        }
+        $this->elements = $elements;
+
+        if (null === $format) {
+            $format = new StringLiteral('%number% %name%');
+        }
+        $this->format = $format;
+    }
+
+    /**
+     * Returns a string representation of the StringLiteral in the format defined in the constructor.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        $replacements = [
+            '%name%' => $this->getName(),
+            '%number%' => $this->getNumber(),
+            '%elements%' => $this->getElements(),
+        ];
+
+        $streetString = str_replace(array_keys($replacements), array_values($replacements), $this->format);
+
+        return $streetString;
+    }
 
     /**
      * Returns a new Street from native PHP string name and number.
@@ -31,8 +90,9 @@ class Street implements ValueObjectInterface
      * @param string $number
      * @param string $elements
      *
-     * @return Street|ValueObjectInterface
      * @throws \BadFunctionCallException
+     *
+     * @return Street|ValueObjectInterface
      */
     public static function fromNative(): ValueObjectInterface
     {
@@ -58,37 +118,9 @@ class Street implements ValueObjectInterface
     }
 
     /**
-     * Returns a new Street object
+     * Tells whether two Street objects are equal.
      *
-     * @param StringLiteral      $name
-     * @param StringLiteral      $number
-     * @param StringLiteral|null $elements
-     * @param StringLiteral|null $format
-     */
-    public function __construct(
-        StringLiteral $name,
-        StringLiteral $number,
-        StringLiteral $elements = null,
-        StringLiteral $format = null
-    ) {
-        $this->name = $name;
-        $this->number = $number;
-
-        if ($elements === null) {
-            $elements = new StringLiteral('');
-        }
-        $this->elements = $elements;
-
-        if ($format === null) {
-            $format = new StringLiteral('%number% %name%');
-        }
-        $this->format = $format;
-    }
-
-    /**
-     * Tells whether two Street objects are equal
-     *
-     * @param  Street|ValueObjectInterface $street
+     * @param Street|ValueObjectInterface $street
      *
      * @return bool
      */
@@ -104,7 +136,7 @@ class Street implements ValueObjectInterface
     }
 
     /**
-     * Returns street name
+     * Returns street name.
      *
      * @return StringLiteral
      */
@@ -114,7 +146,7 @@ class Street implements ValueObjectInterface
     }
 
     /**
-     * Returns street number
+     * Returns street number.
      *
      * @return StringLiteral
      */
@@ -124,29 +156,12 @@ class Street implements ValueObjectInterface
     }
 
     /**
-     * Returns street elements
+     * Returns street elements.
+     *
      * @return StringLiteral
      */
     public function getElements(): StringLiteral
     {
         return clone $this->elements;
-    }
-
-    /**
-     * Returns a string representation of the StringLiteral in the format defined in the constructor
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        $replacements = [
-            "%name%"     => $this->getName(),
-            "%number%"   => $this->getNumber(),
-            "%elements%" => $this->getElements(),
-        ];
-
-        $streetString = str_replace(array_keys($replacements), array_values($replacements), $this->format);
-
-        return $streetString;
     }
 }

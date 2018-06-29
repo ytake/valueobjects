@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Money;
 
 use ValueObjects\Money\CurrencyCode;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Money\Currency;
 use ValueObjects\ValueObjectInterface;
 

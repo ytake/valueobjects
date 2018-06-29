@@ -1,6 +1,19 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\DateTime;
 
 use ValueObjects\DateTime\Exception\InvalidDateException;
@@ -8,7 +21,7 @@ use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
- * Class Date
+ * Class Date.
  */
 class Date implements ValueObjectInterface
 {
@@ -22,59 +35,11 @@ class Date implements ValueObjectInterface
     protected $day;
 
     /**
-     * Returns a new Date from native year, month and day values
+     * Create a new Date.
      *
-     * @param  int    $year
-     * @param  string $month
-     * @param  int    $day
-     *
-     * @return Date|ValueObjectInterface
-     * @throws InvalidDateException
-     */
-    public static function fromNative(): ValueObjectInterface
-    {
-        $args = func_get_args();
-        return new static(
-            new Year($args[0]),
-            Month::fromNative($args[1]),
-            new MonthDay($args[2])
-        );
-    }
-
-    /**
-     * Returns a new Date from a native PHP \DateTime
-     *
-     * @param  \DateTime $date
-     *
-     * @return Date
-     * @throws InvalidDateException
-     */
-    public static function fromNativeDateTime(\DateTime $date): Date
-    {
-        $year = \intval($date->format('Y'));
-        $month = Month::fromNativeDateTime($date);
-        $day = \intval($date->format('d'));
-
-        return new static(new Year($year), $month, new MonthDay($day));
-    }
-
-    /**
-     * Returns current Date
-     *
-     * @return Date
-     * @throws InvalidDateException
-     */
-    public static function now(): Date
-    {
-        return new static(Year::now(), Month::now(), MonthDay::now());
-    }
-
-    /**
-     * Create a new Date
-     *
-     * @param  Year     $year
-     * @param  Month    $month
-     * @param  MonthDay $day
+     * @param Year     $year
+     * @param Month    $month
+     * @param MonthDay $day
      *
      * @throws InvalidDateException
      */
@@ -93,9 +58,71 @@ class Date implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two Date are equal by comparing their values
+     * Returns date as string in format Y-n-j.
      *
-     * @param  ValueObjectInterface|Date $date
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toNativeDateTime()->format('Y-n-j');
+    }
+
+    /**
+     * Returns a new Date from native year, month and day values.
+     *
+     * @param int    $year
+     * @param string $month
+     * @param int    $day
+     *
+     * @throws InvalidDateException
+     *
+     * @return Date|ValueObjectInterface
+     */
+    public static function fromNative(): ValueObjectInterface
+    {
+        $args = func_get_args();
+
+        return new static(
+            new Year($args[0]),
+            Month::fromNative($args[1]),
+            new MonthDay($args[2])
+        );
+    }
+
+    /**
+     * Returns a new Date from a native PHP \DateTime.
+     *
+     * @param \DateTime $date
+     *
+     * @throws InvalidDateException
+     *
+     * @return Date
+     */
+    public static function fromNativeDateTime(\DateTime $date): Date
+    {
+        $year = \intval($date->format('Y'));
+        $month = Month::fromNativeDateTime($date);
+        $day = \intval($date->format('d'));
+
+        return new static(new Year($year), $month, new MonthDay($day));
+    }
+
+    /**
+     * Returns current Date.
+     *
+     * @throws InvalidDateException
+     *
+     * @return Date
+     */
+    public static function now(): Date
+    {
+        return new static(Year::now(), Month::now(), MonthDay::now());
+    }
+
+    /**
+     * Tells whether two Date are equal by comparing their values.
+     *
+     * @param ValueObjectInterface|Date $date
      *
      * @return bool
      */
@@ -111,7 +138,7 @@ class Date implements ValueObjectInterface
     }
 
     /**
-     * Get year
+     * Get year.
      *
      * @return Year
      */
@@ -121,7 +148,7 @@ class Date implements ValueObjectInterface
     }
 
     /**
-     * Get month
+     * Get month.
      *
      * @return Month
      */
@@ -131,7 +158,7 @@ class Date implements ValueObjectInterface
     }
 
     /**
-     * Get day
+     * Get day.
      *
      * @return MonthDay
      */
@@ -141,7 +168,7 @@ class Date implements ValueObjectInterface
     }
 
     /**
-     * Returns a native PHP \DateTime version of the current Date
+     * Returns a native PHP \DateTime version of the current Date.
      *
      * @return \DateTime
      */
@@ -156,15 +183,5 @@ class Date implements ValueObjectInterface
         $date->setTime(0, 0, 0);
 
         return $date;
-    }
-
-    /**
-     * Returns date as string in format Y-n-j
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return $this->toNativeDateTime()->format('Y-n-j');
     }
 }

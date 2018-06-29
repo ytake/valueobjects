@@ -7,7 +7,7 @@ use ValueObjects\Geography\Coordinate;
 use ValueObjects\Geography\Latitude;
 use ValueObjects\Geography\Longitude;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
 class CoordinateTest extends TestCase

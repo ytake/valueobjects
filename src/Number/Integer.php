@@ -1,14 +1,27 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Number;
 
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
-use ValueObjects\Exception\InvalidNativeArgumentException;
 
 /**
- * Class Integer
+ * Class Integer.
  */
 class Integer extends Real
 {
@@ -28,9 +41,9 @@ class Integer extends Real
     }
 
     /**
-     * Tells whether two Integer are equal by comparing their values
+     * Tells whether two Integer are equal by comparing their values.
      *
-     * @param  Integer|ValueObjectInterface $integer
+     * @param int|ValueObjectInterface $integer
      *
      * @return bool
      */
@@ -44,7 +57,7 @@ class Integer extends Real
     }
 
     /**
-     * Returns the value of the integer number
+     * Returns the value of the integer number.
      *
      * @return int
      */
@@ -54,9 +67,9 @@ class Integer extends Real
     }
 
     /**
-     * Returns a Real with the value of the Integer
+     * Returns a Real with the value of the Integer.
      *
-     * @return Real
+     * @return float
      */
     public function toReal(): Real
     {

@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Person;
 
 use ValueObjects\Person\Name;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 

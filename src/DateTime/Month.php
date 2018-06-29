@@ -1,12 +1,26 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\DateTime;
 
 use ValueObjects\Enum\Enum;
 
 /**
- * Class Month
+ * Class Month.
+ *
  * @method static string JANUARY()
  * @method static string FEBRUARY()
  * @method static string MARCH()
@@ -22,21 +36,21 @@ use ValueObjects\Enum\Enum;
  */
 class Month extends Enum
 {
-    const JANUARY   = 'January';
-    const FEBRUARY  = 'February';
-    const MARCH     = 'March';
-    const APRIL     = 'April';
-    const MAY       = 'May';
-    const JUNE      = 'June';
-    const JULY      = 'July';
-    const AUGUST    = 'August';
+    const JANUARY = 'January';
+    const FEBRUARY = 'February';
+    const MARCH = 'March';
+    const APRIL = 'April';
+    const MAY = 'May';
+    const JUNE = 'June';
+    const JULY = 'July';
+    const AUGUST = 'August';
     const SEPTEMBER = 'September';
-    const OCTOBER   = 'October';
-    const NOVEMBER  = 'November';
-    const DECEMBER  = 'December';
+    const OCTOBER = 'October';
+    const NOVEMBER = 'November';
+    const DECEMBER = 'December';
 
     /**
-     * Get current Month
+     * Get current Month.
      *
      * @return Month
      */
@@ -48,9 +62,10 @@ class Month extends Enum
     }
 
     /**
-     * Returns Month from a native PHP \DateTime
+     * Returns Month from a native PHP \DateTime.
      *
-     * @param  \DateTime $date
+     * @param \DateTime $date
+     *
      * @return Month
      */
     public static function fromNativeDateTime(\DateTime $date): Month

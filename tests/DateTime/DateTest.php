@@ -6,7 +6,7 @@ namespace ValueObjects\Tests\DateTime;
 use ValueObjects\DateTime\Month;
 use ValueObjects\DateTime\MonthDay;
 use ValueObjects\DateTime\Year;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\DateTime\Date;
 use ValueObjects\ValueObjectInterface;
 

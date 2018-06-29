@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Web;
 
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Web\FragmentIdentifier;
 use ValueObjects\Web\NullPortNumber;
 use ValueObjects\Web\Path;

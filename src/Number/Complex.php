@@ -1,27 +1,40 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Number;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
- * Class Complex
+ * Class Complex.
  */
 class Complex implements ValueObjectInterface, NumberInterface
 {
-    /** @var Real */
+    /** @var float */
     protected $real;
 
-    /** @var Real */
+    /** @var float */
     protected $im;
 
     /**
-     * Returns a Complex object give its real and imaginary parts as parameters
+     * Returns a Complex object give its real and imaginary parts as parameters.
      *
-     * @param Real $real
-     * @param Real $im
+     * @param float $real
+     * @param float $im
      */
     public function __construct(Real $real, Real $im)
     {
@@ -30,19 +43,35 @@ class Complex implements ValueObjectInterface, NumberInterface
     }
 
     /**
-     * Returns a new Complex object from native PHP arguments
+     * Returns a native string version of the Complex object in format "${real} +|- ${complex}i".
      *
-     * @param  ...float $real Real part of the complex number
-     * @param  ...float $im   Imaginary part of the complex number
+     * @return string
+     */
+    public function __toString(): string
+    {
+        $format = '%g %+gi';
+        $real = $this->getReal()->toNative();
+        $im = $this->getIm()->toNative();
+        $string = \sprintf($format, $real, $im);
+
+        return \preg_replace('/(\+|-)/', '$1 ', $string);
+    }
+
+    /**
+     * Returns a new Complex object from native PHP arguments.
+     *
+     * @param ...float $real Real part of the complex number
+     * @param ...float $im   Imaginary part of the complex number
+     *
+     * @throws \BadMethodCallException
      *
      * @return Complex|ValueObjectInterface
-     * @throws \BadMethodCallException
      */
     public static function fromNative(): ValueObjectInterface
     {
         $args = \func_get_args();
 
-        if (\count($args) != 2) {
+        if (2 != \count($args)) {
             throw new \BadMethodCallException('You must provide 2 arguments: 1) real part, 2) imaginary part');
         }
         $complex = new static(
@@ -54,10 +83,10 @@ class Complex implements ValueObjectInterface, NumberInterface
     }
 
     /**
-     * Returns a Complex given polar coordinates
+     * Returns a Complex given polar coordinates.
      *
-     * @param  Real $modulus
-     * @param  Real $argument
+     * @param float $modulus
+     * @param float $argument
      *
      * @return Complex
      */
@@ -86,7 +115,7 @@ class Complex implements ValueObjectInterface, NumberInterface
     }
 
     /**
-     * Returns the native value of the real and imaginary parts as an array
+     * Returns the native value of the real and imaginary parts as an array.
      *
      * @return array
      */
@@ -94,14 +123,14 @@ class Complex implements ValueObjectInterface, NumberInterface
     {
         return [
             $this->getReal()->toNative(),
-            $this->getIm()->toNative()
+            $this->getIm()->toNative(),
         ];
     }
 
     /**
-     * Returns the real part of the complex number
+     * Returns the real part of the complex number.
      *
-     * @return Real
+     * @return float
      */
     public function getReal(): Real
     {
@@ -109,9 +138,9 @@ class Complex implements ValueObjectInterface, NumberInterface
     }
 
     /**
-     * Returns the imaginary part of the complex number
+     * Returns the imaginary part of the complex number.
      *
-     * @return Real
+     * @return float
      */
     public function getIm(): Real
     {
@@ -119,9 +148,9 @@ class Complex implements ValueObjectInterface, NumberInterface
     }
 
     /**
-     * Returns the modulus (or absolute value or magnitude) of the Complex number
+     * Returns the modulus (or absolute value or magnitude) of the Complex number.
      *
-     * @return Real
+     * @return float
      */
     public function getModulus(): Real
     {
@@ -133,9 +162,9 @@ class Complex implements ValueObjectInterface, NumberInterface
     }
 
     /**
-     * Returns the argument (or phase) of the Complex number
+     * Returns the argument (or phase) of the Complex number.
      *
-     * @return Real
+     * @return float
      */
     public function getArgument(): Real
     {
@@ -144,20 +173,5 @@ class Complex implements ValueObjectInterface, NumberInterface
         $arg = \atan2($im, $real);
 
         return new Real($arg);
-    }
-
-    /**
-     * Returns a native string version of the Complex object in format "${real} +|- ${complex}i"
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        $format = '%g %+gi';
-        $real = $this->getReal()->toNative();
-        $im = $this->getIm()->toNative();
-        $string = \sprintf($format, $real, $im);
-
-        return \preg_replace('/(\+|-)/', '$1 ', $string);
     }
 }

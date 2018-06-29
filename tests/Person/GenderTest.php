@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Number;
 
 use ValueObjects\Person\Gender;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
 class GenderTest extends TestCase

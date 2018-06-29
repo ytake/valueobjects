@@ -7,7 +7,7 @@ use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Collection;
 use ValueObjects\Structure\Dictionary;
 use ValueObjects\Structure\KeyValuePair;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class DictionaryTest extends TestCase
 {

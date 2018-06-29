@@ -4,16 +4,21 @@ namespace ValueObjects\Tests\Geography;
 
 use ValueObjects\Geography\Street;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
 class StreetTest extends TestCase
 {
     protected $street;
 
-    public function setup()
+    protected function setup()
     {
-        $this->street = new Street(new StringLiteral('Abbey Rd'), new StringLiteral('3'), new StringLiteral('Building A'), new StringLiteral('%number% %name%, %elements%'));
+        $this->street = new Street(
+            new StringLiteral('Abbey Rd'),
+            new StringLiteral('3'),
+            new StringLiteral('Building A'),
+            new StringLiteral('%number% %name%, %elements%')
+        );
     }
 
     public function testFromNative()

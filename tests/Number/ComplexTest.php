@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Number;
 
 use ValueObjects\Number\Real;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Number\Complex;
 
 class ComplexTest extends TestCase

@@ -1,13 +1,26 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\DateTime;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
- * Class Time
+ * Class Time.
  */
 class Time implements ValueObjectInterface
 {
@@ -21,58 +34,7 @@ class Time implements ValueObjectInterface
     protected $second;
 
     /**
-     * Returns a nee Time object from native int hour, minute and second
-     *
-     * @param  int $hour
-     * @param  int $minute
-     * @param  int $second
-     *
-     * @return Time|ValueObjectInterface
-     */
-    public static function fromNative(): ValueObjectInterface
-    {
-        $args = func_get_args();
-        return new static(new Hour($args[0]), new Minute($args[1]), new Second($args[2]));
-    }
-
-    /**
-     * Returns a new Time from a native PHP \DateTime
-     *
-     * @param  \DateTime $time
-     *
-     * @return Time|ValueObjectInterface
-     */
-    public static function fromNativeDateTime(\DateTime $time): ValueObjectInterface
-    {
-        $hour = \intval($time->format('G'));
-        $minute = \intval($time->format('i'));
-        $second = \intval($time->format('s'));
-
-        return static::fromNative($hour, $minute, $second);
-    }
-
-    /**
-     * Returns current Time
-     *
-     * @return Time|ValueObjectInterface
-     */
-    public static function now(): ValueObjectInterface
-    {
-        return new static(Hour::now(), Minute::now(), Second::now());
-    }
-
-    /**
-     * Return zero time
-     *
-     * @return Time|ValueObjectInterface
-     */
-    public static function zero(): ValueObjectInterface
-    {
-        return new static(new Hour(0), new Minute(0), new Second(0));
-    }
-
-    /**
-     * Returns a new Time objects
+     * Returns a new Time objects.
      *
      * @param Hour   $hour
      * @param Minute $minute
@@ -86,9 +48,71 @@ class Time implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two Time are equal by comparing their values
+     * Returns time as string in format G:i:s.
      *
-     * @param  Time|ValueObjectInterface $time
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toNativeDateTime()->format('G:i:s');
+    }
+
+    /**
+     * Returns a nee Time object from native int hour, minute and second.
+     *
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     *
+     * @return Time|ValueObjectInterface
+     */
+    public static function fromNative(): ValueObjectInterface
+    {
+        $args = func_get_args();
+
+        return new static(new Hour($args[0]), new Minute($args[1]), new Second($args[2]));
+    }
+
+    /**
+     * Returns a new Time from a native PHP \DateTime.
+     *
+     * @param \DateTime $time
+     *
+     * @return Time|ValueObjectInterface
+     */
+    public static function fromNativeDateTime(\DateTime $time): ValueObjectInterface
+    {
+        $hour = \intval($time->format('G'));
+        $minute = \intval($time->format('i'));
+        $second = \intval($time->format('s'));
+
+        return static::fromNative($hour, $minute, $second);
+    }
+
+    /**
+     * Returns current Time.
+     *
+     * @return Time|ValueObjectInterface
+     */
+    public static function now(): ValueObjectInterface
+    {
+        return new static(Hour::now(), Minute::now(), Second::now());
+    }
+
+    /**
+     * Return zero time.
+     *
+     * @return Time|ValueObjectInterface
+     */
+    public static function zero(): ValueObjectInterface
+    {
+        return new static(new Hour(0), new Minute(0), new Second(0));
+    }
+
+    /**
+     * Tells whether two Time are equal by comparing their values.
+     *
+     * @param Time|ValueObjectInterface $time
      *
      * @return bool
      */
@@ -104,7 +128,7 @@ class Time implements ValueObjectInterface
     }
 
     /**
-     * Get hour
+     * Get hour.
      *
      * @return Hour
      */
@@ -114,7 +138,7 @@ class Time implements ValueObjectInterface
     }
 
     /**
-     * Get minute
+     * Get minute.
      *
      * @return Minute
      */
@@ -124,7 +148,7 @@ class Time implements ValueObjectInterface
     }
 
     /**
-     * Get second
+     * Get second.
      *
      * @return Second
      */
@@ -149,15 +173,5 @@ class Time implements ValueObjectInterface
         $time->setTime($hour, $minute, $second);
 
         return $time;
-    }
-
-    /**
-     * Returns time as string in format G:i:s
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return $this->toNativeDateTime()->format('G:i:s');
     }
 }

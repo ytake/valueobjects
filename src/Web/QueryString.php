@@ -1,6 +1,19 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
@@ -8,12 +21,12 @@ use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Dictionary;
 
 /**
- * Class QueryString
+ * Class QueryString.
  */
 class QueryString extends StringLiteral implements QueryStringInterface
 {
     /**
-     * Returns a new QueryString
+     * Returns a new QueryString.
      *
      * @param string $value
      */
@@ -27,7 +40,7 @@ class QueryString extends StringLiteral implements QueryStringInterface
     }
 
     /**
-     * Returns a Dictionary structured representation of the query string
+     * Returns a Dictionary structured representation of the query string.
      *
      * @return Dictionary
      */

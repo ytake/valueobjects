@@ -1,6 +1,19 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
+
 namespace ValueObjects\Enum;
 
 use MabeEnum\Enum as BaseEnum;
@@ -8,14 +21,25 @@ use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
- * Class Enum
+ * Class Enum.
  */
 abstract class Enum extends BaseEnum implements ValueObjectInterface
 {
     /**
-     * Returns a new Enum object from passed value matching argument
+     * Returns a native string representation of the Enum value.
      *
-     * @param  string... $value
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return \strval($this->toNative());
+    }
+
+    /**
+     * Returns a new Enum object from passed value matching argument.
+     *
+     * @param string... $value
+     *
      * @return static
      */
     public static function fromNative(): ValueObjectInterface
@@ -24,7 +48,7 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     }
 
     /**
-     * Returns the PHP native value of the enum
+     * Returns the PHP native value of the enum.
      *
      * @return mixed
      */
@@ -34,9 +58,10 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     }
 
     /**
-     * Tells whether two Enum objects are sameValueAs by comparing their values
+     * Tells whether two Enum objects are sameValueAs by comparing their values.
      *
      * @param ValueObjectInterface $enum
+     *
      * @return bool
      */
     public function sameValueAs(ValueObjectInterface $enum): bool
@@ -46,15 +71,5 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
         }
 
         return $this->toNative() === $enum->toNative();
-    }
-
-    /**
-     * Returns a native string representation of the Enum value
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return \strval($this->toNative());
     }
 }

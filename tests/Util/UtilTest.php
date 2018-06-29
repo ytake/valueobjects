@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Util;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Util\Util;
 
 class UtilTest extends TestCase

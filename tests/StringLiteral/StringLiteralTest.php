@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ValueObjects\Tests\StringLiteral;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 

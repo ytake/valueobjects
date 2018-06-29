@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Climate;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Climate\RelativeHumidity;
 
 class RelativeHumidityTest extends TestCase

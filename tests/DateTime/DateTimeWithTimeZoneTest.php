@@ -10,7 +10,7 @@ use ValueObjects\DateTime\MonthDay;
 use ValueObjects\DateTime\Second;
 use ValueObjects\DateTime\Time;
 use ValueObjects\DateTime\Year;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\DateTime\DateTime;
 use ValueObjects\DateTime\DateTimeWithTimeZone;
 use ValueObjects\DateTime\TimeZone;

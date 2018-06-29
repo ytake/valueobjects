@@ -5,7 +5,7 @@ namespace ValueObjects\Tests\Structure;
 
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\KeyValuePair;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
 class KeyValuePairTest extends TestCase

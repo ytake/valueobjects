@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Identity;
 
 use ValueObjects\Identity\UUID;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
 class UUIDTest extends TestCase
