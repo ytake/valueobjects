@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Tests\DateTime;
 
@@ -7,12 +8,13 @@ use ValueObjects\DateTime\MonthDay;
 use ValueObjects\DateTime\Year;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\DateTime\Date;
+use ValueObjects\ValueObjectInterface;
 
 class DateTest extends TestCase
 {
     public function testFromNative()
     {
-        $fromNativeDate  = Date::fromNative(2013, 'December', 21);
+        $fromNativeDate = Date::fromNative(2013, 'December', 21);
         $constructedDate = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(21));
 
         $this->assertTrue($fromNativeDate->sameValueAs($constructedDate));
@@ -34,7 +36,7 @@ class DateTest extends TestCase
         $this->assertEquals(date('Y-n-j'), \strval($date));
     }
 
-    /** @expectedException ValueObjects\DateTime\Exception\InvalidDateException */
+    /** @expectedException \ValueObjects\DateTime\Exception\InvalidDateException */
     public function testAlmostValidDateException()
     {
         new Date(new Year(2013), Month::FEBRUARY(), new MonthDay(31));
@@ -49,7 +51,7 @@ class DateTest extends TestCase
         $this->assertTrue($date1->sameValueAs($date2));
         $this->assertFalse($date1->sameValueAs($date3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)->getMock();
         $this->assertFalse($date1->sameValueAs($mock));
     }
 
@@ -72,7 +74,7 @@ class DateTest extends TestCase
     public function testGetDay()
     {
         $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
-        $day  = new MonthDay(3);
+        $day = new MonthDay(3);
 
         $this->assertTrue($day->sameValueAs($date->getDay()));
     }
@@ -90,5 +92,4 @@ class DateTest extends TestCase
         $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
         $this->assertEquals('2013-12-3', $date->__toString());
     }
-
 }

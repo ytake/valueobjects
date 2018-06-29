@@ -6,6 +6,7 @@ use ValueObjects\Tests\TestCase;
 use ValueObjects\Number\Real;
 use ValueObjects\Number\Integer;
 use ValueObjects\Number\Natural;
+use ValueObjects\ValueObjectInterface;
 
 class RealTest extends TestCase
 {
@@ -33,11 +34,12 @@ class RealTest extends TestCase
         $this->assertTrue($real2->sameValueAs($real1));
         $this->assertFalse($real1->sameValueAs($real3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($real1->sameValueAs($mock));
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidNativeArgument()
     {
         new Real('invalid');

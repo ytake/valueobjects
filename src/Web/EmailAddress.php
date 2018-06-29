@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
 
+/**
+ * Class EmailAddress
+ */
 class EmailAddress extends StringLiteral
 {
     /**
@@ -12,12 +16,12 @@ class EmailAddress extends StringLiteral
      *
      * @param string $value
      */
-    public function __construct($value)
+    public function __construct(string $value)
     {
         $filteredValue = filter_var($value, FILTER_VALIDATE_EMAIL);
 
         if ($filteredValue === false) {
-            throw new InvalidNativeArgumentException($value, array('string (valid email address)'));
+            throw new InvalidNativeArgumentException($value, ['string (valid email address)']);
         }
 
         $this->value = $filteredValue;
@@ -28,12 +32,11 @@ class EmailAddress extends StringLiteral
      *
      * @return StringLiteral
      */
-    public function getLocalPart()
+    public function getLocalPart(): StringLiteral
     {
         $parts = explode('@', $this->toNative());
-        $localPart = new StringLiteral($parts[0]);
 
-        return $localPart;
+        return new StringLiteral($parts[0]);
     }
 
     /**
@@ -41,7 +44,7 @@ class EmailAddress extends StringLiteral
      *
      * @return Domain
      */
-    public function getDomainPart()
+    public function getDomainPart(): Domain
     {
         $parts = \explode('@', $this->toNative());
         $domain = \trim($parts[1], '[]');

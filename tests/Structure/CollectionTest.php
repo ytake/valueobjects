@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Tests\Structure;
 
@@ -7,6 +8,7 @@ use ValueObjects\Number\Natural;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Collection;
 use ValueObjects\Tests\TestCase;
+use ValueObjects\ValueObjectInterface;
 
 class CollectionTest extends TestCase
 {
@@ -26,31 +28,31 @@ class CollectionTest extends TestCase
     /** @expectedException \InvalidArgumentException */
     public function testInvalidArgument()
     {
-        $array = \SplFixedArray::fromArray(array('one', 'two', 'three'));
+        $array = \SplFixedArray::fromArray(['one', 'two', 'three']);
 
         new Collection($array);
     }
 
     public function testFromNative()
     {
-        $array = \SplFixedArray::fromArray(array(
+        $array = \SplFixedArray::fromArray([
             'one',
             'two',
-            array(1, 2)
-        ));
+            [1, 2],
+        ]);
         $fromNativeCollection = Collection::fromNative($array);
 
         $innerArray = new Collection(
-            \SplFixedArray::fromArray(array(
-                    new StringLiteral('1'),
-                    new StringLiteral('2')
-            ))
+            \SplFixedArray::fromArray([
+                new StringLiteral('1'),
+                new StringLiteral('2'),
+            ])
         );
-        $array = \SplFixedArray::fromArray(array(
+        $array = \SplFixedArray::fromArray([
             new StringLiteral('one'),
             new StringLiteral('two'),
-            $innerArray
-        ));
+            $innerArray,
+        ]);
         $constructedCollection = new Collection($array);
 
         $this->assertTrue($fromNativeCollection->sameValueAs($constructedCollection));
@@ -58,25 +60,26 @@ class CollectionTest extends TestCase
 
     public function testSameValueAs()
     {
-        $array = \SplFixedArray::fromArray(array(
+        $array = \SplFixedArray::fromArray([
             new StringLiteral('one'),
             new StringLiteral('two'),
-            new Integer(3)
-        ));
+            new Integer(3),
+        ]);
         $collection2 = new Collection($array);
 
-        $array = \SplFixedArray::fromArray(array(
+        $array = \SplFixedArray::fromArray([
             'one',
             'two',
-            array(1, 2)
-        ));
+            [1, 2],
+        ]);
         $collection3 = Collection::fromNative($array);
 
         $this->assertTrue($this->collection->sameValueAs($collection2));
         $this->assertTrue($collection2->sameValueAs($this->collection));
         $this->assertFalse($this->collection->sameValueAs($collection3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($this->collection->sameValueAs($mock));
     }
 
@@ -98,11 +101,11 @@ class CollectionTest extends TestCase
 
     public function testToArray()
     {
-        $array = array(
+        $array = [
             new StringLiteral('one'),
             new StringLiteral('two'),
-            new Integer(3)
-        );
+            new Integer(3),
+        ];
 
         $this->assertEquals($array, $this->collection->toArray());
     }

@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
 
+/**
+ * Class FragmentIdentifier
+ */
 class FragmentIdentifier extends StringLiteral implements FragmentIdentifierInterface
 {
     /**
@@ -12,7 +16,7 @@ class FragmentIdentifier extends StringLiteral implements FragmentIdentifierInte
      *
      * @param string $value
      */
-    public function __construct($value)
+    public function __construct(string $value)
     {
         if (0 === \preg_match('/^#[?%!$&\'()*+,;=a-zA-Z0-9-._~:@\/]*$/', $value)) {
             throw new InvalidNativeArgumentException($value, array('string (valid fragment identifier)'));

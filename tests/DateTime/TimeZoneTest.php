@@ -5,6 +5,7 @@ namespace ValueObjects\Tests\DateTime;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\DateTime\TimeZone;
+use ValueObjects\ValueObjectInterface;
 
 class TimeZoneTest extends TestCase
 {
@@ -41,7 +42,8 @@ class TimeZoneTest extends TestCase
         $this->assertTrue($timeZone1->sameValueAs($timeZone2));
         $this->assertFalse($timeZone1->sameValueAs($timeZone3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($timeZone1->sameValueAs($mock));
     }
 

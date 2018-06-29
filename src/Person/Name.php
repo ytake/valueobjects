@@ -127,7 +127,7 @@ class Name implements ValueObjectInterface
             return false;
         }
 
-        return $this->getFullName() === $name->getFullName();
+        return \strval($this->getFullName()) ===  \strval($name->getFullName());
     }
 
     /**

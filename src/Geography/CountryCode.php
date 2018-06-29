@@ -1,9 +1,19 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Geography;
 
 use ValueObjects\Enum\Enum;
 
+/**
+ * Class CountryCode
+ * @method static string AF()
+ * @method static string AX()
+ * @method static string AL()
+ * @method static string DZ()
+ * @method static string AD()
+ * @method static string AO()
+ */
 class CountryCode extends Enum
 {
     const AF = 'AF';

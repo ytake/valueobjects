@@ -12,6 +12,7 @@ use ValueObjects\Web\QueryString;
 use ValueObjects\Web\SchemeName;
 use ValueObjects\Web\Url;
 use ValueObjects\Web\Hostname;
+use ValueObjects\ValueObjectInterface;
 
 class UrlTest extends TestCase
 {
@@ -35,27 +36,27 @@ class UrlTest extends TestCase
     public function testFromNative()
     {
         $nativeUrlString = 'http://user:pass@foo.com:80/bar?querystring#fragmentidentifier';
-        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+        $fromNativeUrl = Url::fromNative($nativeUrlString);
 
         $this->assertTrue($this->url->sameValueAs($fromNativeUrl));
 
         $nativeUrlString = 'http://www.test.com';
-        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+        $fromNativeUrl = Url::fromNative($nativeUrlString);
 
         $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
 
         $nativeUrlString = 'http://www.test.com/bar';
-        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+        $fromNativeUrl = Url::fromNative($nativeUrlString);
 
         $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
 
         $nativeUrlString = 'http://www.test.com/?querystring';
-        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+        $fromNativeUrl = Url::fromNative($nativeUrlString);
 
         $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
 
         $nativeUrlString = 'http://www.test.com/#fragmentidentifier';
-        $fromNativeUrl   = Url::fromNative($nativeUrlString);
+        $fromNativeUrl = Url::fromNative($nativeUrlString);
 
         $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
     }
@@ -88,7 +89,8 @@ class UrlTest extends TestCase
         $this->assertTrue($url2->sameValueAs($this->url));
         $this->assertFalse($this->url->sameValueAs($url3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($this->url->sameValueAs($mock));
     }
 
@@ -159,7 +161,6 @@ class UrlTest extends TestCase
             new FragmentIdentifier('#fragmentidentifier')
         );
         $this->assertSame($nativeUrlString, $authlessUrl->__toString());
-
         $fromNativeUrl = Url::fromNative($nativeUrlString);
         $this->assertSame($nativeUrlString, Url::fromNative($authlessUrl)->__toString());
     }

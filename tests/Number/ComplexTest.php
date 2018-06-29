@@ -23,10 +23,12 @@ class ComplexTest extends TestCase
         $this->assertTrue($fromNativeComplex->sameValueAs($this->complex));
     }
 
+    /**
+     * @expectedException \BadMethodCallException
+     */
     public function testFromNativeWithWrongNumberOfArgsThrowsError()
     {
-        $this->setExpectedException('BadMethodCallException');
-        $fromNativeComplex = Complex::fromNative(2.05);
+        Complex::fromNative(2.05);
     }
 
     public function testFromPolar()

@@ -12,6 +12,7 @@ use ValueObjects\DateTime\Time;
 use ValueObjects\DateTime\Year;
 use ValueObjects\Tests\TestCase;
 use ValueObjects\DateTime\DateTime;
+use ValueObjects\ValueObjectInterface;
 
 class DateTimeTest extends TestCase
 {
@@ -67,7 +68,8 @@ class DateTimeTest extends TestCase
         $this->assertTrue($dateTime1->sameValueAs($dateTime2));
         $this->assertFalse($dateTime1->sameValueAs($dateTime3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($dateTime1->sameValueAs($mock));
     }
 

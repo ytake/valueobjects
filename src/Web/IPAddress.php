@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 
+/**
+ * Class IPAddress
+ */
 class IPAddress extends Domain
 {
     /**
@@ -11,7 +15,7 @@ class IPAddress extends Domain
      *
      * @param string $value
      */
-    public function __construct($value)
+    public function __construct(string $value)
     {
         $filteredValue = filter_var($value, FILTER_VALIDATE_IP);
 
@@ -27,7 +31,7 @@ class IPAddress extends Domain
      *
      * @return IPAddressVersion
      */
-    public function getVersion()
+    public function getVersion(): IPAddressVersion
     {
         $isIPv4 = filter_var($this->toNative(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 

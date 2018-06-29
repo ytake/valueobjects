@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Geography;
 
@@ -6,6 +7,9 @@ use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 use ValueObjects\StringLiteral\StringLiteral;
 
+/**
+ * Class Address
+ */
 class Address implements ValueObjectInterface
 {
     /**
@@ -55,24 +59,27 @@ class Address implements ValueObjectInterface
      * @param string $region
      * @param string $postal_code
      * @param string $country_code
-     * @return self
+     *
+     * @return Address|ValueObjectInterface
      * @throws \BadMethodCallException
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $args = \func_get_args();
 
         if (\count($args) != 8) {
-            throw new \BadMethodCallException('You must provide exactly 8 arguments: 1) addressee name, 2) street name, 3) street number, 4) district, 5) city, 6) region, 7) postal code, 8) country code.');
+            throw new \BadMethodCallException(
+                'You must provide exactly 8 arguments: 1) addressee name, 2) street name, 3) street number, 4) district, 5) city, 6) region, 7) postal code, 8) country code.'
+            );
         }
 
-        $name       = new StringLiteral($args[0]);
-        $street     = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
-        $district   = new StringLiteral($args[3]);
-        $city       = new StringLiteral($args[4]);
-        $region     = new StringLiteral($args[5]);
+        $name = new StringLiteral($args[0]);
+        $street = new Street(new StringLiteral($args[1]), new StringLiteral($args[2]));
+        $district = new StringLiteral($args[3]);
+        $city = new StringLiteral($args[4]);
+        $region = new StringLiteral($args[5]);
         $postalCode = new StringLiteral($args[6]);
-        $country    = Country::fromNative($args[7]);
+        $country = Country::fromNative($args[7]);
 
         return new static($name, $street, $district, $city, $region, $postalCode, $country);
     }
@@ -86,39 +93,46 @@ class Address implements ValueObjectInterface
      * @param StringLiteral $city
      * @param StringLiteral $region
      * @param StringLiteral $postalCode
-     * @param Country $country
+     * @param Country       $country
      */
-    public function __construct(StringLiteral $name, Street $street, StringLiteral $district, StringLiteral $city, StringLiteral $region, StringLiteral $postalCode, Country $country)
-    {
-        $this->name       = $name;
-        $this->street     = $street;
-        $this->district   = $district;
-        $this->city       = $city;
-        $this->region     = $region;
+    public function __construct(
+        StringLiteral $name,
+        Street $street,
+        StringLiteral $district,
+        StringLiteral $city,
+        StringLiteral $region,
+        StringLiteral $postalCode,
+        Country $country
+    ) {
+        $this->name = $name;
+        $this->street = $street;
+        $this->district = $district;
+        $this->city = $city;
+        $this->region = $region;
         $this->postalCode = $postalCode;
-        $this->country    = $country;
+        $this->country = $country;
     }
 
     /**
      * Tells whether two Address are equal
      *
-     * @param  ValueObjectInterface $address
+     * @param  Address|ValueObjectInterface $address
+     *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $address)
+    public function sameValueAs(ValueObjectInterface $address): bool
     {
         if (false === Util::classEquals($this, $address)) {
             return false;
         }
 
-        return $this->getName()->sameValueAs($address->getName())             &&
-               $this->getStreet()->sameValueAs($address->getStreet())         &&
-               $this->getDistrict()->sameValueAs($address->getDistrict())     &&
-               $this->getCity()->sameValueAs($address->getCity())             &&
-               $this->getRegion()->sameValueAs($address->getRegion())         &&
-               $this->getPostalCode()->sameValueAs($address->getPostalCode()) &&
-               $this->getCountry()->sameValueAs($address->getCountry())
-        ;
+        return $this->getName()->sameValueAs($address->getName()) &&
+            $this->getStreet()->sameValueAs($address->getStreet()) &&
+            $this->getDistrict()->sameValueAs($address->getDistrict()) &&
+            $this->getCity()->sameValueAs($address->getCity()) &&
+            $this->getRegion()->sameValueAs($address->getRegion()) &&
+            $this->getPostalCode()->sameValueAs($address->getPostalCode()) &&
+            $this->getCountry()->sameValueAs($address->getCountry());
     }
 
     /**
@@ -126,7 +140,7 @@ class Address implements ValueObjectInterface
      *
      * @return StringLiteral
      */
-    public function getName()
+    public function getName(): StringLiteral
     {
         return clone $this->name;
     }
@@ -136,7 +150,7 @@ class Address implements ValueObjectInterface
      *
      * @return Street
      */
-    public function getStreet()
+    public function getStreet(): Street
     {
         return clone $this->street;
     }
@@ -146,7 +160,7 @@ class Address implements ValueObjectInterface
      *
      * @return StringLiteral
      */
-    public function getDistrict()
+    public function getDistrict(): StringLiteral
     {
         return clone $this->district;
     }
@@ -156,7 +170,7 @@ class Address implements ValueObjectInterface
      *
      * @return StringLiteral
      */
-    public function getCity()
+    public function getCity(): StringLiteral
     {
         return clone $this->city;
     }
@@ -166,7 +180,7 @@ class Address implements ValueObjectInterface
      *
      * @return StringLiteral
      */
-    public function getRegion()
+    public function getRegion(): StringLiteral
     {
         return clone $this->region;
     }
@@ -176,7 +190,7 @@ class Address implements ValueObjectInterface
      *
      * @return StringLiteral
      */
-    public function getPostalCode()
+    public function getPostalCode(): StringLiteral
     {
         return clone $this->postalCode;
     }
@@ -186,7 +200,7 @@ class Address implements ValueObjectInterface
      *
      * @return Country
      */
-    public function getCountry()
+    public function getCountry(): Country
     {
         return clone $this->country;
     }
@@ -196,7 +210,7 @@ class Address implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $format = <<<ADDR
 %s
@@ -205,7 +219,8 @@ class Address implements ValueObjectInterface
 %s
 ADDR;
 
-        $addressString = \sprintf($format, $this->getName(), $this->getStreet(), $this->getCity(), $this->getRegion(), $this->getPostalCode(), $this->getCountry());
+        $addressString = \sprintf($format, $this->getName(), $this->getStreet(), $this->getCity(), $this->getRegion(),
+            $this->getPostalCode(), $this->getCountry());
 
         return $addressString;
     }

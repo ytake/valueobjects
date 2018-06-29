@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Geography;
 
 use ValueObjects\Enum\Enum;
 
+/**
+ * Class Ellipsoid
+ */
 class Ellipsoid extends Enum
 {
     const AIRY                  = 'AIRY';

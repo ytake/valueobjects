@@ -1,10 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Tests\StringLiteral;
 
 use ValueObjects\Tests\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
+use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class StringLiteralTest
+ */
 class StringLiteralTest extends TestCase
 {
     public function testFromNative()
@@ -31,11 +36,12 @@ class StringLiteralTest extends TestCase
         $this->assertTrue($foo2->sameValueAs($foo1));
         $this->assertFalse($foo1->sameValueAs($bar));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($foo1->sameValueAs($mock));
     }
 
-    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \TypeError */
     public function testInvalidNativeArgument()
     {
         new StringLiteral(12);

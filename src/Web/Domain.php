@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Web;
 
 use ValueObjects\StringLiteral\StringLiteral;
 
+/**
+ * Class Domain
+ */
 abstract class Domain extends StringLiteral
 {
     /**

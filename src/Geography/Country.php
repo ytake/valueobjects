@@ -1,10 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace ValueObjects\Geography;
 
+use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class Country
+ */
 class Country implements ValueObjectInterface
 {
     /** @var CountryCode */
@@ -13,13 +18,13 @@ class Country implements ValueObjectInterface
     /**
      * Returns a new Country object given a native PHP string country code
      *
-     * @param  string $code
-     * @return self
+     * @param  ...string $code
+     * @return Country|ValueObjectInterface
      */
-    public static function fromNative()
+    public static function fromNative(): ValueObjectInterface
     {
         $codeString = \func_get_arg(0);
-        $code       = CountryCode::getByName($codeString);
+        $code       = CountryCode::byName($codeString);
         $country    = new static($code);
 
         return $country;
@@ -38,10 +43,10 @@ class Country implements ValueObjectInterface
     /**
      * Tells whether two Country are equal
      *
-     * @param  ValueObjectInterface $country
+     * @param  Country|ValueObjectInterface $country
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $country)
+    public function sameValueAs(ValueObjectInterface $country): bool
     {
         if (false === Util::classEquals($this, $country)) {
             return false;
@@ -55,7 +60,7 @@ class Country implements ValueObjectInterface
      *
      * @return CountryCode
      */
-    public function getCode()
+    public function getCode(): CountryCode
     {
         return $this->code;
     }
@@ -65,12 +70,9 @@ class Country implements ValueObjectInterface
      *
      * @return StringLiteral
      */
-    public function getName()
+    public function getName(): StringLiteral
     {
-        $code = $this->getCode();
-        $name = CountryCodeName::getName($code);
-
-        return $name;
+        return CountryCodeName::getName($this->getCode());
     }
 
     /**
@@ -78,7 +80,7 @@ class Country implements ValueObjectInterface
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getName()->toNative();
     }

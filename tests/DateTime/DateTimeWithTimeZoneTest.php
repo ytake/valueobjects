@@ -15,12 +15,15 @@ use ValueObjects\DateTime\DateTime;
 use ValueObjects\DateTime\DateTimeWithTimeZone;
 use ValueObjects\DateTime\TimeZone;
 use ValueObjects\StringLiteral\StringLiteral;
+use ValueObjects\ValueObjectInterface;
 
 class DateTimeWithTimeZoneTest extends TestCase
 {
     public function testFromNative()
     {
-        $fromNativeDateTimeWithTz  = DateTimeWithTimeZone::fromNative(2013, 'December', 21, 10, 20, 34, 'Europe/Madrid');
+        $fromNativeDateTimeWithTz = DateTimeWithTimeZone::fromNative(
+            2013, 'December', 21, 10, 20, 34, 'Europe/Madrid'
+        );
         $constructedDateTimeWithTz = new DateTimeWithTimeZone(
             new DateTime(
                 new Date(new Year(2013), Month::DECEMBER(), new MonthDay(21)),
@@ -69,7 +72,8 @@ class DateTimeWithTimeZoneTest extends TestCase
         $this->assertTrue($dateTimeWithTz1->sameValueAs($dateTimeWithTz2));
         $this->assertFalse($dateTimeWithTz1->sameValueAs($dateTimeWithTz3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($dateTimeWithTz1->sameValueAs($mock));
     }
 
@@ -89,7 +93,8 @@ class DateTimeWithTimeZoneTest extends TestCase
         $this->assertTrue($dateTimeWithTz1->sameTimestampAs($dateTimeWithTz2));
         $this->assertFalse($dateTimeWithTz1->sameValueAs($dateTimeWithTz2));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($dateTimeWithTz1->sameTimestampAs($mock));
     }
 
@@ -117,10 +122,10 @@ class DateTimeWithTimeZoneTest extends TestCase
 
     public function testToNativeDateTime()
     {
-        $date           = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
-        $time           = new Time(new Hour(20), new Minute(50), new Second(10));
-        $dateTime       = new DateTime($date, $time);
-        $timeZone       = new TimeZone(new StringLiteral('Europe/Madrid'));
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time = new Time(new Hour(20), new Minute(50), new Second(10));
+        $dateTime = new DateTime($date, $time);
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
         $dateTimeWithTz = new DateTimeWithTimeZone($dateTime, $timeZone);
         $nativeDateTime = \DateTime::createFromFormat('Y-n-j H:i:s e', '2013-12-3 20:50:10 Europe/Madrid');
 
@@ -129,10 +134,10 @@ class DateTimeWithTimeZoneTest extends TestCase
 
     public function testToString()
     {
-        $date           = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
-        $time           = new Time(new Hour(20), new Minute(50), new Second(10));
-        $dateTime       = new DateTime($date, $time);
-        $timeZone       = new TimeZone(new StringLiteral('Europe/Madrid'));
+        $date = new Date(new Year(2013), Month::DECEMBER(), new MonthDay(3));
+        $time = new Time(new Hour(20), new Minute(50), new Second(10));
+        $dateTime = new DateTime($date, $time);
+        $timeZone = new TimeZone(new StringLiteral('Europe/Madrid'));
         $dateTimeWithTz = new DateTimeWithTimeZone($dateTime, $timeZone);
 
         $this->assertEquals('2013-12-3 20:50:10 Europe/Madrid', $dateTimeWithTz->__toString());

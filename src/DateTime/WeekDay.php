@@ -38,7 +38,7 @@ class WeekDay extends Enum
     {
         $weekDay = \strtoupper($date->format('l'));
 
-        return static::getByName($weekDay);
+        return static::byName($weekDay);
     }
 
     /**

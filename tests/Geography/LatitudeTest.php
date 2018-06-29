@@ -9,7 +9,10 @@ class LatitudeTest extends TestCase
 {
     public function testValidLatitude()
     {
-        new Latitude(40.829137);
+        $this->assertInstanceOf(
+            Latitude::class,
+            new Latitude(40.829137)
+        );
     }
 
     public function testNormalization()
@@ -18,7 +21,7 @@ class LatitudeTest extends TestCase
         $this->assertEquals(90, $latitude->toNative());
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \TypeError */
     public function testInvalidLatitude()
     {
         new Latitude('invalid');
