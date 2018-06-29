@@ -218,10 +218,14 @@ class Address implements ValueObjectInterface
 %s %s %s
 %s
 ADDR;
-
-        $addressString = \sprintf($format, $this->getName(), $this->getStreet(), $this->getCity(), $this->getRegion(),
-            $this->getPostalCode(), $this->getCountry());
-
-        return $addressString;
+        return \sprintf(
+            $format,
+            $this->getName(),
+            $this->getStreet(),
+            $this->getCity(),
+            $this->getRegion(),
+            $this->getPostalCode(),
+            $this->getCountry()
+        );
     }
 }

@@ -36,6 +36,7 @@ class Collection implements ValueObjectInterface
                 $items[] = new StringLiteral(\strval($item));
             }
         }
+
         return new static(SplFixedArray::fromArray($items));
     }
 
@@ -49,8 +50,11 @@ class Collection implements ValueObjectInterface
         foreach ($items as $item) {
             if (false === $item instanceof ValueObjectInterface) {
                 $type = \is_object($item) ? \get_class($item) : \gettype($item);
-                throw new \InvalidArgumentException(\sprintf(
-                    'Passed SplFixedArray object must contains "ValueObjectInterface" objects only. "%s" given.', $type)
+                throw new \InvalidArgumentException(
+                    \sprintf(
+                        'Passed SplFixedArray object must contains "ValueObjectInterface" objects only. "%s" given.',
+                        $type
+                    )
                 );
             }
         }
