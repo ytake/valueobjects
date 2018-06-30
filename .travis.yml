@@ -13,6 +13,6 @@ before_script:
   - composer install --prefer-dist --no-interaction
 script:
   - chmod -R 777 tests/build
-  - ./vendor/bin/phpunit --coverage-clover tests/build/clover.xml
+  - ./vendor/bin/phpunit --coverage-clover tests/logs/clover.xml
 after_script:
-  - if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then php vendor/bin/coveralls -v; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then php ./vendor/bin/php-coveralls -v; fi
