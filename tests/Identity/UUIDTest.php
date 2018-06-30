@@ -3,7 +3,8 @@
 namespace ValueObjects\Tests\Identity;
 
 use ValueObjects\Identity\UUID;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
+use ValueObjects\ValueObjectInterface;
 
 class UUIDTest extends TestCase
 {
@@ -31,11 +32,12 @@ class UUIDTest extends TestCase
         $this->assertTrue($uuid1->sameValueAs($uuid2));
         $this->assertFalse($uuid1->sameValueAs($uuid3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($uuid1->sameValueAs($mock));
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalid()
     {
         new UUID('invalid');

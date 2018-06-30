@@ -2,7 +2,7 @@
 namespace ValueObjects\Tests\Climate;
 
 use ValueObjects\Climate\Kelvin;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class KelvinTest extends TestCase
 {

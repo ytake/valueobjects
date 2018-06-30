@@ -3,21 +3,27 @@
 namespace ValueObjects\Tests\Person;
 
 use ValueObjects\Person\Name;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\StringLiteral\StringLiteral;
+use ValueObjects\ValueObjectInterface;
 
 class NameTest extends TestCase
 {
+    /** @var Name */
     private $name;
 
-    public function setup()
+    protected function setup()
     {
-        $this->name = new Name(new StringLiteral('foo'), new StringLiteral('bar'), new StringLiteral('baz'));
+        $this->name = new Name(
+            new StringLiteral('foo'),
+            new StringLiteral('bar'),
+            new StringLiteral('baz')
+        );
     }
 
     public function testFromNative()
     {
-        $fromNativeName  = Name::fromNative('foo', 'bar', 'baz');
+        $fromNativeName = Name::fromNative('foo', 'bar', 'baz');
 
         $this->assertTrue($fromNativeName->sameValueAs($this->name));
     }
@@ -51,14 +57,23 @@ class NameTest extends TestCase
 
     public function testSameValueAs()
     {
-        $name2 = new Name(new StringLiteral('foo'), new StringLiteral('bar'), new StringLiteral('baz'));
-        $name3 = new Name(new StringLiteral('foo'), new StringLiteral(''), new StringLiteral('baz'));
+        $name2 = new Name(
+            new StringLiteral('foo'),
+            new StringLiteral('bar'),
+            new StringLiteral('baz')
+        );
+        $name3 = new Name(
+            new StringLiteral('foo'),
+            new StringLiteral(''),
+            new StringLiteral('baz')
+        );
 
         $this->assertTrue($this->name->sameValueAs($name2));
         $this->assertTrue($name2->sameValueAs($this->name));
         $this->assertFalse($this->name->sameValueAs($name3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($this->name->sameValueAs($mock));
     }
 

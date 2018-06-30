@@ -5,7 +5,7 @@ namespace ValueObjects\Tests\Geography;
 use ValueObjects\Geography\CountryCode;
 use ValueObjects\Geography\CountryCodeName;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class CountryCodeNameTest extends TestCase
 {

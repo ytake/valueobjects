@@ -1,7 +1,7 @@
 {
   "name": "ytake/valueobjects",
   "description": "A PHP library/collection of classes aimed to help developers using and undestanding immutable objects.(temporary package)",
-  "keywords": ["vo", "value object", "architecture", "domain driven design", "hhi"],
+  "keywords": ["vo", "value object", "architecture", "domain driven design"],
   "license": "MIT",
   "authors": [
     {
@@ -14,15 +14,15 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
-    "ramsey/uuid": "~3.0",
-    "mathiasverraes/money": "~1.2",
-    "marc-mabe/php-enum": "~1.0",
-    "zendframework/zend-validator": "~2.2",
-    "league/geotools": "~0.7"
+    "php": ">=7.0",
+    "ramsey/uuid": "^3.7",
+    "moneyphp/money": "^3.1",
+    "marc-mabe/php-enum": "^3.0",
+    "zendframework/zend-validator": "^2.10",
+    "league/geotools": "^0.8"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0 | ~5.0",
+    "phpunit/phpunit": "^6.5.8",
     "satooshi/php-coveralls": "*",
     "phpmd/phpmd": "@stable",
     "squizlabs/php_codesniffer": "~2.7",
@@ -43,5 +43,13 @@
   },
   "replace": {
     "nicolopignatelli/valueobjects": "^4.0"
+  },
+  "scripts": {
+    "ci": [
+      "./vendor/bin/phpunit",
+      "./vendor/bin/phpcpd src/",
+      "./vendor/bin/phploc src/ --log-xml=tests/build/phploc.xml"
+    ],
+    "security-checker": "./vendor/bin/security-checker security:check composer.lock"
   }
 }

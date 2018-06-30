@@ -1,4 +1,18 @@
 <?php
+declare(strict_types=1);
+
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
 
 namespace ValueObjects\DateTime;
 
@@ -14,17 +28,45 @@ class DateTime implements ValueObjectInterface
     protected $time;
 
     /**
-     * Returns a new DateTime object from native values
+     * Returns a new DateTime object.
      *
-     * @param  int      $year
-     * @param  string   $month
-     * @param  int      $day
-     * @param  int      $hour
-     * @param  int      $minute
-     * @param  int      $second
-     * @return DateTime
+     * @param Date $date
+     * @param Time $time
      */
-    public static function fromNative()
+    public function __construct(Date $date, Time $time = null)
+    {
+        $this->date = $date;
+        if (null === $time) {
+            $time = Time::zero();
+        }
+        $this->time = $time;
+    }
+
+    /**
+     * Returns DateTime as string in format "Y-n-j G:i:s".
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return \sprintf('%s %s', $this->getDate(), $this->getTime());
+    }
+
+    /**
+     * Returns a new DateTime object from native values.
+     *
+     * @param int    $year
+     * @param string $month
+     * @param int    $day
+     * @param int    $hour
+     * @param int    $minute
+     * @param int    $second
+     *
+     * @throws Exception\InvalidDateException
+     *
+     * @return DateTime|ValueObjectInterface
+     */
+    public static function fromNative(): ValueObjectInterface
     {
         $args = func_get_args();
 
@@ -35,12 +77,15 @@ class DateTime implements ValueObjectInterface
     }
 
     /**
-     * Returns a new DateTime from a native PHP \DateTime
+     * Returns a new DateTime from a native PHP \DateTime.
      *
-     * @param  \DateTime $date_time
+     * @param \DateTime $date_time
+     *
+     * @throws Exception\InvalidDateException
+     *
      * @return DateTime
      */
-    public static function fromNativeDateTime(\DateTime $date_time)
+    public static function fromNativeDateTime(\DateTime $date_time): DateTime
     {
         $date = Date::fromNativeDateTime($date_time);
         $time = Time::fromNativeDateTime($date_time);
@@ -49,11 +94,13 @@ class DateTime implements ValueObjectInterface
     }
 
     /**
-     * Returns current DateTime
+     * Returns current DateTime.
+     *
+     * @throws Exception\InvalidDateException
      *
      * @return DateTime
      */
-    public static function now()
+    public static function now(): DateTime
     {
         $dateTime = new static(Date::now(), Time::now());
 
@@ -61,53 +108,38 @@ class DateTime implements ValueObjectInterface
     }
 
     /**
-     * Returns a new DateTime object
+     * Tells whether two DateTime are equal by comparing their values.
      *
-     * @param Date $date
-     * @param Time $time
-     */
-    public function __construct(Date $date, Time $time = null)
-    {
-        $this->date = $date;
-
-        if (null === $time) {
-            $time = Time::zero();
-        }
-
-        $this->time = $time;
-    }
-
-    /**
-     * Tells whether two DateTime are equal by comparing their values
+     * @param ValueObjectInterface $date_time
      *
-     * @param  ValueObjectInterface $date_time
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $date_time)
+    public function sameValueAs(ValueObjectInterface $date_time): bool
     {
         if (false === Util::classEquals($this, $date_time)) {
             return false;
         }
 
-        return $this->getDate()->sameValueAs($date_time->getDate()) && $this->getTime()->sameValueAs($date_time->getTime());
+        return $this->getDate()->sameValueAs($date_time->getDate())
+            && $this->getTime()->sameValueAs($date_time->getTime());
     }
 
     /**
-     * Returns date from current DateTime
+     * Returns date from current DateTime.
      *
      * @return Date
      */
-    public function getDate()
+    public function getDate(): Date
     {
         return clone $this->date;
     }
 
     /**
-     * Returns time from current DateTime
+     * Returns time from current DateTime.
      *
      * @return Time
      */
-    public function getTime()
+    public function getTime(): Time
     {
         return clone $this->time;
     }
@@ -117,12 +149,12 @@ class DateTime implements ValueObjectInterface
      *
      * @return \DateTime
      */
-    public function toNativeDateTime()
+    public function toNativeDateTime(): \DateTime
     {
-        $year   = $this->getDate()->getYear()->toNative();
-        $month  = $this->getDate()->getMonth()->getNumericValue();
-        $day    = $this->getDate()->getDay()->toNative();
-        $hour   = $this->getTime()->getHour()->toNative();
+        $year = $this->getDate()->getYear()->toNative();
+        $month = $this->getDate()->getMonth()->getNumericValue();
+        $day = $this->getDate()->getDay()->toNative();
+        $hour = $this->getTime()->getHour()->toNative();
         $minute = $this->getTime()->getMinute()->toNative();
         $second = $this->getTime()->getSecond()->toNative();
 
@@ -131,15 +163,5 @@ class DateTime implements ValueObjectInterface
         $dateTime->setTime($hour, $minute, $second);
 
         return $dateTime;
-    }
-
-    /**
-     * Returns DateTime as string in format "Y-n-j G:i:s"
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return \sprintf('%s %s', $this->getDate(), $this->getTime());
     }
 }

@@ -3,7 +3,7 @@
 namespace ValueObjects\Tests\Web;
 
 use ValueObjects\Structure\Dictionary;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Web\QueryString;
 use ValueObjects\Web\NullQueryString;
 
@@ -26,7 +26,7 @@ class QueryStringTest extends TestCase
         $this->assertInstanceOf('ValueObjects\Structure\Dictionary', $dictionary);
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidQueryString()
     {
         new QueryString('invalìd');

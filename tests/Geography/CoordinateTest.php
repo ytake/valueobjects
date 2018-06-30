@@ -7,7 +7,8 @@ use ValueObjects\Geography\Coordinate;
 use ValueObjects\Geography\Latitude;
 use ValueObjects\Geography\Longitude;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
+use ValueObjects\ValueObjectInterface;
 
 class CoordinateTest extends TestCase
 {
@@ -55,7 +56,8 @@ class CoordinateTest extends TestCase
         $this->assertTrue($coordinate2->sameValueAs($this->coordinate));
         $this->assertFalse($this->coordinate->sameValueAs($coordinate3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($this->coordinate->sameValueAs($mock));
     }
 
@@ -99,7 +101,7 @@ class CoordinateTest extends TestCase
     {
         $newYork = new Coordinate(
             new Latitude(41.145556),
-            new Longitude(-73.995)
+            new Longitude(- 73.995)
         );
 
         $distance = $this->coordinate->distanceFrom($newYork);

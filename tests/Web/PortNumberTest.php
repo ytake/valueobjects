@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Web;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Web\PortNumber;
 
 class PortNumberTest extends TestCase
@@ -14,7 +14,7 @@ class PortNumberTest extends TestCase
         $this->assertInstanceOf('ValueObjects\Web\PortNumber', $port);
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidPortNumber()
     {
         new PortNumber(65536);

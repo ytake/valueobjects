@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\DateTime;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\DateTime\MonthDay;
 
 class MonthDayTest extends TestCase
@@ -21,7 +21,7 @@ class MonthDayTest extends TestCase
         $this->assertEquals(date('j'), $monthDay->toNative());
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidMonthDay()
     {
         new MonthDay(32);

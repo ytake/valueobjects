@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\DateTime;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\DateTime\Minute;
 
 class MinuteTest extends TestCase

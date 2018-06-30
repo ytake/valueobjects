@@ -2,9 +2,10 @@
 
 namespace ValueObjects\Tests\Number;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Number\Integer;
 use ValueObjects\Number\Real;
+use ValueObjects\ValueObjectInterface;
 
 class IntegerTest extends TestCase
 {
@@ -24,7 +25,8 @@ class IntegerTest extends TestCase
         $this->assertTrue($integer2->sameValueAs($integer1));
         $this->assertFalse($integer1->sameValueAs($integer3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($integer1->sameValueAs($mock));
     }
 
@@ -34,7 +36,7 @@ class IntegerTest extends TestCase
         $this->assertSame('87', $integer->__toString());
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidNativeArgument()
     {
         new Integer(23.4);
@@ -48,9 +50,9 @@ class IntegerTest extends TestCase
 
     public function testToReal()
     {
-        $integer    = new Integer(5);
+        $integer = new Integer(5);
         $nativeReal = new Real(5);
-        $real       = $integer->toReal();
+        $real = $integer->toReal();
 
         $this->assertTrue($real->sameValueAs($nativeReal));
     }

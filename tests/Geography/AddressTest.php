@@ -7,7 +7,8 @@ use ValueObjects\Geography\Country;
 use ValueObjects\Geography\CountryCode;
 use ValueObjects\Geography\Street;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
+use ValueObjects\ValueObjectInterface;
 
 class AddressTest extends TestCase
 {
@@ -65,7 +66,8 @@ class AddressTest extends TestCase
         $this->assertTrue($address2->sameValueAs($this->address));
         $this->assertFalse($this->address->sameValueAs($address3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($this->address->sameValueAs($mock));
     }
 

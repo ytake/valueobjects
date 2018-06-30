@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\NullValue;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\NullValue\NullValue;
 
 class NullValueTest extends TestCase

@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Web;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Web\EmailAddress;
 
 class EmailAddressTest extends TestCase
@@ -16,7 +16,7 @@ class EmailAddressTest extends TestCase
         $this->assertInstanceOf('ValueObjects\Web\EmailAddress', $email2);
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidEmailAddress()
     {
         new EmailAddress('invalid');

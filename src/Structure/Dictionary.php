@@ -1,22 +1,64 @@
 <?php
+declare(strict_types=1);
+
+/**
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ * This software consists of voluntary contributions made by many individuals
+ * and is licensed under the MIT license.
+ * Copyright (c) 2018 Yuuki Takezawa
+ */
 
 namespace ValueObjects\Structure;
 
+use SplFixedArray;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
 
+/**
+ * Class Dictionary.
+ */
 class Dictionary extends Collection
 {
     /**
-     * Returns a new Dictionary object
+     * Returns a new Dictionary object.
      *
-     * @param  array $array
-     * @return self
+     * @param SplFixedArray $key_value_pairs
      */
-    public static function fromNative()
+    public function __construct(SplFixedArray $pairs)
+    {
+        foreach ($pairs as $keyValuePair) {
+            if (false === $keyValuePair instanceof KeyValuePair) {
+                $type = \is_object($keyValuePair) ? \get_class($keyValuePair) : \gettype($keyValuePair);
+
+                throw new \InvalidArgumentException(
+                    \sprintf(
+                        'Passed SplFixedArray object must contains "KeyValuePair" objects only. "%s" given.',
+                        $type
+                    )
+                );
+            }
+        }
+
+        $this->items = $pairs;
+    }
+
+    /**
+     * Returns a new Dictionary object.
+     *
+     * @param ...array $array
+     *
+     * @return Dictionary|ValueObjectInterface
+     */
+    public static function fromNative(): ValueObjectInterface
     {
         $array = \func_get_arg(0);
-        $keyValuePairs = array();
+        $keyValuePairs = [];
 
         foreach ($array as $arrayKey => $arrayValue) {
             $key = new StringLiteral(\strval($arrayKey));
@@ -26,41 +68,21 @@ class Dictionary extends Collection
             } else {
                 $value = new StringLiteral(\strval($arrayValue));
             }
-
             $keyValuePairs[] = new KeyValuePair($key, $value);
         }
 
-        $fixedArray = \SplFixedArray::fromArray($keyValuePairs);
-
-        return new static($fixedArray);
+        return new static(SplFixedArray::fromArray($keyValuePairs));
     }
 
     /**
-     * Returns a new Dictionary object
-     *
-     * @param \SplFixedArray $key_value_pairs
-     */
-    public function __construct(\SplFixedArray $key_value_pairs)
-    {
-        foreach ($key_value_pairs as $keyValuePair) {
-            if (false === $keyValuePair instanceof KeyValuePair) {
-                $type = \is_object($keyValuePair) ? \get_class($keyValuePair) : \gettype($keyValuePair);
-                throw new \InvalidArgumentException(\sprintf('Passed SplFixedArray object must contains "KeyValuePair" objects only. "%s" given.', $type));
-            }
-        }
-
-        $this->items = $key_value_pairs;
-    }
-
-    /**
-     * Returns a Collection of the keys
+     * Returns a Collection of the keys.
      *
      * @return Collection
      */
-    public function keys()
+    public function keys(): Collection
     {
-        $count     = $this->count()->toNative();
-        $keysArray = new \SplFixedArray($count);
+        $count = $this->count()->toNative();
+        $keysArray = new SplFixedArray($count);
 
         foreach ($this->items as $key => $item) {
             $keysArray->offsetSet($key, $item->getKey());
@@ -70,14 +92,14 @@ class Dictionary extends Collection
     }
 
     /**
-     * Returns a Collection of the values
+     * Returns a Collection of the values.
      *
      * @return Collection
      */
-    public function values()
+    public function values(): Collection
     {
-        $count       = $this->count()->toNative();
-        $valuesArray = new \SplFixedArray($count);
+        $count = $this->count()->toNative();
+        $valuesArray = new SplFixedArray($count);
 
         foreach ($this->items as $key => $item) {
             $valuesArray->offsetSet($key, $item->getValue());
@@ -87,12 +109,13 @@ class Dictionary extends Collection
     }
 
     /**
-     * Tells whether $object is one of the keys
+     * Tells whether $object is one of the keys.
      *
-     * @param  ValueObjectInterface $object
+     * @param ValueObjectInterface $object
+     *
      * @return bool
      */
-    public function containsKey(ValueObjectInterface $object)
+    public function containsKey(ValueObjectInterface $object): bool
     {
         $keys = $this->keys();
 
@@ -100,12 +123,13 @@ class Dictionary extends Collection
     }
 
     /**
-     * Tells whether $object is one of the values
+     * Tells whether $object is one of the values.
      *
-     * @param  ValueObjectInterface $object
+     * @param ValueObjectInterface $object
+     *
      * @return bool
      */
-    public function containsValue(ValueObjectInterface $object)
+    public function containsValue(ValueObjectInterface $object): bool
     {
         $values = $this->values();
 

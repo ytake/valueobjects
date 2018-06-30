@@ -2,7 +2,7 @@
 
 namespace ValueObjects\Tests\Web;
 
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use ValueObjects\Web\FragmentIdentifier;
 use ValueObjects\Web\NullFragmentIdentifier;
 
@@ -22,7 +22,7 @@ class FragmentIdentifierTest extends TestCase
         $this->assertInstanceOf('ValueObjects\Web\FragmentIdentifier', $fragment);
     }
 
-    /** @expectedException ValueObjects\Exception\InvalidNativeArgumentException */
+    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
     public function testInvalidFragmentIdentifier()
     {
         new FragmentIdentifier('invalìd');

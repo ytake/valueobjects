@@ -4,15 +4,21 @@ namespace ValueObjects\Tests\Geography;
 
 use ValueObjects\Geography\Street;
 use ValueObjects\StringLiteral\StringLiteral;
-use ValueObjects\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
+use ValueObjects\ValueObjectInterface;
 
 class StreetTest extends TestCase
 {
     protected $street;
 
-    public function setup()
+    protected function setup()
     {
-        $this->street = new Street(new StringLiteral('Abbey Rd'), new StringLiteral('3'), new StringLiteral('Building A'), new StringLiteral('%number% %name%, %elements%'));
+        $this->street = new Street(
+            new StringLiteral('Abbey Rd'),
+            new StringLiteral('3'),
+            new StringLiteral('Building A'),
+            new StringLiteral('%number% %name%, %elements%')
+        );
     }
 
     public function testFromNative()
@@ -36,7 +42,8 @@ class StreetTest extends TestCase
         $this->assertTrue($street2->sameValueAs($this->street));
         $this->assertFalse($this->street->sameValueAs($street3));
 
-        $mock = $this->getMock('ValueObjects\ValueObjectInterface');
+        $mock = $this->getMockBuilder(ValueObjectInterface::class)
+            ->getMock();
         $this->assertFalse($this->street->sameValueAs($mock));
     }
 
