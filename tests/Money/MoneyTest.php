@@ -12,6 +12,13 @@ use ValueObjects\ValueObjectInterface;
 
 class MoneyTest extends TestCase
 {
+    public function setUp()
+    {
+        # When tests run in a different locale, this might affect the decimal-point character and thus the validation
+        # of floats. This makes sure the tests run in a locale that the tests are known to be working in.
+        setlocale(LC_ALL, "en_US.UTF-8");
+    }
+
     public function testFromNative()
     {
         $fromNativeMoney = Money::fromNative(2100, 'EUR');
@@ -108,5 +115,20 @@ class MoneyTest extends TestCase
         $money = new Money(new Integer(1200), $eur);
 
         $this->assertSame('EUR 1200', $money->__toString());
+    }
+
+    public function testDifferentLocaleWithDifferentDecimalCharacter()
+    {
+        setlocale(LC_ALL, "de_DE.UTF-8");
+
+        $this->testFromNative();
+        $this->testSameValueAs();
+        $this->testGetAmount();
+        $this->testGetCurrency();
+        $this->testAdd();
+        $this->testAddNegative();
+        $this->testMultiply();
+        $this->testMultiplyInverse();
+        $this->testToString();
     }
 }
