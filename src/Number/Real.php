@@ -45,7 +45,6 @@ class Real implements ValueObjectInterface, NumberInterface
         # Only apply the decimal-point character fix if needed, otherwise preserve the old value
         if ($stringValue !== (string)$value) {
             $value = \filter_var($stringValue, FILTER_VALIDATE_FLOAT);
-
         } else {
             $value = \filter_var($value, FILTER_VALIDATE_FLOAT);
         }
