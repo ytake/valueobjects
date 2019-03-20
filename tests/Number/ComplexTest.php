@@ -13,6 +13,10 @@ class ComplexTest extends TestCase
 
     public function setup()
     {
+        # When tests run in a different locale, this might affect the decimal-point character and thus the validation
+        # of floats. This makes sure the tests run in a locale that the tests are known to be working in.
+        setlocale(LC_ALL, "en_US.UTF-8");
+
         $this->complex = new Complex(new Real(2.05), new Real(3.2));
     }
 
@@ -77,14 +81,29 @@ class ComplexTest extends TestCase
         $this->assertTrue($arg->sameValueAs($this->complex->getArgument()));
     }
 
-    public function testToString()
+    public function testToString($expectedString = '2.034 - 1.4i')
     {
         $complex = new Complex(new Real(2.034), new Real(-1.4));
-        $this->assertEquals('2.034 - 1.4i', $complex->__toString());
+        $this->assertEquals($expectedString, $complex->__toString());
     }
 
     public function testNotSameValue()
     {
         $this->assertFalse($this->complex->sameValueAs(new Real(2.035)));
+    }
+
+    public function testDifferentLocaleWithDifferentDecimalCharacter()
+    {
+        setlocale(LC_ALL, "de_DE.UTF-8");
+
+        $this->testFromNative();
+        $this->testFromPolar();
+        $this->testToNative();
+        $this->testGetReal();
+        $this->testGetIm();
+        $this->testGetModulus();
+        $this->testGetArgument();
+        $this->testToString('2,034 - 1,4i');
+        $this->testNotSameValue();
     }
 }

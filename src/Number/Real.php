@@ -35,7 +35,19 @@ class Real implements ValueObjectInterface, NumberInterface
      */
     public function __construct($value)
     {
-        $value = \filter_var($value, FILTER_VALIDATE_FLOAT);
+        /** @var string $stringValue */
+        $stringValue = (string)$value;
+
+        # In some locales the decimal-point character might be different,
+        # which can cause filter_var($value, FILTER_VALIDATE_FLOAT) to fail.
+        $stringValue = str_replace(',', '.', $stringValue);
+
+        # Only apply the decimal-point character fix if needed, otherwise preserve the old value
+        if ($stringValue !== (string)$value) {
+            $value = \filter_var($stringValue, FILTER_VALIDATE_FLOAT);
+        } else {
+            $value = \filter_var($value, FILTER_VALIDATE_FLOAT);
+        }
 
         if (false === $value) {
             throw new InvalidNativeArgumentException($value, ['float']);

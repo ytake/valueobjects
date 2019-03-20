@@ -17,6 +17,10 @@ class CoordinateTest extends TestCase
 
     public function setup()
     {
+        # When tests run in a different locale, this might affect the decimal-point character and thus the validation
+        # of floats. This makes sure the tests run in a locale that the tests are known to be working in.
+        setlocale(LC_ALL, "en_US.UTF-8");
+
         $this->coordinate = new Coordinate(
             new Latitude(40.829137),
             new Longitude(16.555838)
@@ -114,5 +118,25 @@ class CoordinateTest extends TestCase
     public function testToString()
     {
         $this->assertSame('40.829137,16.555838', $this->coordinate->__toString());
+    }
+
+    public function testDifferentLocaleWithDifferentDecimalCharacter()
+    {
+        setlocale(LC_ALL, "de_DE.UTF-8");
+
+        $this->testNullConstructorEllipsoid();
+        $this->testFromNative();
+        $this->testSameValueAs();
+        $this->getLatitude();
+        $this->getLongitude();
+        $this->getEllipsoid();
+        $this->testToUniversalTransverseMercator();
+        $this->testDistanceFrom();
+        $this->testToString();
+
+        # TODO: The following two tests break because of faults in another library and should be fixed there.
+        #       (vendor/league/geotools/src/Convert/Convert.php:53 | A non well formed numeric value encountered)
+        #$this->testToDegreesMinutesSeconds();
+        #$this->testToDecimalMinutes();
     }
 }
