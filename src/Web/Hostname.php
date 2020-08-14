@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
-use Zend\Validator\Hostname as Validator;
+use Laminas\Validator\Hostname as Validator;
 
 /**
  * Class Hostname.

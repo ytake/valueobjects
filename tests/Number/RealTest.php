@@ -70,7 +70,7 @@ class RealTest extends TestCase
         $this->assertTrue($natural->sameValueAs($nativeNatural));
     }
 
-    public function testToString($expectedString = '.7')
+    public function testToString($expectedString = '0.7')
     {
         $real = new Real(.7);
         $this->assertEquals($expectedString, $real->__toString());
