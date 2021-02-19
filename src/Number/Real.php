@@ -99,7 +99,7 @@ class Real implements ValueObjectInterface, NumberInterface
      *
      * @param RoundingMode $roundingMode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
      *
-     * @return int
+     * @return Integer
      */
     public function toInteger(RoundingMode $roundingMode = null): Integer
     {
