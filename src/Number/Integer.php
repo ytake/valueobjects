@@ -69,7 +69,7 @@ class Integer extends Real
     /**
      * Returns a Real with the value of the Integer.
      *
-     * @return float
+     * @return Real
      */
     public function toReal(): Real
     {
