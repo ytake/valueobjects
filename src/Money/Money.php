@@ -38,7 +38,7 @@ class Money implements ValueObjectInterface
     /**
      * Returns a Money object.
      *
-     * @param int      $amount   Amount expressed in the smallest units of $currency (e.g. cents)
+     * @param Integer  $amount   Amount expressed in the smallest units of $currency (e.g. cents)
      * @param Currency $currency Currency of the money object
      */
     public function __construct(Integer $amount, Currency $currency)
