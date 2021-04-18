@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,24 +13,28 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\DateTime\Exception;
 
+use function sprintf;
+
 /**
- * Class InvalidDateException.
+ * InvalidDateException.
  */
 final class InvalidDateException extends \Exception
 {
     /**
-     * InvalidDateException constructor.
-     *
      * @param $year
      * @param $month
      * @param $day
      */
     public function __construct($year, $month, $day)
     {
-        $date = \sprintf('%d-%d-%d', $year, $month, $day);
-        $message = \sprintf('The date "%s" is invalid.', $date);
+        $message = sprintf(
+            'The date "%s" is invalid.',
+            sprintf('%d-%d-%d', $year, $month, $day)
+        );
         parent::__construct($message);
     }
 }

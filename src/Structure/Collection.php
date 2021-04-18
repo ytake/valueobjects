@@ -27,16 +27,16 @@ use ValueObjects\ValueObjectInterface;
  */
 class Collection implements ValueObjectInterface
 {
-    /** @var SplFixedArray */
-    protected $items;
+    protected SplFixedArray $items;
 
     /**
      * Returns a new Collection object.
      *
      * @param SplFixedArray $items
      */
-    public function __construct(SplFixedArray $items)
-    {
+    public function __construct(
+        SplFixedArray $items
+    ) {
         foreach ($items as $item) {
             if (false === $item instanceof ValueObjectInterface) {
                 $type = \is_object($item) ? \get_class($item) : \gettype($item);

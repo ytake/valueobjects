@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -16,38 +17,41 @@ declare(strict_types=1);
 
 namespace ValueObjects\DateTime;
 
+use DateTime;
 use ValueObjects\Enum\Enum;
 
+use function strtoupper;
+
 /**
- * Class Month.
+ * Month.
  *
- * @method static string JANUARY()
- * @method static string FEBRUARY()
- * @method static string MARCH()
- * @method static string APRIL()
- * @method static string MAY()
- * @method static string JUNE()
- * @method static string JULY()
- * @method static string AUGUST()
- * @method static string SEPTEMBER()
- * @method static string OCTOBER()
- * @method static string NOVEMBER()
- * @method static string DECEMBER()
+ * @method static self JANUARY()
+ * @method static self FEBRUARY()
+ * @method static self MARCH()
+ * @method static self APRIL()
+ * @method static self MAY()
+ * @method static self JUNE()
+ * @method static self JULY()
+ * @method static self AUGUST()
+ * @method static self SEPTEMBER()
+ * @method static self OCTOBER()
+ * @method static self NOVEMBER()
+ * @method static self DECEMBER()
  */
 class Month extends Enum
 {
-    const JANUARY = 'January';
-    const FEBRUARY = 'February';
-    const MARCH = 'March';
-    const APRIL = 'April';
-    const MAY = 'May';
-    const JUNE = 'June';
-    const JULY = 'July';
-    const AUGUST = 'August';
-    const SEPTEMBER = 'September';
-    const OCTOBER = 'October';
-    const NOVEMBER = 'November';
-    const DECEMBER = 'December';
+    public const JANUARY = 'January';
+    public const FEBRUARY = 'February';
+    public const MARCH = 'March';
+    public const APRIL = 'April';
+    public const MAY = 'May';
+    public const JUNE = 'June';
+    public const JULY = 'July';
+    public const AUGUST = 'August';
+    public const SEPTEMBER = 'September';
+    public const OCTOBER = 'October';
+    public const NOVEMBER = 'November';
+    public const DECEMBER = 'December';
 
     /**
      * Get current Month.
@@ -56,7 +60,7 @@ class Month extends Enum
      */
     public static function now(): Month
     {
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
         return static::fromNativeDateTime($now);
     }
@@ -64,15 +68,14 @@ class Month extends Enum
     /**
      * Returns Month from a native PHP \DateTime.
      *
-     * @param \DateTime $date
+     * @param DateTime $date
      *
      * @return Month
      */
-    public static function fromNativeDateTime(\DateTime $date): Month
-    {
-        $month = \strtoupper($date->format('F'));
-
-        return static::byName($month);
+    public static function fromNativeDateTime(
+        DateTime $date
+    ): Month {
+        return static::byName(strtoupper($date->format('F')));
     }
 
     /**

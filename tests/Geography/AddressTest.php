@@ -13,9 +13,9 @@ use ValueObjects\ValueObjectInterface;
 class AddressTest extends TestCase
 {
     /** @var Address */
-    protected $address;
+    protected Address $address;
 
-    public function setup()
+    public function setup(): void
     {
         $this->address = new Address(
             new StringLiteral('Nicolò Pignatelli'),
@@ -30,7 +30,16 @@ class AddressTest extends TestCase
 
     public function testFromNative()
     {
-        $fromNativeAddress = Address::fromNative('Nicolò Pignatelli', 'via Manara', '3', '', 'Altamura', 'BARI', '70022', 'IT');
+        $fromNativeAddress = Address::fromNative(
+            'Nicolò Pignatelli',
+            'via Manara',
+            '3',
+            '',
+            'Altamura',
+            'BARI',
+            '70022',
+            'IT'
+        );
         $this->assertTrue($this->address->sameValueAs($fromNativeAddress));
     }
 

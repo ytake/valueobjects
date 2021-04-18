@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,6 +13,8 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 /**
@@ -24,8 +25,8 @@ class NullQueryString extends QueryString implements QueryStringInterface
     /**
      * Returns a new NullQueryString.
      */
-    public function __construct()
-    {
-        $this->value = '';
+    public function __construct(
+        protected string $value = ''
+    ) {
     }
 }

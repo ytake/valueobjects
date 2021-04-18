@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,10 +13,18 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
+
+use function parse_url;
+use function strlen;
+use function strval;
+
+use const PHP_URL_PATH;
 
 /**
  * Class Path.
@@ -25,16 +32,19 @@ use ValueObjects\StringLiteral\StringLiteral;
 class Path extends StringLiteral
 {
     /**
-     * @param $value
+     * @param string $value
      */
-    public function __construct(string $value)
-    {
-        $filteredValue = parse_url($value, PHP_URL_PATH);
+    public function __construct(
+        string $value
+    ) {
+        $filteredValue = strval(parse_url($value, PHP_URL_PATH));
 
-        if (null === $filteredValue || strlen($filteredValue) != strlen($value)) {
-            throw new InvalidNativeArgumentException($value, ['string (valid url path)']);
+        if (is_null($filteredValue) || strlen($filteredValue) !== strlen($value)) {
+            throw new InvalidNativeArgumentException(
+                $value,
+                ['string (valid url path)']
+            );
         }
-
         $this->value = $filteredValue;
     }
 }

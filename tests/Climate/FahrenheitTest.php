@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class FahrenheitTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         # When tests run in a different locale, this might affect the decimal-point character and thus the validation
         # of floats. This makes sure the tests run in a locale that the tests are known to be working in.

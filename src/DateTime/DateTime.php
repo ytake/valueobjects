@@ -19,19 +19,22 @@ namespace ValueObjects\DateTime;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+use function func_get_args;
+use function sprintf;
+
 class DateTime implements ValueObjectInterface
 {
     /** @var Date */
-    protected $date;
+    protected Date $date;
 
-    /** @var Time */
-    protected $time;
+    /** @var Time|null */
+    protected ?Time $time = null;
 
     /**
      * Returns a new DateTime object.
      *
-     * @param Date $date
-     * @param Time $time
+     * @param Date&ValueObjectInterface $date
+     * @param Time|null $time
      */
     public function __construct(Date $date, Time $time = null)
     {
@@ -49,31 +52,30 @@ class DateTime implements ValueObjectInterface
      */
     public function __toString(): string
     {
-        return \sprintf('%s %s', $this->getDate(), $this->getTime());
+        return sprintf('%s %s', $this->getDate(), $this->getTime());
     }
 
     /**
      * Returns a new DateTime object from native values.
      *
-     * @param int    $year
-     * @param string $month
-     * @param int    $day
-     * @param int    $hour
-     * @param int    $minute
-     * @param int    $second
+     * @param int|string ...$args
+     * param int    $year
+     * param string $month
+     * param int    $day
+     * param int    $hour
+     * param int    $minute
+     * param int    $second
      *
      * @throws Exception\InvalidDateException
-     *
-     * @return DateTime|ValueObjectInterface
+     * @return DateTime&ValueObjectInterface
      */
-    public static function fromNative(): ValueObjectInterface
+    public static function fromNative(...$args): ValueObjectInterface
     {
         $args = func_get_args();
-
         $date = Date::fromNative($args[0], $args[1], $args[2]);
         $time = Time::fromNative($args[3], $args[4], $args[5]);
 
-        return new static($date, $time);
+        return new self($date, $time);
     }
 
     /**
@@ -83,14 +85,14 @@ class DateTime implements ValueObjectInterface
      *
      * @throws Exception\InvalidDateException
      *
-     * @return DateTime
+     * @return DateTime&ValueObjectInterface
      */
     public static function fromNativeDateTime(\DateTime $date_time): DateTime
     {
         $date = Date::fromNativeDateTime($date_time);
         $time = Time::fromNativeDateTime($date_time);
 
-        return new static($date, $time);
+        return new self($date, $time);
     }
 
     /**
@@ -98,13 +100,11 @@ class DateTime implements ValueObjectInterface
      *
      * @throws Exception\InvalidDateException
      *
-     * @return DateTime
+     * @return DateTime&ValueObjectInterface
      */
     public static function now(): DateTime
     {
-        $dateTime = new static(Date::now(), Time::now());
-
-        return $dateTime;
+        return new self(Date::now(), Time::now());
     }
 
     /**

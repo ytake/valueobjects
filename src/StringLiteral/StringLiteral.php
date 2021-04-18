@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,25 +13,32 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\StringLiteral;
 
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
+
+use function method_exists;
+use function strlen;
 
 /**
  * Class StringLiteral.
  */
 class StringLiteral implements ValueObjectInterface
 {
-    protected $value;
+    /** @var string */
+    protected string $value;
 
     /**
      * Returns a StringLiteral object given a PHP native string as parameter.
      *
      * @param string $value
      */
-    public function __construct(string $value)
-    {
+    public function __construct(
+        string $value
+    ) {
         $this->value = $value;
     }
 
@@ -49,15 +55,15 @@ class StringLiteral implements ValueObjectInterface
     /**
      * Returns a StringLiteral object given a PHP native string as parameter.
      *
-     * @param string $value
+     * @param string ...$values
      *
-     * @return StringLiteral|ValueObjectInterface
+     * @return ValueObjectInterface
      */
-    public static function fromNative(): ValueObjectInterface
+    public static function fromNative(...$values): ValueObjectInterface
     {
         $value = func_get_arg(0);
 
-        return new static($value);
+        return new self($value);
     }
 
     /**
@@ -73,17 +79,20 @@ class StringLiteral implements ValueObjectInterface
     /**
      * Tells whether two string literals are equal by comparing their values.
      *
-     * @param ValueObjectInterface $stringLiteral
+     * @param ValueObjectInterface $object
      *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $stringLiteral): bool
-    {
-        if (false === Util::classEquals($this, $stringLiteral)) {
+    public function sameValueAs(
+        ValueObjectInterface $object
+    ): bool {
+        if (false === Util::classEquals($this, $object)) {
             return false;
         }
-
-        return $this->toNative() === $stringLiteral->toNative();
+        if (method_exists($this, 'toNative') && method_exists($object, 'toNative')) {
+            return $this->toNative() === $object->toNative();
+        }
+        return false;
     }
 
     /**
@@ -93,6 +102,6 @@ class StringLiteral implements ValueObjectInterface
      */
     public function isEmpty(): bool
     {
-        return 0 == \strlen($this->toNative());
+        return 0 === strlen($this->toNative());
     }
 }

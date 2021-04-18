@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,25 +13,34 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Exception;
+
+use InvalidArgumentException;
+
+use function implode;
+use function sprintf;
 
 /**
  * Class InvalidNativeArgumentException.
  */
-final class InvalidNativeArgumentException extends \InvalidArgumentException
+final class InvalidNativeArgumentException extends InvalidArgumentException
 {
     /**
-     * InvalidNativeArgumentException constructor.
-     *
-     * @param       $value
-     * @param array $allowedTypes
+     * @param string $value
+     * @param array<string> $allowedTypes
      */
-    public function __construct($value, array $allowedTypes)
-    {
-        $this->message = \sprintf(
-            'Argument "%s" is invalid. Allowed types for argument are "%s".',
-            $value,
-            \implode(', ', $allowedTypes)
+    public function __construct(
+        string $value,
+        array $allowedTypes
+    ) {
+        parent::__construct(
+            sprintf(
+                'Argument "%s" is invalid. Allowed types for argument are "%s".',
+                $value,
+                implode(', ', $allowedTypes)
+            )
         );
     }
 }

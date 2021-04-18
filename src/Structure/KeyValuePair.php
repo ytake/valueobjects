@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,23 +13,25 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Structure;
 
+use BadMethodCallException;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
+
+use function count;
+use function func_get_args;
+use function sprintf;
+use function strval;
 
 /**
  * Class KeyValuePair.
  */
 class KeyValuePair implements ValueObjectInterface
 {
-    /** @var ValueObjectInterface */
-    protected $key;
-
-    /** @var ValueObjectInterface */
-    protected $value;
-
     /**
      * Returns a KeyValuePair.
      *
@@ -38,11 +39,9 @@ class KeyValuePair implements ValueObjectInterface
      * @param ValueObjectInterface $value
      */
     public function __construct(
-        ValueObjectInterface $key,
-        ValueObjectInterface $value
+        protected ValueObjectInterface $key,
+        protected ValueObjectInterface $value
     ) {
-        $this->key = $key;
-        $this->value = $value;
     }
 
     /**
@@ -58,28 +57,21 @@ class KeyValuePair implements ValueObjectInterface
     /**
      * Returns a KeyValuePair from native PHP arguments evaluated as strings.
      *
-     * @param string $key
-     * @param string $value
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return KeyValuePair|ValueObjectInterface
-     * @return KeyValuePair|ValueObjectInterface
+     * @param ...$values
+     * @return ValueObjectInterface
      */
-    public static function fromNative(): ValueObjectInterface
+    public static function fromNative(...$values): ValueObjectInterface
     {
         $args = func_get_args();
-
         if (2 != count($args)) {
-            throw new \BadMethodCallException('This methods expects two arguments. One for the key and one for the value.');
+            throw new BadMethodCallException(
+                'This methods expects two arguments. One for the key and one for the value.'
+            );
         }
-
-        $keyString = \strval($args[0]);
-        $valueString = \strval($args[1]);
-        $key = new StringLiteral($keyString);
-        $value = new StringLiteral($valueString);
-
-        return new static($key, $value);
+        return new KeyValuePair(
+            new StringLiteral(strval($args[0])),
+            new StringLiteral(strval($args[1]))
+        );
     }
 
     /**
@@ -89,8 +81,9 @@ class KeyValuePair implements ValueObjectInterface
      *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $keyValuePair): bool
-    {
+    public function sameValueAs(
+        ValueObjectInterface $keyValuePair
+    ): bool {
         if (false === Util::classEquals($this, $keyValuePair)) {
             return false;
         }

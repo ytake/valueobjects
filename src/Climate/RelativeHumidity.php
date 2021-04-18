@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,20 +13,25 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Climate;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Number\Natural;
 use ValueObjects\ValueObjectInterface;
 
+use function filter_var;
+use function func_get_arg;
+
 /**
  * Class RelativeHumidity.
  */
 class RelativeHumidity extends Natural
 {
-    const MIN = 0;
+    public const MIN = 0;
 
-    const MAX = 100;
+    public const MAX = 100;
 
     /**
      * Returns a new RelativeHumidity object.
@@ -40,8 +44,11 @@ class RelativeHumidity extends Natural
             'options' => ['min_range' => self::MIN, 'max_range' => self::MAX],
         ];
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
-        if (false === $value) {
-            throw new InvalidNativeArgumentException($value, ['int (>='.self::MIN.', <='.self::MAX.')']);
+        if (!$value) {
+            throw new InvalidNativeArgumentException(
+                $value,
+                ['int (>=' . self::MIN . ', <=' . self::MAX . ')'],
+            );
         }
         parent::__construct($value);
     }
@@ -49,14 +56,12 @@ class RelativeHumidity extends Natural
     /**
      * Returns a new RelativeHumidity from native int value.
      *
-     * @param ...int $value
+     * @param int ...$value
      *
      * @return RelativeHumidity|ValueObjectInterface
      */
-    public static function fromNative(): ValueObjectInterface
+    public static function fromNative(...$value): ValueObjectInterface
     {
-        $value = func_get_arg(0);
-
-        return new static($value);
+        return new self(func_get_arg(0));
     }
 }

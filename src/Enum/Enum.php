@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,11 +13,16 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Enum;
 
 use MabeEnum\Enum as BaseEnum;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
+
+use function func_get_arg;
+use function strval;
 
 /**
  * Class Enum.
@@ -32,17 +36,17 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
      */
     public function __toString(): string
     {
-        return \strval($this->toNative());
+        return strval($this->toNative());
     }
 
     /**
      * Returns a new Enum object from passed value matching argument.
      *
-     * @param string... $value
+     * @param string ...$args
      *
-     * @return static
+     * @return Enum
      */
-    public static function fromNative(): ValueObjectInterface
+    public static function fromNative(...$args): Enum
     {
         return static::get(func_get_arg(0));
     }
@@ -52,7 +56,7 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
      *
      * @return mixed
      */
-    public function toNative()
+    public function toNative(): mixed
     {
         return parent::getValue();
     }
@@ -60,16 +64,17 @@ abstract class Enum extends BaseEnum implements ValueObjectInterface
     /**
      * Tells whether two Enum objects are sameValueAs by comparing their values.
      *
-     * @param ValueObjectInterface $enum
+     * @param Enum&ValueObjectInterface $object
      *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $enum): bool
-    {
-        if (false === Util::classEquals($this, $enum)) {
+    public function sameValueAs(
+        ValueObjectInterface $object
+    ): bool {
+        if (false === Util::classEquals($this, $object)) {
             return false;
         }
 
-        return $this->toNative() === $enum->toNative();
+        return $this->toNative() === $object->toNative();
     }
 }

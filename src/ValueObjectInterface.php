@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,10 +13,12 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects;
 
 /**
- * Interface ValueObjectInterface.
+ * ValueObjectInterface
  */
 interface ValueObjectInterface
 {
@@ -39,8 +40,9 @@ interface ValueObjectInterface
      * Compare two ValueObjectInterface and tells whether they can be considered equal.
      *
      * @param ValueObjectInterface $object
-     *
      * @return bool
      */
-    public function sameValueAs(ValueObjectInterface $object): bool;
+    public function sameValueAs(
+        ValueObjectInterface $object
+    ): bool;
 }

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,15 +13,19 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Enum\Enum;
 
 /**
  * Class IPAddressVersion.
+ * @method IPAddressVersion IPV4()
+ * @method IPAddressVersion IPV6()
  */
 class IPAddressVersion extends Enum
 {
-    const IPV4 = 'IPv4';
-    const IPV6 = 'IPv6';
+    public const IPV4 = 'IPv4';
+    public const IPV6 = 'IPv6';
 }

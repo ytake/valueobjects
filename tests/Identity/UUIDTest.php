@@ -1,21 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ValueObjects\Tests\Identity;
 
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Identity\UUID;
 use PHPUnit\Framework\TestCase;
 use ValueObjects\ValueObjectInterface;
 
-class UUIDTest extends TestCase
+final class UUIDTest extends TestCase
 {
-    public function testGenerateAsString()
+    public function testGenerateAsString(): void
     {
         $uuidString = UUID::generateAsString();
-
-        $this->assertRegexp('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/', $uuidString);
+        $this->assertMatchesRegularExpression(
+            '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/',
+            $uuidString
+        );
     }
 
-    public function testFromNative()
+    public function testFromNative(): void
     {
         $uuid1 = new UUID();
         $uuid2 = UUID::fromNative($uuid1->toNative());
@@ -23,7 +28,7 @@ class UUIDTest extends TestCase
         $this->assertTrue($uuid1->sameValueAs($uuid2));
     }
 
-    public function testSameValueAs()
+    public function testSameValueAs(): void
     {
         $uuid1 = new UUID();
         $uuid2 = clone $uuid1;
@@ -37,9 +42,9 @@ class UUIDTest extends TestCase
         $this->assertFalse($uuid1->sameValueAs($mock));
     }
 
-    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
-    public function testInvalid()
+    public function testInvalid(): void
     {
+        $this->expectException(InvalidNativeArgumentException::class);
         new UUID('invalid');
     }
 }

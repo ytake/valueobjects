@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -16,7 +17,10 @@ declare(strict_types=1);
 
 namespace ValueObjects\DateTime;
 
+use DateTime;
 use ValueObjects\Number\Integer;
+
+use function intval;
 
 /**
  * Class Year.
@@ -30,8 +34,8 @@ class Year extends Integer
      */
     public static function now(): Year
     {
-        $now = new \DateTime('now');
+        $now = new DateTime('now');
 
-        return new static(\intval($now->format('Y')));
+        return new self(intval($now->format('Y')));
     }
 }

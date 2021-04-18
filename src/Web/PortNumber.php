@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,10 +13,16 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Number\Natural;
+
+use function filter_var;
+
+use const FILTER_VALIDATE_INT;
 
 /**
  * Class PortNumber.
@@ -37,13 +42,13 @@ class PortNumber extends Natural implements PortNumberInterface
                 'max_range' => 65535,
             ],
         ];
-
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
-
         if (false === $value) {
-            throw new InvalidNativeArgumentException($value, ['int (>=0, <=65535)']);
+            throw new InvalidNativeArgumentException(
+                (string)$value,
+                ['int (>=0, <=65535)']
+            );
         }
-
         parent::__construct($value);
     }
 }

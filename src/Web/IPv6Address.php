@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,9 +13,16 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
+
+use function filter_var;
+
+use const FILTER_FLAG_IPV6;
+use const FILTER_VALIDATE_IP;
 
 /**
  * Class IPv6Address.
@@ -28,11 +34,15 @@ class IPv6Address extends IPAddress
      *
      * @param string $value
      */
-    public function __construct(string $value)
-    {
+    public function __construct(
+        string $value
+    ) {
         $filteredValue = filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
         if (false === $filteredValue) {
-            throw new InvalidNativeArgumentException($value, ['string (valid ipv6 address)']);
+            throw new InvalidNativeArgumentException(
+                $value,
+                ['string (valid ipv6 address)']
+            );
         }
         $this->value = $filteredValue;
     }

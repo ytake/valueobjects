@@ -13,9 +13,9 @@ use ValueObjects\ValueObjectInterface;
 class CoordinateTest extends TestCase
 {
     /** @var Coordinate */
-    protected $coordinate;
+    protected Coordinate $coordinate;
 
-    public function setup()
+    public function setup(): void
     {
         # When tests run in a different locale, this might affect the decimal-point character and thus the validation
         # of floats. This makes sure the tests run in a locale that the tests are known to be working in.

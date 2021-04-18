@@ -1,0 +1,6 @@
+parameters:
+  paths:
+    - src
+    - tests
+  level: max
+  excludes_analyse:

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -27,20 +28,17 @@ use ValueObjects\ValueObjectInterface;
  */
 class UUID extends StringLiteral
 {
-    /** @var BaseUuid */
-    protected $value;
-
     /**
      * UUID constructor.
-     *
      * @param string|null $value
      */
-    public function __construct(string $value = null)
-    {
+    public function __construct(
+        ?string $value = null
+    ) {
         $uuid_str = BaseUuid::uuid4();
 
         if (null !== $value) {
-            $pattern = '/'.BaseUuid::VALID_PATTERN.'/';
+            $pattern = '/' . BaseUuid::VALID_PATTERN . '/';
 
             if (!\preg_match($pattern, $value)) {
                 throw new InvalidNativeArgumentException($value, ['UUID string']);
@@ -53,18 +51,14 @@ class UUID extends StringLiteral
     }
 
     /**
-     * @param string $uuid
-     *
-     * @throws \ValueObjects\Exception\InvalidNativeArgumentException
-     *
-     * @return UUID|ValueObjectInterface
+     * @param string ...$values
+     * @return ValueObjectInterface
      */
-    public static function fromNative(): ValueObjectInterface
-    {
+    public static function fromNative(
+        ...$values
+    ): ValueObjectInterface {
         $uuid_str = \func_get_arg(0);
-        $uuid = new static($uuid_str);
-
-        return $uuid;
+        return new UUID($uuid_str);
     }
 
     /**
@@ -74,10 +68,8 @@ class UUID extends StringLiteral
      */
     public static function generateAsString(): string
     {
-        $uuid = new static();
-        $uuidString = $uuid->toNative();
-
-        return $uuidString;
+        $uuid = new UUID();
+        return $uuid->toNative();
     }
 
     /**

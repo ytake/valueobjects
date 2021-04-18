@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,9 +13,13 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
+
+use function filter_var;
 
 /**
  * Class IPAddress.
@@ -28,8 +31,9 @@ class IPAddress extends Domain
      *
      * @param string $value
      */
-    public function __construct(string $value)
-    {
+    public function __construct(
+        string $value
+    ) {
         $filteredValue = filter_var($value, FILTER_VALIDATE_IP);
 
         if (false === $filteredValue) {

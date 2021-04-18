@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ValueObjects\Tests\Geography;
 
 use ValueObjects\Geography\Street;
@@ -9,9 +11,9 @@ use ValueObjects\ValueObjectInterface;
 
 class StreetTest extends TestCase
 {
-    protected $street;
+    protected Street $street;
 
-    protected function setup()
+    protected function setup(): void
     {
         $this->street = new Street(
             new StringLiteral('Abbey Rd'),

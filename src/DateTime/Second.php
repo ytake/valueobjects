@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,18 +13,26 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\DateTime;
 
+use DateTime;
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Number\Natural;
 
+use function intval;
+use function filter_var;
+
+use const FILTER_VALIDATE_INT;
+
 /**
- * Class Second.
+ * Second.
  */
 class Second extends Natural
 {
-    const MIN_SECOND = 0;
-    const MAX_SECOND = 59;
+    public const MIN_SECOND = 0;
+    public const MAX_SECOND = 59;
 
     /**
      * Returns a new Second object.
@@ -39,8 +46,7 @@ class Second extends Natural
         ];
 
         $value = filter_var($value, FILTER_VALIDATE_INT, $options);
-
-        if (false === $value) {
+        if (!$value) {
             throw new InvalidNativeArgumentException($value, ['int (>=0, <=59)']);
         }
 
@@ -54,9 +60,9 @@ class Second extends Natural
      */
     public static function now(): Second
     {
-        $now = new \DateTime('now');
-        $second = \intval($now->format('s'));
+        $now = new DateTime('now');
+        $second = intval($now->format('s'));
 
-        return new static($second);
+        return new self($second);
     }
 }

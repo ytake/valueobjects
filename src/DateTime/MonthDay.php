@@ -24,8 +24,8 @@ use ValueObjects\Number\Natural;
  */
 class MonthDay extends Natural
 {
-    const MIN_MONTH_DAY = 1;
-    const MAX_MONTH_DAY = 31;
+    public const MIN_MONTH_DAY = 1;
+    public const MAX_MONTH_DAY = 31;
 
     /**
      * Returns a new MonthDay.

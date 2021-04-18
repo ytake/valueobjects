@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,10 +13,14 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
+
+use function preg_match;
 
 /**
  * Class FragmentIdentifier.
@@ -31,10 +34,12 @@ class FragmentIdentifier extends StringLiteral implements FragmentIdentifierInte
      */
     public function __construct(string $value)
     {
-        if (0 === \preg_match('/^#[?%!$&\'()*+,;=a-zA-Z0-9-._~:@\/]*$/', $value)) {
-            throw new InvalidNativeArgumentException($value, ['string (valid fragment identifier)']);
+        if (0 === preg_match('/^#[?%!$&\'()*+,;=a-zA-Z0-9-._~:@\/]*$/', $value)) {
+            throw new InvalidNativeArgumentException(
+                $value,
+                ['string (valid fragment identifier)']
+            );
         }
-
         $this->value = $value;
     }
 }

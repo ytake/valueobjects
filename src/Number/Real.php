@@ -20,6 +20,9 @@ use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
+use function abs;
+use function round;
+
 /**
  * Class Real.
  */
@@ -83,7 +86,7 @@ class Real implements ValueObjectInterface, NumberInterface
     /**
      * Returns the native value of the real number.
      *
-     * @return float
+     * @return mixed
      */
     public function toNative()
     {
@@ -109,36 +112,33 @@ class Real implements ValueObjectInterface, NumberInterface
     /**
      * Returns the integer part of the Real number as a Integer.
      *
-     * @param RoundingMode $roundingMode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
+     * @param ?RoundingMode $roundingMode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
      *
-     * @return Integer
+     * @return Integer&ValueObjectInterface
      */
-    public function toInteger(RoundingMode $roundingMode = null): Integer
-    {
+    public function toInteger(
+        RoundingMode $roundingMode = null
+    ): Integer {
         if (null === $roundingMode) {
             $roundingMode = RoundingMode::HALF_UP();
         }
-
-        /** @var int $integerValue */
-        $integerValue = \round($this->toNative(), 0, $roundingMode->toNative());
-        $integer = new Integer($integerValue);
-
-        return $integer;
+        return new Integer(
+            round($this->toNative(), 0, $roundingMode->toNative())
+        );
     }
 
     /**
      * Returns the absolute integer part of the Real number as a Natural.
      *
-     * @param RoundingMode $roundingMode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
+     * @param ?RoundingMode $roundingMode Rounding mode of the conversion. Defaults to RoundingMode::HALF_UP.
      *
      * @return Natural
      */
-    public function toNatural(RoundingMode $roundingMode = null)
-    {
+    public function toNatural(
+        RoundingMode $roundingMode = null
+    ): Natural {
         $integerValue = $this->toInteger($roundingMode)->toNative();
-        $naturalValue = \abs($integerValue);
-        $natural = new Natural($naturalValue);
-
-        return $natural;
+        $naturalValue = abs($integerValue);
+        return new Natural($naturalValue);
     }
 }

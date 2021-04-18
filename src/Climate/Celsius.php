@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,10 +13,12 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Climate;
 
 /**
- * Class Celsius.
+ * Celsius.
  */
 class Celsius extends Temperature
 {
@@ -26,7 +27,7 @@ class Celsius extends Temperature
      */
     public function toCelsius(): Celsius
     {
-        return new static($this->value);
+        return new self($this->value);
     }
 
     /**

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,10 +13,16 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
+
+use function explode;
+use function filter_var;
+use function trim;
 
 /**
  * Class EmailAddress.
@@ -29,8 +34,9 @@ class EmailAddress extends StringLiteral
      *
      * @param string $value
      */
-    public function __construct(string $value)
-    {
+    public function __construct(
+        string $value
+    ) {
         $filteredValue = filter_var($value, FILTER_VALIDATE_EMAIL);
 
         if (false === $filteredValue) {
@@ -59,9 +65,7 @@ class EmailAddress extends StringLiteral
      */
     public function getDomainPart(): Domain
     {
-        $parts = \explode('@', $this->toNative());
-        $domain = \trim($parts[1], '[]');
-
-        return Domain::specifyType($domain);
+        $parts = explode('@', $this->toNative());
+        return Domain::specifyType(trim($parts[1], '[]'));
     }
 }

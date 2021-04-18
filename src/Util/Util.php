@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,7 +13,11 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Util;
+
+use function get_class;
 
 /**
  * Utility class for methods used all across the library.
@@ -29,20 +32,23 @@ class Util
      *
      * @return bool
      */
-    public static function classEquals($objectA, $objectB): bool
-    {
-        return \get_class($objectA) === \get_class($objectB);
+    public static function classEquals(
+        object $objectA,
+        object $objectB
+    ): bool {
+        return get_class($objectA) === get_class($objectB);
     }
 
     /**
      * Returns full namespaced class as string.
      *
-     * @param mixed $object
+     * @param object $object
      *
      * @return string
      */
-    public static function getClassAsString($object): string
-    {
-        return \get_class($object);
+    public static function getClassAsString(
+        object $object
+    ): string {
+        return get_class($object);
     }
 }

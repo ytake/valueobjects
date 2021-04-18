@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -16,9 +17,14 @@ declare(strict_types=1);
 
 namespace ValueObjects\Structure;
 
+use Traversable;
 use SplFixedArray;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\ValueObjectInterface;
+
+use function is_array;
+use function func_get_arg;
+use function strval;
 
 /**
  * Class Dictionary.
@@ -28,10 +34,11 @@ class Dictionary extends Collection
     /**
      * Returns a new Dictionary object.
      *
-     * @param SplFixedArray $key_value_pairs
+     * @param SplFixedArray $pairs
      */
-    public function __construct(SplFixedArray $pairs)
-    {
+    public function __construct(
+        SplFixedArray $pairs
+    ) {
         foreach ($pairs as $keyValuePair) {
             if (false === $keyValuePair instanceof KeyValuePair) {
                 $type = \is_object($keyValuePair) ? \get_class($keyValuePair) : \gettype($keyValuePair);
@@ -53,25 +60,25 @@ class Dictionary extends Collection
      *
      * @param ...array $array
      *
-     * @return Dictionary|ValueObjectInterface
+     * @return Dictionary
      */
-    public static function fromNative(): ValueObjectInterface
+    public static function fromNative(...$values): Dictionary
     {
-        $array = \func_get_arg(0);
+        $array = func_get_arg(0);
         $keyValuePairs = [];
-
         foreach ($array as $arrayKey => $arrayValue) {
-            $key = new StringLiteral(\strval($arrayKey));
+            $key = new StringLiteral(strval($arrayKey));
 
-            if ($arrayValue instanceof \Traversable || \is_array($arrayValue)) {
+            if ($arrayValue instanceof Traversable || is_array($arrayValue)) {
                 $value = Collection::fromNative($arrayValue);
             } else {
-                $value = new StringLiteral(\strval($arrayValue));
+                $value = new StringLiteral(strval($arrayValue));
             }
             $keyValuePairs[] = new KeyValuePair($key, $value);
         }
-
-        return new static(SplFixedArray::fromArray($keyValuePairs));
+        return new Dictionary(
+            SplFixedArray::fromArray($keyValuePairs)
+        );
     }
 
     /**
@@ -83,11 +90,9 @@ class Dictionary extends Collection
     {
         $count = $this->count()->toNative();
         $keysArray = new SplFixedArray($count);
-
         foreach ($this->items as $key => $item) {
             $keysArray->offsetSet($key, $item->getKey());
         }
-
         return new Collection($keysArray);
     }
 
@@ -115,11 +120,10 @@ class Dictionary extends Collection
      *
      * @return bool
      */
-    public function containsKey(ValueObjectInterface $object): bool
-    {
-        $keys = $this->keys();
-
-        return $keys->contains($object);
+    public function containsKey(
+        ValueObjectInterface $object
+    ): bool {
+        return $this->keys()->contains($object);
     }
 
     /**
@@ -129,10 +133,9 @@ class Dictionary extends Collection
      *
      * @return bool
      */
-    public function containsValue(ValueObjectInterface $object): bool
-    {
-        $values = $this->values();
-
-        return $values->contains($object);
+    public function containsValue(
+        ValueObjectInterface $object
+    ): bool {
+        return $this->values()->contains($object);
     }
 }

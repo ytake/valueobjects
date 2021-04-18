@@ -39,15 +39,14 @@ class QueryStringTest extends TestCase
 
         $this->assertInstanceOf('ValueObjects\Structure\Dictionary', $dictionary);
 
-        $array = array(
-            'foo'   => 'bar',
-            'array' => array(
+        $array = [
+            'foo' => 'bar',
+            'array' => [
                 'one',
                 'two'
-            )
-        );
+            ]
+        ];
         $expectedDictionary = Dictionary::fromNative($array);
-
         $this->assertTrue($expectedDictionary->sameValueAs($dictionary));
     }
 }

@@ -1,22 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ValueObjects\Tests\Web;
 
 use PHPUnit\Framework\TestCase;
+use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\Web\Path;
 
 class PathTest extends TestCase
 {
-    public function testValidPath()
+    public function testValidPath(): void
     {
         $pathString = '/path/to/resource.ext';
         $path = new Path($pathString);
         $this->assertEquals($pathString, $path->toNative());
     }
 
-    /** @expectedException \ValueObjects\Exception\InvalidNativeArgumentException */
-    public function testInvalidPath()
+    public function testInvalidPath(): void
     {
+        $this->expectException(InvalidNativeArgumentException::class);
         new Path('//valid?');
     }
 }

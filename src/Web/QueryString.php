@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -14,11 +13,17 @@ declare(strict_types=1);
  * Copyright (c) 2018 Yuuki Takezawa
  */
 
+declare(strict_types=1);
+
 namespace ValueObjects\Web;
 
 use ValueObjects\Exception\InvalidNativeArgumentException;
 use ValueObjects\StringLiteral\StringLiteral;
 use ValueObjects\Structure\Dictionary;
+
+use function ltrim;
+use function parse_str;
+use function preg_match;
 
 /**
  * Class QueryString.
@@ -30,10 +35,14 @@ class QueryString extends StringLiteral implements QueryStringInterface
      *
      * @param string $value
      */
-    public function __construct(string $value)
-    {
-        if (0 === \preg_match('/^\?([\w\.\-[\]~&%+]+(=([\w\.\-~&%+]+)?)?)*$/', $value)) {
-            throw new InvalidNativeArgumentException($value, ['string (valid query string)']);
+    public function __construct(
+        string $value
+    ) {
+        if (0 === preg_match('/^\?([\w\.\-[\]~&%+]+(=([\w\.\-~&%+]+)?)?)*$/', $value)) {
+            throw new InvalidNativeArgumentException(
+                $value,
+                ['string (valid query string)']
+            );
         }
 
         $this->value = $value;
@@ -46,8 +55,8 @@ class QueryString extends StringLiteral implements QueryStringInterface
      */
     public function toDictionary(): Dictionary
     {
-        $value = \ltrim($this->toNative(), '?');
-        \parse_str($value, $data);
+        $value = ltrim($this->toNative(), '?');
+        parse_str($value, $data);
 
         return Dictionary::fromNative($data);
     }

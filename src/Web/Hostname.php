@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -13,6 +12,8 @@ declare(strict_types=1);
  * and is licensed under the MIT license.
  * Copyright (c) 2018 Yuuki Takezawa
  */
+
+declare(strict_types=1);
 
 namespace ValueObjects\Web;
 
@@ -29,8 +30,9 @@ class Hostname extends Domain
      *
      * @param string $value
      */
-    public function __construct(string $value)
-    {
+    public function __construct(
+        string $value
+    ) {
         $validator = new Validator(['allow' => Validator::ALLOW_DNS | Validator::ALLOW_LOCAL]);
 
         if (false === $validator->isValid($value)) {
