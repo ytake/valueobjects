@@ -22,14 +22,13 @@
     "laminas/laminas-validator": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.0.0 || ^6.0.0 ",
+    "phpunit/phpunit": "^6.0.0 ",
     "php-coveralls/php-coveralls": "^2.1.0",
     "phpmd/phpmd": "@stable",
     "squizlabs/php_codesniffer": "~2.7",
     "sebastian/phpcpd": "*",
     "phploc/phploc": "*",
-    "pdepend/pdepend" : "^2.2.4",
-    "sensiolabs/security-checker": "^4.0.0"
+    "pdepend/pdepend" : "^2.2.4"
   },
   "autoload": {
     "psr-4": {

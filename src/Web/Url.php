@@ -121,7 +121,12 @@ class Url implements ValueObjectInterface
      */
     public static function fromNative(): ValueObjectInterface
     {
-        $urlString = \strval(\func_get_arg(0));
+        $unsanitisedUrl = \strval(\func_get_arg(0));
+        $urlString = filter_var($unsanitisedUrl, FILTER_VALIDATE_URL);
+        
+        if (false === $urlString) {
+            throw new \InvalidArgumentException("Invalid URL : " . $unsanitisedUrl);
+        }
 
         $user = \parse_url($urlString, PHP_URL_USER);
         $pass = \parse_url($urlString, PHP_URL_PASS);
