@@ -32,33 +32,42 @@ class UrlTest extends TestCase
             new FragmentIdentifier('#fragmentidentifier')
         );
     }
-
-    public function testFromNative()
+    
+    public function fromNativeProviderValidUrls(){
+        return [
+            [ 'http://user:pass@foo.com:80/bar?querystring#fragmentidentifier' ],
+            [ 'http://www.test.com' ],
+            [ 'http://www.test.com/bar' ],
+            [ 'http://www.test.com/?querystring' ],
+            [ 'http://www.test.com/#fragmentidentifier' ]
+        ];
+    }
+    
+    /**
+     * @dataProvider fromNativeProviderValidUrls
+     */
+    public function testFromNativeWithValidUrl($nativeUrlString)
     {
-        $nativeUrlString = 'http://user:pass@foo.com:80/bar?querystring#fragmentidentifier';
-        $fromNativeUrl = Url::fromNative($nativeUrlString);
-
-        $this->assertTrue($this->url->sameValueAs($fromNativeUrl));
-
-        $nativeUrlString = 'http://www.test.com';
         $fromNativeUrl = Url::fromNative($nativeUrlString);
 
         $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
-
-        $nativeUrlString = 'http://www.test.com/bar';
-        $fromNativeUrl = Url::fromNative($nativeUrlString);
-
-        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
-
-        $nativeUrlString = 'http://www.test.com/?querystring';
-        $fromNativeUrl = Url::fromNative($nativeUrlString);
-
-        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
-
-        $nativeUrlString = 'http://www.test.com/#fragmentidentifier';
-        $fromNativeUrl = Url::fromNative($nativeUrlString);
-
-        $this->assertSame($nativeUrlString, $fromNativeUrl->__toString());
+    }
+    
+    public function fromNativeProviderInvalidUrls(){
+        return [
+            [ 'foo.com:80/bar?querystring#fragmentidentifier' ],
+            [ 'www.test.com' ],
+            [ 'notAUrl' ]
+        ];
+    }
+    
+    /**
+     * @dataProvider fromNativeProviderInvalidUrls
+     * @expectedException \InvalidArgumentException
+     */
+    public function testFromNativeWithInvalidUrl($nativeUrlString)
+    {
+        Url::fromNative($nativeUrlString);
     }
 
     public function testSameValueAs()

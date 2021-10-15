@@ -19,8 +19,33 @@ This is fork of the educational package nicolopignatelli/valueobjects that aims 
 
 # Install
 
-required >= PHP 7.0
+Supports >= PHP 7.0
 
 ```bash
 $ composer require ytake/valueobjects
 ```
+
+# Develop
+
+To run tests, checks and get a shell to the development environment you need `docker`, `docker-compose` and `make`.
+
+## Run composer and docker 
+
+Running `make up` will build the php docker image and run composer install as part of it.
+
+You can also open a shell inside the container, for instance to perform some commands like composer changes and updates
+by running `make bash`
+
+## Run tests
+
+You can run unit
+
+`make tests`
+
+code style checks and fixes
+
+`make phpcs` and `make phpcbf
+
+or the security checker with
+
+`make securitychecker`

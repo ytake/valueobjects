@@ -1,0 +1,18 @@
+version: '2'
+services:
+  php:
+    build:
+      context: docker/php
+    volumes:
+      - websrc:/var/www/html
+    user: $UID
+    working_dir: /var/www/html
+    command: composer install --ignore-platform-reqs
+
+volumes:
+  websrc:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: $PWD
