@@ -28,8 +28,7 @@
     "squizlabs/php_codesniffer": "~2.7",
     "sebastian/phpcpd": "*",
     "phploc/phploc": "*",
-    "pdepend/pdepend" : "^2.2.4",
-    "sensiolabs/security-checker": "^4.0.0"
+    "pdepend/pdepend" : "^2.2.4"
   },
   "autoload": {
     "psr-4": {

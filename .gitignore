@@ -3,4 +3,4 @@
 /phpunit.xml
 /vendor/
 *.cache
-
+.phpcs-cache
