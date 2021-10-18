@@ -85,6 +85,6 @@ class RealTest extends TestCase
         $this->testSameValueAs();
         $this->testToInteger();
         $this->testToNatural();
-        $this->testToString('0,7');
+        $this->testToString('0.7');
     }
 }

@@ -28,11 +28,11 @@ class Latitude extends Real
     /**
      * Returns a new Latitude object.
      *
-     * @param float $value
+     * @param float|string $value
      *
      * @throws InvalidNativeArgumentException
      */
-    public function __construct(float $value)
+    public function __construct($value)
     {
         // normalization process through Coordinate object
         $coordinate = new BaseCoordinate([$value, 0]);
