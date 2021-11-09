@@ -1,6 +1,6 @@
 {
-  "name": "ytake/valueobjects",
-  "description": "A PHP library/collection of classes aimed to help developers using and undestanding immutable objects.(temporary package)",
+  "name": "bizmate/valueobjects",
+  "description": "A PHP library/collection of classes aimed to help developers using and undestanding immutable objects.Forked from ytake/valueobjects due to unresponve PRs and broken builds.",
   "keywords": ["vo", "value object", "architecture", "domain driven design"],
   "license": "MIT",
   "authors": [
@@ -11,6 +11,10 @@
     {
       "name": "Yuuki Takezawa",
       "email": "yuuki.takezawa@comnect.jp.net"
+    },
+    {
+      "name": "Diego Gullo",
+      "email": "diego_gullo@bizmate.biz"
     }
   ],
   "require": {
@@ -41,14 +45,13 @@
     }
   },
   "replace": {
-    "nicolopignatelli/valueobjects": "^4.0"
+    "ytake/valueobjects": "^4.0"
   },
   "scripts": {
     "ci": [
       "./vendor/bin/phpunit",
       "./vendor/bin/phpcpd src/",
       "./vendor/bin/phploc src/ --log-xml=tests/build/phploc.xml"
-    ],
-    "security-checker": "./vendor/bin/security-checker security:check composer.lock"
+    ]
   }
 }
