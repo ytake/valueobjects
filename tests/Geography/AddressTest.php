@@ -124,4 +124,16 @@ ADDR;
 
         $this->assertSame($addressString, $this->address->__toString());
     }
+    
+    public function testToJsonSerialize()
+    {
+        $addressString = <<<ADDR
+Nicolò Pignatelli
+3 via Manara
+Altamura BARI 70022
+Italy
+ADDR;
+    
+        $this->assertSame($addressString, $this->address->jsonSerialize());
+    }
 }

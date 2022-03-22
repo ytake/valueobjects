@@ -155,6 +155,11 @@ class UrlTest extends TestCase
     {
         $this->assertSame('http://user:pass@foo.com:80/bar?querystring#fragmentidentifier', $this->url->__toString());
     }
+    
+    public function testJsonSerialize()
+    {
+        $this->assertSame('http://user:pass@foo.com:80/bar?querystring#fragmentidentifier', $this->url->jsonSerialize());
+    }
 
     public function testAuthlessUrlToString()
     {

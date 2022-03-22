@@ -17,14 +17,17 @@ declare(strict_types=1);
 namespace ValueObjects\Web;
 
 use ValueObjects\StringLiteral\StringLiteral;
+use ValueObjects\Util\JsonSerializableToString;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
  * Class Url.
  */
-class Url implements ValueObjectInterface
+class Url implements ValueObjectInterface, \JsonSerializable
 {
+    use JsonSerializableToString;
+    
     /** @var SchemeName */
     protected $scheme;
 

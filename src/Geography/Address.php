@@ -17,14 +17,16 @@ declare(strict_types=1);
 namespace ValueObjects\Geography;
 
 use ValueObjects\StringLiteral\StringLiteral;
+use ValueObjects\Util\JsonSerializableToString;
 use ValueObjects\Util\Util;
 use ValueObjects\ValueObjectInterface;
 
 /**
  * Class Address.
  */
-class Address implements ValueObjectInterface
+class Address implements ValueObjectInterface, \JsonSerializable
 {
+    use JsonSerializableToString;
     /**
      * Name of the addressee (natural person or company).
      *
